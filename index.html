@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>単語クイズメニュー｜優香の一問一答</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      max-width: 800px;
+      margin: 24px auto;
+      padding: 0 16px 40px;
+      line-height: 1.6;
+      text-align: left;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+    .subtitle {
+      color: #555;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 16px;
+      background: #fafafa;
+    }
+    label {
+      font-size: 13px;
+      color: #555;
+      display: block;
+      margin-bottom: 4px;
+    }
+    select {
+      width: 100%;
+      max-width: 360px;
+      padding: 8px 10px;
+      font-size: 14px;
+      border-radius: 999px;
+      border: 1px solid #ccc;
+      margin-bottom: 16px;
+    }
+    button {
+      border-radius: 999px;
+      border: 1px solid #ccc;
+      padding: 8px 20px;
+      margin: 4px 8px 4px 0;
+      font-size: 14px;
+      cursor: pointer;
+      background: white;
+    }
+    button.primary {
+      background: #111;
+      color: white;
+      border-color: #111;
+    }
+    .small {
+      font-size: 12px;
+      color: #777;
+      margin-top: 8px;
+    }
+    ul {
+      font-size: 13px;
+      color: #555;
+      padding-left: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h1>単語クイズメニュー</h1>
+  <div class="subtitle">
+    優香専用の単語クイズアプリ。<br>
+    カテゴリを選んで、クイズか成績一覧のどちらかに進んでください。
+  </div>
+
+  <div class="card">
+    <label for="category">カテゴリを選択</label>
+    <select id="category">
+      <option value="psycho">精神分析×文学（研究用語）</option>
+      <option value="waseda2024">早稲田 一般英語 2024</option>
+      <option value="waseda2025">早稲田 一般英語 2025</option>
+      <option value="all">全部まとめて</option>
+    </select>
+
+    <div>
+      <button class="primary" id="start-quiz">クイズを始める</button>
+      <button id="open-stats">成績一覧を見る</button>
+    </div>
+
+    <div class="small">
+      ・クイズ画面では英語→日本語＋カタカナ読みの一問一答が出題されます。<br>
+      ・正解／不正解はブラウザに記録され、成績一覧に反映されます。<br>
+      ・同じPC・同じブラウザならデータは消えません。
+    </div>
+  </div>
+
+  <div class="card">
+    <strong style="font-size:13px;">今後追加する予定のカテゴリ</strong>
+    <ul>
+      <li>精神分析：用語増量（200語くらいまで）</li>
+      <li>早稲田 一般英語：過去問からの重要語</li>
+      <li>（余裕があれば）文学作品別の単語セット</li>
+    </ul>
+  </div>
+
+  <script>
+    const categorySelect = document.getElementById("category");
+    const startQuizBtn = document.getElementById("start-quiz");
+    const openStatsBtn = document.getElementById("open-stats");
+
+    function goTo(view) {
+      const cat = categorySelect.value;
+      // 同じリポジトリ内の quiz.html に遷移
+      const url = `quiz.html?view=${view}&cat=${encodeURIComponent(cat)}`;
+      location.href = url;
+    }
+
+    startQuizBtn.addEventListener("click", () => goTo("quiz"));
+    openStatsBtn.addEventListener("click", () => goTo("stats"));
+  </script>
+</body>
+</html>
