@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>成績一覧：精神分析×文学 英単語</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      max-width: 900px;
+      margin: 24px auto;
+      padding: 0 16px 40px;
+      line-height: 1.6;
+    }
+    h1 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+    .small {
+      font-size: 12px;
+      color: #777;
+      margin-bottom: 12px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-top: 8px;
+    }
+    th, td {
+      border-bottom: 1px solid #eee;
+      padding: 6px 4px;
+      text-align: left;
+    }
+    th {
+      font-weight: 600;
+      font-size: 12px;
+      color: #555;
+      background: #fafafa;
+    }
+    .center {
+      text-align: center;
+    }
+    button {
+      border-radius: 999px;
+      border: 1px solid #ccc;
+      padding: 6px 14px;
+      margin-top: 16px;
+      font-size: 13px;
+      cursor: pointer;
+      background: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>成績一覧：精神分析×文学 英単語</h1>
+  <div class="small">
+    ・クイズ画面で解いた結果がここに反映されます。<br>
+    ・ブラウザのローカルデータを利用しているため、別の端末・ブラウザでは共有されません。<br>
+  </div>
+
+  <div id="table-container" class="small">読み込み中…</div>
+
+  <button onclick="location.href='index.html'">クイズ画面にもどる</button>
+
+  <script>
+    const CARDS_KEY = "yuka_eitan_quiz_cards_v1";
+    const STATS_KEY = "yuka_eitan_quiz_stats_v1";
+
+    function loadCards() {
+      try {
+        const raw = localStorage.getItem(CARDS_KEY);
+        if (!raw) return [];
+        return JSON.parse(raw);
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function loadStats() {
+      try {
+        const raw = localStorage.getItem(STATS_KEY);
+        if (!raw) return {};
+        return JSON.parse(raw);
+      } catch (e) {
+        return {};
+      }
+    }
+
+    function renderTable() {
+      const container = document.getElementById("table-container");
+      const cards = loadCards();
+      const stats = loadStats();
+
+      if (!cards.length) {
+        container.textContent = "まだクイズ画面を開いていないか、単語データがありません。";
+        return;
+      }
+
+      let html = "<table><thead><tr>" +
+        "<th>英語</th><th>意味</th>" +
+        "<th class='center'>正解</th><th class='center'>挑戦</th><th class='center'>正解率</th>" +
+        "</tr></thead><tbody>";
+
+      cards.forEach(card => {
+        const s = stats[card.id] || { correct: 0, total: 0 };
+        const rate = s.total > 0 ? Math.round((s.correct / s.total) * 100) + "%" : "—";
+        html += `<tr>
+          <td>${card.en}</td>
+          <td>${card.jp}</td>
+          <td class="center">${s.correct}</td>
+          <td class="center">${s.total}</td>
+          <td class="center">${rate}</td>
+        </tr>`;
+      });
+
+      html += "</tbody></table>";
+      container.innerHTML = html;
+    }
+
+    renderTable();
+  </script>
+</body>
+</html>
