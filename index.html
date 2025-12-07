@@ -87,33 +87,8 @@
       font-size: 12px;
       color: #777;
     }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 8px;
-      font-size: 12px;
-    }
-    th, td {
-      border-bottom: 1px solid #eee;
-      padding: 4px 2px;
-      text-align: left;
-    }
-    th {
-      font-weight: 600;
-      font-size: 11px;
-      color: #555;
-    }
-    .center {
-      text-align: center;
-    }
-    .tag {
-      display: inline-block;
-      font-size: 10px;
-      padding: 1px 6px;
-      border-radius: 999px;
-      background: #eee;
-      margin-left: 4px;
-      color: #555;
+    .link-btn {
+      margin-top: 12px;
     }
   </style>
 </head>
@@ -121,8 +96,8 @@
   <h1>一問一答：精神分析×文学 英単語</h1>
   <div class="subtitle">
     ・英語 → 日本語／カタカナ読みのクイズ<br>
-    ・「次の問題」でランダム出題、「答えを見る → 正解/不正解」で記録されます。<br>
-    ・成績はブラウザに保存されます（同じPC・同じブラウザなら残る）。
+    ・「次の問題」または「正解／不正解」で出題が進みます。<br>
+    ・成績はブラウザに保存されます（同じPC・同じブラウザなら残る）。<br>
   </div>
 
   <h2>問題</h2>
@@ -147,12 +122,13 @@
     </div>
   </div>
 
-  <h2>単語一覧（成績）</h2>
-  <div class="small">※正解数・挑戦数は自動更新されます。</div>
-  <div id="table-container"></div>
+  <button class="link-btn" onclick="location.href='stats.html'">
+    成績一覧ページを開く
+  </button>
 
   <script>
-    // 優香専用：精神分析×文学 単語カード
+    // ★ 優香専用：精神分析×文学 単語カード
+    // ここにどんどん単語を追加してOK
     const cards = [
       {
         id: 1,
@@ -296,12 +272,18 @@
       }
     ];
 
+    // 単語リストを別ページでも使えるよう localStorage に保存
+    const CARDS_KEY = "yuka_eitan_quiz_cards_v1";
+    try {
+      localStorage.setItem(CARDS_KEY, JSON.stringify(cards));
+    } catch (e) {}
+
     // ---- 成績の保存／読み込み ----
-    const STORAGE_KEY = "yuka_eitan_quiz_stats_v1";
+    const STATS_KEY = "yuka_eitan_quiz_stats_v1";
 
     function loadStats() {
       try {
-        const raw = localStorage.getItem(STORAGE_KEY);
+        const raw = localStorage.getItem(STATS_KEY);
         if (!raw) return {};
         return JSON.parse(raw);
       } catch (e) {
@@ -311,7 +293,7 @@
 
     function saveStats(stats) {
       try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(stats));
+        localStorage.setItem(STATS_KEY, JSON.stringify(stats));
       } catch (e) {
         console.warn("保存に失敗しました", e);
       }
@@ -342,27 +324,8 @@
     const wrongBtn = document.getElementById("wrong-btn");
 
     function pickRandomCard() {
-      // 苦手なカードをやや優先したい場合はここで重みづけもできる
       const idx = Math.floor(Math.random() * cards.length);
       return cards[idx];
-    }
-
-    function refreshTable() {
-      const container = document.getElementById("table-container");
-      let html = "<table><thead><tr><th>英語</th><th>意味</th><th class='center'>正解</th><th class='center'>挑戦</th><th class='center'>正解率</th></tr></thead><tbody>";
-      cards.forEach(card => {
-        const s = getCardStats(card.id);
-        const rate = s.total > 0 ? Math.round((s.correct / s.total) * 100) + "%" : "—";
-        html += `<tr>
-          <td>${card.en}</td>
-          <td>${card.jp}</td>
-          <td class="center">${s.correct}</td>
-          <td class="center">${s.total}</td>
-          <td class="center">${rate}</td>
-        </tr>`;
-      });
-      html += "</tbody></table>";
-      container.innerHTML = html;
     }
 
     function showNewQuestion() {
@@ -398,14 +361,21 @@
     }
 
     function recordAnswer(isCorrect) {
-      if (!currentCard) return;
+      if (!currentCard || answered) return;
       const s = getCardStats(currentCard.id);
       s.total += 1;
       if (isCorrect) s.correct += 1;
       saveStats(stats);
-      refreshTable();
+
+      const rate = Math.round((s.correct / s.total) * 100) + "%";
+      ansStatsEl.textContent = `これまでの成績：正解 ${s.correct} / 挑戦 ${s.total}（正解率 ${rate}）`;
+
       correctBtn.disabled = true;
       wrongBtn.disabled = true;
+      answered = true;
+
+      // 押したあと「固まった感」が出ないよう、少し待って自動で次の問題へ
+      setTimeout(showNewQuestion, 700);
     }
 
     nextBtn.addEventListener("click", showNewQuestion);
@@ -414,7 +384,6 @@
     wrongBtn.addEventListener("click", () => recordAnswer(false));
 
     // 初期表示
-    refreshTable();
     showNewQuestion();
   </script>
 </body>
