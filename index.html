@@ -87,8 +87,47 @@
       font-size: 12px;
       color: #777;
     }
-    .link-btn {
-      margin-top: 12px;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      font-size: 12px;
+    }
+    th, td {
+      border-bottom: 1px solid #eee;
+      padding: 4px 2px;
+      text-align: left;
+    }
+    th {
+      font-weight: 600;
+      font-size: 11px;
+      color: #555;
+    }
+    .center {
+      text-align: center;
+    }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 12px;
+      font-size: 13px;
+    }
+    select {
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid #ccc;
+      font-size: 13px;
+    }
+    .link-like {
+      font-size: 12px;
+      color: #2563eb;
+      text-decoration: underline;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -96,194 +135,106 @@
   <h1>一問一答：精神分析×文学 英単語</h1>
   <div class="subtitle">
     ・英語 → 日本語／カタカナ読みのクイズ<br>
-    ・「次の問題」または「正解／不正解」で出題が進みます。<br>
-    ・成績はブラウザに保存されます（同じPC・同じブラウザなら残る）。<br>
+    ・カテゴリを選んで「次の問題」または「答えを見る → 正解/不正解」で出題が進みます。<br>
+    ・成績はブラウザに保存されます（同じPC・同じブラウザなら残る）。
   </div>
 
-  <h2>問題</h2>
-  <div class="card" id="quiz-card">
-    <div class="label">問題（英語）</div>
-    <div class="question" id="question-word">—</div>
-    <div class="small" id="question-index">—</div>
-
-    <div id="answer-area" style="display:none; margin-top: 8px;">
-      <div class="label">意味</div>
-      <div class="meaning" id="answer-meaning">—</div>
-      <div class="reading" id="answer-reading"></div>
-      <div class="note" id="answer-note"></div>
-      <div class="small" id="answer-stats"></div>
-    </div>
-
-    <div style="margin-top: 12px;">
-      <button class="primary" id="next-btn">次の問題</button>
-      <button id="show-btn">答えを見る</button>
-      <button class="good" id="correct-btn" disabled>正解</button>
-      <button class="bad" id="wrong-btn" disabled>不正解</button>
-    </div>
+  <div class="toolbar">
+    <span>カテゴリ：</span>
+    <select id="category-select">
+      <option value="psycho">精神分析×文学</option>
+      <option value="waseda2024">早稲田 一般英語 2024</option>
+      <option value="waseda2025">早稲田 一般英語 2025</option>
+      <option value="all">全部まとめて</option>
+    </select>
   </div>
 
-  <button class="link-btn" onclick="location.href='stats.html'">
-    成績一覧ページを開く
-  </button>
+  <!-- クイズ画面 -->
+  <div id="quiz-section">
+    <h2>問題</h2>
+    <div class="card" id="quiz-card">
+      <div class="label">問題（英語）</div>
+      <div class="question" id="question-word">—</div>
+      <div class="small" id="question-index">—</div>
+
+      <div id="answer-area" style="display:none; margin-top: 8px;">
+        <div class="label">意味</div>
+        <div class="meaning" id="answer-meaning">—</div>
+        <div class="reading" id="answer-reading"></div>
+        <div class="note" id="answer-note"></div>
+        <div class="small" id="answer-stats"></div>
+      </div>
+
+      <div style="margin-top: 12px;">
+        <button class="primary" id="next-btn">次の問題</button>
+        <button id="show-btn">答えを見る</button>
+        <button class="good" id="correct-btn" disabled>正解</button>
+        <button class="bad" id="wrong-btn" disabled>不正解</button>
+      </div>
+    </div>
+
+    <button id="open-stats-btn">成績一覧ページを開く</button>
+  </div>
+
+  <!-- 成績一覧画面 -->
+  <div id="stats-section" style="display:none;">
+    <h2>単語一覧（成績）</h2>
+    <div class="small">
+      ※上のカテゴリ選択に応じて表示が変わります。<br>
+      ※正解数・挑戦数はクイズで回答すると自動更新されます。
+    </div>
+    <div id="table-container" style="margin-top:8px;"></div>
+    <div style="margin-top:12px;">
+      <button id="back-to-quiz-btn">クイズ画面に戻る</button>
+    </div>
+  </div>
 
   <script>
-    // ★ 優香専用：精神分析×文学 単語カード
-    // ここにどんどん単語を追加してOK
+    // ========= 単語データ =========
+    // category:
+    //   "psycho"      : 精神分析×文学
+    //   "waseda2024"  : 早稲田 一般英語 2024年度
+    //   "waseda2025"  : 早稲田 一般英語 2025年度
     const cards = [
-      {
-        id: 1,
-        en: "destruction",
-        jp: "破壊",
-        kana: "デストラクション",
-        note: "精神分析では攻撃性・欲動（死の欲動）の表現として扱われる。"
-      },
-      {
-        id: 2,
-        en: "transition",
-        jp: "移行・変化",
-        kana: "トランジション",
-        note: "破壊→変化→救い／再生という流れの「変化」の部分を説明するときに使える。"
-      },
-      {
-        id: 3,
-        en: "rebirth",
-        jp: "再生（よみがえり）",
-        kana: "リバース",
-        note: "文学・神話などでの『死と再生』モチーフに頻出。"
-      },
-      {
-        id: 4,
-        en: "regeneration",
-        jp: "再生・再構築",
-        kana: "リジェネレーション",
-        note: "心の再統合・やり直しのプロセスを表すときに使いやすい語。"
-      },
-      {
-        id: 5,
-        en: "trauma",
-        jp: "心的外傷・トラウマ",
-        kana: "トラウマ",
-        note: "外傷体験や喪失が心に残した傷。再生の物語とセットで語られやすい。"
-      },
-      {
-        id: 6,
-        en: "unconscious",
-        jp: "無意識",
-        kana: "アンコンシャス",
-        note: "フロイトの基本概念。自覚されない心の領域。"
-      },
-      {
-        id: 7,
-        en: "repression",
-        jp: "抑圧",
-        kana: "リプレッション",
-        note: "耐えがたい感情や欲望を無意識に追いやる防衛機制。"
-      },
-      {
-        id: 8,
-        en: "projection",
-        jp: "投影",
-        kana: "プロジェクション",
-        note: "自分の感情や衝動を、他者が持っているように感じてしまう防衛機制。"
-      },
-      {
-        id: 9,
-        en: "introjection",
-        jp: "取り入れ",
-        kana: "イントロジェクション",
-        note: "他者像を内面に取り込み、自己の一部として保持する働き。"
-      },
-      {
-        id: 10,
-        en: "splitting",
-        jp: "分裂（善悪の分け方）",
-        kana: "スプリッティング",
-        note: "対象を『全部良い／全部悪い』と極端に分けてしまう防衛機制。"
-      },
-      {
-        id: 11,
-        en: "attachment",
-        jp: "愛着",
-        kana: "アタッチメント",
-        note: "人との結びつき・依存・見捨てられ不安などを扱うときの基礎概念。"
-      },
-      {
-        id: 12,
-        en: "dependency",
-        jp: "依存",
-        kana: "ディペンデンシー",
-        note: "対象への過度な依存／しがみつきの状態を説明する語。"
-      },
-      {
-        id: 13,
-        en: "aggression",
-        jp: "攻撃性",
-        kana: "アグレッション",
-        note: "破壊衝動や怒りのエネルギーを論じるときに使われる。"
-      },
-      {
-        id: 14,
-        en: "drive",
-        jp: "欲動",
-        kana: "ドライブ",
-        note: "フロイトの欲動概念（生の欲動／死の欲動）一般を指す。"
-      },
-      {
-        id: 15,
-        en: "death drive",
-        jp: "死の欲動",
-        kana: "デスドライブ",
-        note: "自己破壊・無への回帰を志向する心の傾向。"
-      },
-      {
-        id: 16,
-        en: "symbolic",
-        jp: "象徴的な",
-        kana: "シンボリック",
-        note: "ラカンなどで重要な『象徴界』に関わる形容詞。"
-      },
-      {
-        id: 17,
-        en: "representation",
-        jp: "表象",
-        kana: "レプレゼンテーション",
-        note: "心が経験をどのように『イメージ・物語・記号』として持つかを示す概念。"
-      },
-      {
-        id: 18,
-        en: "narrative",
-        jp: "物語・語り",
-        kana: "ナラティヴ",
-        note: "痛みやトラウマを『語る』こと、ナラティヴ・メディスンとも関連。"
-      },
-      {
-        id: 19,
-        en: "identity",
-        jp: "自己性・同一性",
-        kana: "アイデンティティ",
-        note: "『自分とは何か』という問いと、その一貫性・揺れを扱う。"
-      },
-      {
-        id: 20,
-        en: "anxiety",
-        jp: "不安",
-        kana: "アングザイエティ",
-        note: "精神分析で基本となる情動。恐怖とは少し違う概念。"
-      }
+      // ---- 精神分析×文学（元の20語） ----
+      { id: 1,  category: "psycho", en: "destruction",   jp: "破壊",               kana: "デストラクション",   note: "精神分析では攻撃性・欲動（死の欲動）の表現として扱われる。" },
+      { id: 2,  category: "psycho", en: "transition",    jp: "移行・変化",         kana: "トランジション",     note: "破壊→変化→救い／再生という流れの「変化」の部分を説明するときに使える。" },
+      { id: 3,  category: "psycho", en: "rebirth",       jp: "再生（よみがえり）", kana: "リバース",           note: "文学・神話などでの『死と再生』モチーフに頻出。" },
+      { id: 4,  category: "psycho", en: "regeneration",  jp: "再生・再構築",       kana: "リジェネレーション", note: "心の再統合・やり直しのプロセスを表すときに使いやすい語。" },
+      { id: 5,  category: "psycho", en: "trauma",        jp: "心的外傷・トラウマ", kana: "トラウマ",           note: "外傷体験や喪失が心に残した傷。再生の物語とセットで語られやすい。" },
+      { id: 6,  category: "psycho", en: "unconscious",   jp: "無意識",             kana: "アンコンシャス",     note: "フロイトの基本概念。自覚されない心の領域。" },
+      { id: 7,  category: "psycho", en: "repression",    jp: "抑圧",               kana: "リプレッション",     note: "耐えがたい感情や欲望を無意識に追いやる防衛機制。" },
+      { id: 8,  category: "psycho", en: "projection",    jp: "投影",               kana: "プロジェクション",   note: "自分の感情や衝動を他者が持っているように感じてしまう防衛機制。" },
+      { id: 9,  category: "psycho", en: "introjection",  jp: "取り入れ",           kana: "イントロジェクション", note: "他者像を内面に取り込み、自己の一部として保持する働き。" },
+      { id:10,  category: "psycho", en: "splitting",     jp: "分裂（善悪の分け方）", kana: "スプリッティング", note: "対象を『全部良い／全部悪い』と極端に分けてしまう防衛機制。" },
+      { id:11,  category: "psycho", en: "attachment",    jp: "愛着",               kana: "アタッチメント",     note: "人との結びつき・依存・見捨てられ不安などを扱うときの基礎概念。" },
+      { id:12,  category: "psycho", en: "dependency",    jp: "依存",               kana: "ディペンデンシー",   note: "対象への過度な依存／しがみつきの状態を説明する語。" },
+      { id:13,  category: "psycho", en: "aggression",    jp: "攻撃性",             kana: "アグレッション",     note: "破壊衝動や怒りのエネルギーを論じるときに使われる。" },
+      { id:14,  category: "psycho", en: "drive",         jp: "欲動",               kana: "ドライブ",           note: "フロイトの欲動概念（生の欲動／死の欲動）一般を指す。" },
+      { id:15,  category: "psycho", en: "death drive",   jp: "死の欲動",           kana: "デスドライブ",       note: "自己破壊・無への回帰を志向する心の傾向。" },
+      { id:16,  category: "psycho", en: "symbolic",      jp: "象徴的な",           kana: "シンボリック",       note: "ラカンなどで重要な『象徴界』に関わる形容詞。" },
+      { id:17,  category: "psycho", en: "representation",jp: "表象",               kana: "レプレゼンテーション", note: "心が経験をどのように『イメージ・物語・記号』として持つかを示す概念。" },
+      { id:18,  category: "psycho", en: "narrative",     jp: "物語・語り",         kana: "ナラティヴ",         note: "痛みやトラウマを『語る』こと、ナラティヴ・メディスンとも関連。" },
+      { id:19,  category: "psycho", en: "identity",      jp: "自己性・同一性",     kana: "アイデンティティ",   note: "『自分とは何か』という問いと、その一貫性・揺れを扱う。" },
+      { id:20,  category: "psycho", en: "anxiety",       jp: "不安",               kana: "アングザイエティ",   note: "精神分析で基本となる情動。恐怖とは少し違う概念。" },
+
+      // ---- サンプル：早稲田 一般英語 2024年度ベース ----
+      { id:101, category: "waseda2024", en: "sexuality",   jp: "セクシュアリティ、性", kana: "セクシュアリティ", note: "性的あり方全般を指す抽象名詞。LGBT 文脈で頻出。" },
+      { id:102, category: "waseda2024", en: "continuum",  jp: "連続体",               kana: "コンティニュアム",   note: "両極ではなくグラデーションで変化するイメージの語。" },
+      { id:103, category: "waseda2024", en: "oppression", jp: "抑圧・迫害",           kana: "オプレッション",     note: "社会的少数者への構造的な差別・抑圧を指す。" },
+
+      // ---- サンプル：早稲田 一般英語 2025年度ベース ----
+      { id:201, category: "waseda2025", en: "dependency",  jp: "依存",               kana: "ディペンデンシー", note: "～への依存・頼り切っている状態（環境問題文脈で登場）。" },
+      { id:202, category: "waseda2025", en: "emission",    jp: "排出物",             kana: "エミッション",     note: "温室効果ガスなど『排出されるもの』を指す。" },
+      { id:203, category: "waseda2025", en: "evaporation", jp: "蒸発",               kana: "エバポレーション", note: "水が蒸気になること。気候変動の説明で出てくる語。" }
     ];
 
-    // 単語リストを別ページでも使えるよう localStorage に保存
-    const CARDS_KEY = "yuka_eitan_quiz_cards_v1";
-    try {
-      localStorage.setItem(CARDS_KEY, JSON.stringify(cards));
-    } catch (e) {}
-
-    // ---- 成績の保存／読み込み ----
-    const STATS_KEY = "yuka_eitan_quiz_stats_v1";
+    // ========= 成績保存 =========
+    const STORAGE_KEY = "yuka_eitan_quiz_stats_v1";
 
     function loadStats() {
       try {
-        const raw = localStorage.getItem(STATS_KEY);
+        const raw = localStorage.getItem(STORAGE_KEY);
         if (!raw) return {};
         return JSON.parse(raw);
       } catch (e) {
@@ -293,22 +244,62 @@
 
     function saveStats(stats) {
       try {
-        localStorage.setItem(STATS_KEY, JSON.stringify(stats));
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(stats));
       } catch (e) {
         console.warn("保存に失敗しました", e);
       }
     }
 
-    let stats = loadStats(); // { [id]: {correct, total} }
+    let stats = loadStats(); // { [id]: { correct, total } }
 
     function getCardStats(id) {
       if (!stats[id]) stats[id] = { correct: 0, total: 0 };
       return stats[id];
     }
 
-    // ---- 出題ロジック ----
+    // ========= 画面・カテゴリ制御 =========
+    const categorySelect = document.getElementById("category-select");
+    const quizSection = document.getElementById("quiz-section");
+    const statsSection = document.getElementById("stats-section");
+    const openStatsBtn = document.getElementById("open-stats-btn");
+    const backToQuizBtn = document.getElementById("back-to-quiz-btn");
+
+    let currentView = "quiz";   // "quiz" or "stats"
+
+    function getQueryParam(name) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(name);
+    }
+
+    function setQueryParams(newView, newCat) {
+      const params = new URLSearchParams(window.location.search);
+      if (newView) params.set("view", newView);
+      if (newCat) params.set("cat", newCat);
+      const newUrl = `${location.pathname}?${params.toString()}`;
+      window.history.replaceState({}, "", newUrl);
+    }
+
+    function showView(view) {
+      currentView = view;
+      if (view === "stats") {
+        quizSection.style.display = "none";
+        statsSection.style.display = "block";
+        refreshTable();
+      } else {
+        quizSection.style.display = "block";
+        statsSection.style.display = "none";
+      }
+      setQueryParams(view, categorySelect.value);
+    }
+
+    function getFilteredCards() {
+      const cat = categorySelect.value;
+      if (cat === "all") return cards;
+      return cards.filter(c => c.category === cat);
+    }
+
+    // ========= 出題ロジック =========
     let currentCard = null;
-    let answered = false;
 
     const qWordEl = document.getElementById("question-word");
     const qIndexEl = document.getElementById("question-index");
@@ -324,16 +315,54 @@
     const wrongBtn = document.getElementById("wrong-btn");
 
     function pickRandomCard() {
-      const idx = Math.floor(Math.random() * cards.length);
-      return cards[idx];
+      const pool = getFilteredCards();
+      if (pool.length === 0) return null;
+      const idx = Math.floor(Math.random() * pool.length);
+      return pool[idx];
+    }
+
+    function refreshTable() {
+      const container = document.getElementById("table-container");
+      const pool = getFilteredCards();
+      if (pool.length === 0) {
+        container.innerHTML = "<p class='small'>このカテゴリにはまだ単語がありません。</p>";
+        return;
+      }
+
+      let html = "<table><thead><tr><th>英語</th><th>意味</th><th class='center'>正解</th><th class='center'>挑戦</th><th class='center'>正解率</th></tr></thead><tbody>";
+      pool.forEach(card => {
+        const s = getCardStats(card.id);
+        const rate = s.total > 0 ? Math.round((s.correct / s.total) * 100) + "%" : "—";
+        html += `<tr>
+          <td>${card.en}</td>
+          <td>${card.jp}</td>
+          <td class="center">${s.correct}</td>
+          <td class="center">${s.total}</td>
+          <td class="center">${rate}</td>
+        </tr>`;
+      });
+      html += "</tbody></table>";
+      container.innerHTML = html;
     }
 
     function showNewQuestion() {
-      currentCard = pickRandomCard();
-      answered = false;
-      qWordEl.textContent = currentCard.en;
-      const index = cards.findIndex(c => c.id === currentCard.id) + 1;
-      qIndexEl.textContent = `No.${index} / 全${cards.length}語`;
+      const card = pickRandomCard();
+      if (!card) {
+        qWordEl.textContent = "このカテゴリにはまだ単語がありません。";
+        qIndexEl.textContent = "";
+        ansAreaEl.style.display = "none";
+        showBtn.disabled = true;
+        correctBtn.disabled = true;
+        wrongBtn.disabled = true;
+        return;
+      }
+
+      currentCard = card;
+      const pool = getFilteredCards();
+      const index = pool.findIndex(c => c.id === card.id) + 1;
+
+      qWordEl.textContent = card.en;
+      qIndexEl.textContent = `No.${index} / 全${pool.length}語`;
 
       ansAreaEl.style.display = "none";
       ansMeaningEl.textContent = "";
@@ -355,36 +384,67 @@
       const rate = s.total > 0 ? Math.round((s.correct / s.total) * 100) + "%" : "—";
       ansStatsEl.textContent = `これまでの成績：正解 ${s.correct} / 挑戦 ${s.total}（正解率 ${rate}）`;
       ansAreaEl.style.display = "block";
+
       showBtn.disabled = true;
       correctBtn.disabled = false;
       wrongBtn.disabled = false;
     }
 
     function recordAnswer(isCorrect) {
-      if (!currentCard || answered) return;
+      if (!currentCard) return;
       const s = getCardStats(currentCard.id);
       s.total += 1;
       if (isCorrect) s.correct += 1;
       saveStats(stats);
+      refreshTable();
 
-      const rate = Math.round((s.correct / s.total) * 100) + "%";
-      ansStatsEl.textContent = `これまでの成績：正解 ${s.correct} / 挑戦 ${s.total}（正解率 ${rate}）`;
-
+      // 二重押し防止
       correctBtn.disabled = true;
       wrongBtn.disabled = true;
-      answered = true;
 
-      // 押したあと「固まった感」が出ないよう、少し待って自動で次の問題へ
-      setTimeout(showNewQuestion, 700);
+      // 「固まった」感じをなくすため、自動で次の問題へ
+      ansStatsEl.textContent += " ／ 記録しました。次の問題に進みます…";
+      setTimeout(showNewQuestion, 400);
     }
 
+    // ========= イベント設定 =========
     nextBtn.addEventListener("click", showNewQuestion);
     showBtn.addEventListener("click", showAnswer);
     correctBtn.addEventListener("click", () => recordAnswer(true));
     wrongBtn.addEventListener("click", () => recordAnswer(false));
 
-    // 初期表示
-    showNewQuestion();
+    openStatsBtn.addEventListener("click", () => {
+      showView("stats");
+    });
+
+    backToQuizBtn.addEventListener("click", () => {
+      showView("quiz");
+      showNewQuestion();
+    });
+
+    categorySelect.addEventListener("change", () => {
+      setQueryParams(currentView, categorySelect.value);
+      if (currentView === "quiz") {
+        showNewQuestion();
+      } else {
+        refreshTable();
+      }
+    });
+
+    // ========= 初期表示 =========
+    // URLパラメータから view / cat を復元
+    const initialView = getQueryParam("view") || "quiz";
+    const initialCat = getQueryParam("cat") || "psycho";
+
+    if (["psycho", "waseda2024", "waseda2025", "all"].includes(initialCat)) {
+      categorySelect.value = initialCat;
+    } else {
+      categorySelect.value = "psycho";
+    }
+
+    showView(initialView === "stats" ? "stats" : "quiz");
+    refreshTable();     // 成績表を先に作っておく
+    showNewQuestion();  // 最初の問題
   </script>
 </body>
 </html>
