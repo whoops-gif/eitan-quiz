@@ -80,12 +80,29 @@
   <div class="card">
     <label for="category">カテゴリを選択</label>
     <select id="category">
-      <option value="psycho">精神分析×文学（研究用語）</option>
-      <option value="waseda2024">早稲田 一般英語 2024</option>
-      <option value="waseda2025">早稲田 一般英語 2025</option>
-      <option value="cefr_b1">CEFR B1（基礎英語）</option>
-      <option value="all">全部まとめて</option>
-    </select>
+  <optgroup label="基礎英語">
+    <option value="basic_L1">基礎英語 Lv.1（CEFR A1–A2）</option>
+    <option value="basic_L2">基礎英語 Lv.2（CEFR B1）</option>
+    <!-- Lv.3は後で追加でOK -->
+    <!-- <option value="basic_L3">基礎英語 Lv.3（CEFR B2）</option> -->
+  </optgroup>
+
+  <optgroup label="大学院・過去問">
+    <option value="waseda2024">早稲田　一般英語 2024</option>
+    <option value="waseda2025">早稲田　一般英語 2025</option>
+  </optgroup>
+
+  <optgroup label="専門">
+    <option value="psycho">精神分析×文学（研究用語）</option>
+  </optgroup>
+
+  <optgroup label="旧">
+    <option value="cefr_b1">CEFR B1（基礎英語）</option>
+  </optgroup>
+
+  <option value="all">全部まとめて</option>
+</select>
+
 
     <div>
       <button class="primary" id="start-quiz">クイズを始める</button>
