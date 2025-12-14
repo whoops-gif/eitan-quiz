@@ -1,0 +1,18 @@
+[
+  {
+    "key": "basic",
+    "label": "基礎英語",
+    "children": [
+      {
+        "key": "basic_L1",
+        "label": "基礎英語 Lv.1（CEFR A1–A2）",
+        "data": "data/basic_L1.json"
+      },
+      {
+        "key": "basic_L2",
+        "label": "基礎英語 Lv.2（CEFR B1）",
+        "data": "data/basic_L2.json"
+      }
+    ]
+  }
+]

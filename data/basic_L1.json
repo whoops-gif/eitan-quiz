@@ -1,0 +1,60 @@
+[
+  { "id": 200001, "level": "L1", "en": "be", "pos": ["v"], "jp": "〜である", "common": ["〜である","いる／ある"], "kana": "ビー", "note": "I am …／You are …／There is/are …", "source": "CEFR A1" },
+  { "id": 200002, "level": "L1", "en": "have", "pos": ["v"], "jp": "〜を持っている", "common": ["持っている","（経験として）〜したことがある","（食事などを）とる"], "kana": "ハヴ", "note": "have a car／have lunch／have been to …", "source": "CEFR A1" },
+  { "id": 200003, "level": "L1", "en": "do", "pos": ["v"], "jp": "〜をする", "common": ["する","（宿題・仕事などを）やる"], "kana": "ドゥ", "note": "do homework／do the dishes", "source": "CEFR A1" },
+  { "id": 200004, "level": "L1", "en": "go", "pos": ["v"], "jp": "行く", "common": ["行く","（状態が）進む"], "kana": "ゴウ", "note": "go to school／go home", "source": "CEFR A1" },
+  { "id": 200005, "level": "L1", "en": "get", "pos": ["v"], "jp": "得る", "common": ["得る","受け取る","（状態に）なる"], "kana": "ゲット", "note": "get a present／get tired", "source": "CEFR A2" },
+  { "id": 200006, "level": "L1", "en": "make", "pos": ["v"], "jp": "作る", "common": ["作る","（決定などを）する"], "kana": "メイク", "note": "make a cake／make a decision", "source": "CEFR A1" },
+  { "id": 200007, "level": "L1", "en": "take", "pos": ["v"], "jp": "取る", "common": ["取る","連れていく","（時間が）かかる"], "kana": "テイク", "note": "take a photo／It takes time", "source": "CEFR A1" },
+  { "id": 200008, "level": "L1", "en": "come", "pos": ["v"], "jp": "来る", "common": ["来る","（順番が）来る"], "kana": "カム", "note": "come here／Your turn comes", "source": "CEFR A1" },
+  { "id": 200009, "level": "L1", "en": "see", "pos": ["v"], "jp": "見る", "common": ["見る","会う"], "kana": "スィー", "note": "see a movie／see a doctor", "source": "CEFR A1" },
+  { "id": 200010, "level": "L1", "en": "look", "pos": ["v"], "jp": "見る", "common": ["見る","〜に見える"], "kana": "ルック", "note": "look at …／look happy", "source": "CEFR A1" },
+
+  { "id": 200011, "level": "L1", "en": "want", "pos": ["v"], "jp": "〜がほしい", "common": ["〜がほしい","〜したい"], "kana": "ウォント", "note": "want a car／want to do", "source": "CEFR A1" },
+  { "id": 200012, "level": "L1", "en": "need", "pos": ["v"], "jp": "〜が必要だ", "common": ["必要だ","（助動詞的に）〜する必要がある"], "kana": "ニード", "note": "need help／need to do", "source": "CEFR A2" },
+  { "id": 200013, "level": "L1", "en": "like", "pos": ["v"], "jp": "好きだ", "common": ["好きだ","（〜のような）"], "kana": "ライク", "note": "like music／be like …：〜みたいだ", "source": "CEFR A1" },
+  { "id": 200014, "level": "L1", "en": "know", "pos": ["v"], "jp": "知っている", "common": ["知っている","分かっている"], "kana": "ノウ", "note": "know the answer／know how to …", "source": "CEFR A1" },
+  { "id": 200015, "level": "L1", "en": "think", "pos": ["v"], "jp": "思う", "common": ["思う","考える"], "kana": "スィンク", "note": "think that …／think about …", "source": "CEFR A2" },
+
+  { "id": 200016, "level": "L1", "en": "say", "pos": ["v"], "jp": "言う", "common": ["言う","述べる"], "kana": "セイ", "note": "say hello／say that …", "source": "CEFR A1" },
+  { "id": 200017, "level": "L1", "en": "tell", "pos": ["v"], "jp": "伝える", "common": ["伝える","（人に）言う"], "kana": "テル", "note": "tell me／tell A about B", "source": "CEFR A2" },
+  { "id": 200018, "level": "L1", "en": "talk", "pos": ["v"], "jp": "話す", "common": ["話す","会話する"], "kana": "トーク", "note": "talk to/with …／talk about …", "source": "CEFR A1" },
+  { "id": 200019, "level": "L1", "en": "ask", "pos": ["v"], "jp": "たずねる", "common": ["たずねる","頼む"], "kana": "アスク", "note": "ask a question／ask A to do", "source": "CEFR A1" },
+  { "id": 200020, "level": "L1", "en": "answer", "pos": ["v","n"], "jp": "答える", "common": ["答える（v）","答え（n）"], "kana": "アンサー", "note": "answer the question／the answer to …", "source": "CEFR A1" },
+
+  { "id": 200021, "level": "L1", "en": "give", "pos": ["v"], "jp": "与える", "common": ["与える","あげる"], "kana": "ギヴ", "note": "give A to B：BにAをあげる", "source": "CEFR A1" },
+  { "id": 200022, "level": "L1", "en": "help", "pos": ["v","n"], "jp": "助ける", "common": ["助ける（v）","助け（n）"], "kana": "ヘルプ", "note": "help A (to) do／need help", "source": "CEFR A1" },
+  { "id": 200023, "level": "L1", "en": "use", "pos": ["v","n"], "jp": "使う", "common": ["使う（v）","使用（n）"], "kana": "ユーズ", "note": "use a pen／be useful", "source": "CEFR A2" },
+  { "id": 200024, "level": "L1", "en": "find", "pos": ["v"], "jp": "見つける", "common": ["見つける","（答えなどを）見いだす"], "kana": "ファインド", "note": "find a key／find out", "source": "CEFR A2" },
+  { "id": 200025, "level": "L1", "en": "try", "pos": ["v"], "jp": "試す", "common": ["試す","やってみる"], "kana": "トライ", "note": "try to do：〜しようとする", "source": "CEFR A2" },
+
+  { "id": 200026, "level": "L1", "en": "work", "pos": ["v","n"], "jp": "働く", "common": ["働く（v）","仕事（n）"], "kana": "ワーク", "note": "work at …／go to work", "source": "CEFR A1" },
+  { "id": 200027, "level": "L1", "en": "study", "pos": ["v","n"], "jp": "勉強する", "common": ["勉強する（v）","勉強（n）"], "kana": "スタディ", "note": "study English／a study room", "source": "CEFR A1" },
+  { "id": 200028, "level": "L1", "en": "learn", "pos": ["v"], "jp": "学ぶ", "common": ["学ぶ","覚える"], "kana": "ラーン", "note": "learn English／learn about …", "source": "CEFR A2" },
+  { "id": 200029, "level": "L1", "en": "read", "pos": ["v"], "jp": "読む", "common": ["読む"], "kana": "リード", "note": "read a book", "source": "CEFR A1" },
+  { "id": 200030, "level": "L1", "en": "write", "pos": ["v"], "jp": "書く", "common": ["書く"], "kana": "ライト", "note": "write an email", "source": "CEFR A1" },
+
+  { "id": 200031, "level": "L1", "en": "open", "pos": ["v","adj"], "jp": "開ける", "common": ["開ける（v）","開いている（adj）"], "kana": "オープン", "note": "open the door／The shop is open", "source": "CEFR A1" },
+  { "id": 200032, "level": "L1", "en": "close", "pos": ["v","adj"], "jp": "閉める", "common": ["閉める（v）","閉まっている（adj）"], "kana": "クロウズ", "note": "close the window／The shop is closed", "source": "CEFR A1" },
+  { "id": 200033, "level": "L1", "en": "start", "pos": ["v","n"], "jp": "始める", "common": ["始める（v）","始まり（n）"], "kana": "スタート", "note": "start work／from the start", "source": "CEFR A2" },
+  { "id": 200034, "level": "L1", "en": "finish", "pos": ["v"], "jp": "終える", "common": ["終える","終わる"], "kana": "フィニッシュ", "note": "finish homework", "source": "CEFR A2" },
+  { "id": 200035, "level": "L1", "en": "wait", "pos": ["v"], "jp": "待つ", "common": ["待つ"], "kana": "ウェイト", "note": "wait for …：…を待つ", "source": "CEFR A1" },
+
+  { "id": 200036, "level": "L1", "en": "today", "pos": ["adv","n"], "jp": "今日", "common": ["今日"], "kana": "トゥデイ", "note": "today is …／today's schedule", "source": "CEFR A1" },
+  { "id": 200037, "level": "L1", "en": "tomorrow", "pos": ["adv","n"], "jp": "明日", "common": ["明日"], "kana": "トゥモロウ", "note": "see you tomorrow", "source": "CEFR A1" },
+  { "id": 200038, "level": "L1", "en": "yesterday", "pos": ["adv","n"], "jp": "昨日", "common": ["昨日"], "kana": "イエスタデイ", "note": "yesterday was …", "source": "CEFR A1" },
+  { "id": 200039, "level": "L1", "en": "always", "pos": ["adv"], "jp": "いつも", "common": ["いつも"], "kana": "オールウェイズ", "note": "always be kind", "source": "CEFR A1" },
+  { "id": 200040, "level": "L1", "en": "sometimes", "pos": ["adv"], "jp": "ときどき", "common": ["ときどき"], "kana": "サムタイムズ", "note": "sometimes I …", "source": "CEFR A2" },
+
+  { "id": 200041, "level": "L1", "en": "good", "pos": ["adj"], "jp": "良い", "common": ["良い","上手な"], "kana": "グッド", "note": "good at …：…が得意", "source": "CEFR A1" },
+  { "id": 200042, "level": "L1", "en": "bad", "pos": ["adj"], "jp": "悪い", "common": ["悪い"], "kana": "バッド", "note": "a bad day：最悪な日", "source": "CEFR A1" },
+  { "id": 200043, "level": "L1", "en": "new", "pos": ["adj"], "jp": "新しい", "common": ["新しい"], "kana": "ニュー", "note": "a new job", "source": "CEFR A1" },
+  { "id": 200044, "level": "L1", "en": "old", "pos": ["adj"], "jp": "古い", "common": ["古い","年をとった"], "kana": "オールド", "note": "an old book", "source": "CEFR A1" },
+  { "id": 200045, "level": "L1", "en": "easy", "pos": ["adj"], "jp": "簡単な", "common": ["簡単な"], "kana": "イージー", "note": "easy question", "source": "CEFR A1" },
+
+  { "id": 200046, "level": "L1", "en": "difficult", "pos": ["adj"], "jp": "難しい", "common": ["難しい"], "kana": "ディフィカルト", "note": "a difficult problem", "source": "CEFR A2" },
+  { "id": 200047, "level": "L1", "en": "important", "pos": ["adj"], "jp": "重要な", "common": ["重要な"], "kana": "インポータント", "note": "important point", "source": "CEFR A2" },
+  { "id": 200048, "level": "L1", "en": "different", "pos": ["adj"], "jp": "違う", "common": ["違う","異なる"], "kana": "ディファレント", "note": "different from …：…と違う", "source": "CEFR A2" },
+  { "id": 200049, "level": "L1", "en": "same", "pos": ["adj"], "jp": "同じ", "common": ["同じ"], "kana": "セイム", "note": "the same as …：…と同じ", "source": "CEFR A2" },
+  { "id": 200050, "level": "L1", "en": "maybe", "pos": ["adv"], "jp": "たぶん", "common": ["たぶん","もしかすると"], "kana": "メイビー", "note": "Maybe …：たぶん…", "source": "CEFR A2" }
+]
