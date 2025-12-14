@@ -173,7 +173,7 @@
       psycho:    { file: "data/psycho.json",    label: "精神分析×文学 英単語" },
       waseda2024:{ file: "data/waseda2024.json",label: "早稲田 一般英語 2024" },
       waseda2025:{ file: "data/waseda2025.json",label: "早稲田 一般英語 2025" },
-      cefr_b1:   { file: "data/words_cefr_b1.json",label: "CEFR B1│基礎英語（頻出・共通）"}
+      cefr_b1:   { file: "data/words_cefr_b1.json",label: "CEFR B1│基礎英語（頻出・共通）"},
 
 
     };
@@ -284,27 +284,27 @@
 
     function showAnswer() {
       if (!currentCard) return;
-      const s = getCardStats(currentCard);
-      const rate = s.total > 0 ? Math.round((s.correct / s.total) * 100) + "%" : "—";
+    const s = getCardStats(currentCard);
+    const rate = s.total > 0 ? Math.round((s.correct / s.total) * 100) + "%" : "—";
 
-      const jpText = currentCard.jp ? `【基本】${currentCard.jp}` : "";
-      const commonText =
-        Array.isArray(currentCard.common) && currentCard.common.length
-         ? `【用法】${currentCard.common.join(" / ")}`
-         : "";
-      const noteText = currentCard.note ? `【補足】${currentCard.note}` : "";
+    const jpText = currentCard.jp ? `【基本】${currentCard.jp}` : "";
+    const commonText =
+     Array.isArray(currentCard.common) && currentCard.common.length
+      ? `【用法】${currentCard.common.join(" / ")}`
+      : "";
+    const noteText = currentCard.note ? `【補足】${currentCard.note}` : "";
 
-      nsMeaningEl.textContent = [jpText, commonText, noteText].filter(Boolean).join("\n");
+     ansMeaningEl.textContent = [jpText, commonText].filter(Boolean).join("\n");
+     ansReadingEl.textContent = currentCard.kana ? `読み：${currentCard.kana}` : "";
+     ansNoteEl.textContent = noteText;
+     ansStatsEl.textContent = `これまでの成績：正解 ${s.correct} / 挑戦 ${s.total}（正解率 ${rate}）`;
+     ansAreaEl.style.display = "block";
 
-      ansReadingEl.textContent = `読み：${currentCard.kana}`;
-      nsNoteEl.textContent = "";
-      ansStatsEl.textContent   = `これまでの成績：正解 ${s.correct} / 挑戦 ${s.total}（正解率 ${rate}）`;
-      ansAreaEl.style.display  = "block";
-
-      showBtn.disabled = true;
-      correctBtn.disabled = false;
-      wrongBtn.disabled = false;
-    }
+     showBtn.disabled = true;
+     correctBtn.disabled = false;
+     wrongBtn.disabled = false;
+}
+  
 
     function recordAnswer(isCorrect) {
       if (!currentCard) return;
@@ -336,7 +336,7 @@
         const rate = s.total > 0 ? Math.round((s.correct / s.total) * 100) + "%" : "—";
         html += `<tr>
           <td>${card.en}</td>
-          <td>${card.jp}</td>
+          <td>${[card.jp, ...(Array.isArray(card.common) ? card.common : [])].filter(Boolean).join(" / ")}</td>
           <td class="center">${s.correct}</td>
           <td class="center">${s.total}</td>
           <td class="center">${rate}</td>
