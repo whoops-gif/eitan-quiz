@@ -1,393 +1,52 @@
 [
-  {
-    "id": 1001,
-    "level": "B1",
-    "en": "avoid",
-    "jp": "〜を避ける",
-    "common": [
-      "〜を避ける",
-      "〜しないようにする",
-      "（人や場所に）近づかないようにする"
-    ],
-    "kana": "アヴォイド",
-    "note": "avoid doing：〜するのを避ける／avoid someone：人を避ける・距離を置く。"
-  },
-  {
-    "id": 1002,
-    "level": "B1",
-    "en": "compare",
-    "jp": "〜を比べる",
-    "common": [
-      "〜を比べる",
-      "〜を比較検討する",
-      "（AとBを）対比する"
-    ],
-    "kana": "コンペア",
-    "note": "compare A with B：AとBを比較する／compare A to B：AをBにたとえる。"
-  },
-  {
-    "id": 1003,
-    "level": "B1",
-    "en": "depend",
-    "jp": "〜次第である",
-    "common": [
-      "〜次第である",
-      "〜によって決まる",
-      "〜に頼る・依存する"
-    ],
-    "kana": "ディペンド",
-    "note": "depend on …：…に依存する／『It depends.：場合によるよ』で頻出。"
-  },
-  {
-    "id": 1004,
-    "level": "B1",
-    "en": "include",
-    "jp": "〜を含む",
-    "common": [
-      "〜を含む",
-      "〜を含める",
-      "〜を一部として取り入れる"
-    ],
-    "kana": "インクルード",
-    "note": "be included in …：…に含まれている。料金表示で breakfast included は「朝食付き」。"
-  },
-  {
-    "id": 1005,
-    "level": "B1",
-    "en": "prepare",
-    "jp": "〜を準備する",
-    "common": [
-      "〜を準備する",
-      "〜の用意を整える",
-      "（心構えなどを）整える"
-    ],
-    "kana": "プリペア",
-    "note": "prepare for an exam：試験に備える／prepare a meal：食事を用意する。"
-  },
-  {
-    "id": 1006,
-    "level": "B1",
-    "en": "reduce",
-    "jp": "〜を減らす",
-    "common": [
-      "〜を減らす",
-      "〜を小さくする",
-      "（価格・量・程度を）引き下げる"
-    ],
-    "kana": "リデュース",
-    "note": "reduce the risk：リスクを減らす／be reduced to …：…にまで減らされる。"
-  },
-  {
-    "id": 1007,
-    "level": "B1",
-    "en": "likely",
-    "jp": "〜しそうである",
-    "common": [
-      "〜しそうである",
-      "ありそうな・起こりそうな",
-      "（人が）〜しそうなタイプで"
-    ],
-    "kana": "ライクリー",
-    "note": "be likely to do：〜しそうだ／It is likely that …：…しそうだ。"
-  },
-  {
-    "id": 1008,
-    "level": "B1",
-    "en": "effort",
-    "jp": "努力",
-    "common": [
-      "努力",
-      "骨折り・手間",
-      "ある目的のための取り組み"
-    ],
-    "kana": "エフォート",
-    "note": "make an effort to do：〜しようと努力する／without effort：苦もなく・楽に。"
-  },
-  {
-    "id": 1009,
-    "level": "B1",
-    "en": "average",
-    "jp": "平均",
-    "common": [
-      "平均",
-      "平均的な水準",
-      "ごく普通の・並みの"
-    ],
-    "kana": "アヴェリッジ",
-    "note": "on average：平均して／above average：平均以上／an average student：普通の学生。"
-  },
-  {
-    "id": 1010,
-    "level": "B1",
-    "en": "situation",
-    "jp": "状況",
-    "common": [
-      "状況・事態",
-      "立場・境遇",
-      "（やや堅く）位置・場所"
-    ],
-    "kana": "シチュエイション",
-    "note": "a difficult situation：困難な状況／be in a good situation：良い立場にある。"
-  },
-  {
-    "id": 1011,
-    "level": "B1",
-    "en": "advice",
-    "jp": "助言",
-    "common": [
-      "助言",
-      "忠告",
-      "アドバイス"
-    ],
-    "kana": "アドヴァイス",
-    "note": "give someone advice：人に助言する／take someone’s advice：助言に従う。不可算名詞で、an advice は基本NG。"
-  },
-  {
-    "id": 1012,
-    "level": "B1",
-    "en": "agree",
-    "jp": "同意する",
-    "common": [
-      "同意する",
-      "賛成する",
-      "（意見などが）一致する"
-    ],
-    "kana": "アグリー",
-    "note": "I agree with you.：あなたに賛成です／agree to the plan：計画に同意する。"
-  },
-  {
-    "id": 1013,
-    "level": "B1",
-    "en": "appear",
-    "jp": "現れる",
-    "common": [
-      "現れる・姿を見せる",
-      "〜のように見える",
-      "出演する（雑誌・テレビなどに）"
-    ],
-    "kana": "アピア",
-    "note": "He appeared suddenly.：彼は突然現れた／He appears tired.：彼は疲れているように見える。"
-  },
-  {
-    "id": 1014,
-    "level": "B1",
-    "en": "cause",
-    "jp": "〜の原因となる",
-    "common": [
-      "〜の原因となる",
-      "〜を引き起こす",
-      "原因・要因",
-      "大義・主義（名詞）"
-    ],
-    "kana": "コーズ",
-    "note": "cause a problem：問題を引き起こす／the cause of the accident：事故の原因。"
-  },
-  {
-    "id": 1015,
-    "level": "B1",
-    "en": "consider",
-    "jp": "〜をよく考える",
-    "common": [
-      "〜をよく考える",
-      "〜を…とみなす",
-      "検討する・考慮する"
-    ],
-    "kana": "コンシダー",
-    "note": "consider doing：〜しようか考える／consider A (to be) B：AをBとみなす。"
-  },
-  {
-    "id": 1016,
-    "level": "B1",
-    "en": "continue",
-    "jp": "〜を続ける",
-    "common": [
-      "〜を続ける",
-      "続く",
-      "継続する"
-    ],
-    "kana": "コンティニュー",
-    "note": "continue doing：〜し続ける／The rain continued all day.：雨は一日中降り続いた。"
-  },
-  {
-    "id": 1017,
-    "level": "B1",
-    "en": "describe",
-    "jp": "〜を描写する",
-    "common": [
-      "〜を言葉で説明する",
-      "〜を描写する",
-      "〜の特徴を述べる"
-    ],
-    "kana": "ディスクライブ",
-    "note": "describe A to B：AについてBに説明する／describe how …：どのように…かを説明する。"
-  },
-  {
-    "id": 1018,
-    "level": "B1",
-    "en": "expect",
-    "jp": "〜を予期する",
-    "common": [
-      "〜を予期する",
-      "〜を期待する",
-      "（人に）〜を求める・要求する"
-    ],
-    "kana": "エクスペクト",
-    "note": "expect to do：〜するつもりでいる／expect A from B：BにAを期待する。"
-  },
-  {
-    "id": 1019,
-    "level": "B1",
-    "en": "improve",
-    "jp": "〜を改善する",
-    "common": [
-      "〜を改善する",
-      "〜をよくする",
-      "（状態が）よくなる・上達する"
-    ],
-    "kana": "インプルーヴ",
-    "note": "improve your English：英語力を伸ばす／The situation is improving.：状況は良くなりつつある。"
-  },
-  {
-    "id": 1020,
-    "level": "B1",
-    "en": "interest",
-    "jp": "興味",
-    "common": [
-      "興味・関心",
-      "利子・利益（経済）",
-      "利害関係・関心事"
-    ],
-    "kana": "インタレスト",
-    "note": "be interested in …：…に興味がある／a wide range of interests：広い関心領域。"
-  },
-  {
-    "id": 1021,
-    "level": "B1",
-    "en": "introduce",
-    "jp": "〜を紹介する",
-    "common": [
-      "〜を紹介する",
-      "（制度・商品など）を導入する",
-      "（話題など）を持ち出す"
-    ],
-    "kana": "イントロデュース",
-    "note": "introduce A to B：AをBに紹介する／introduce a new system：新しい制度を導入する。"
-  },
-  {
-    "id": 1022,
-    "level": "B1",
-    "en": "material",
-    "jp": "材料",
-    "common": [
-      "材料・原料",
-      "資料・教材",
-      "物質的な（形容詞）"
-    ],
-    "kana": "マテリアル",
-    "note": "building materials：建築資材／teaching materials：教材。形容詞で material wealth：物質的な富。"
-  },
-  {
-    "id": 1023,
-    "level": "B1",
-    "en": "possible",
-    "jp": "可能な",
-    "common": [
-      "可能な",
-      "起こりうる",
-      "（できるだけ）〜な限りの"
-    ],
-    "kana": "ポッシブル",
-    "note": "It is possible that …：…ということもありうる／as soon as possible：できるだけ早く。"
-  },
-  {
-    "id": 1024,
-    "level": "B1",
-    "en": "provide",
-    "jp": "〜を提供する",
-    "common": [
-      "〜を提供する",
-      "〜を供給する",
-      "（必要なもの）を与える"
-    ],
-    "kana": "プロヴァイド",
-    "note": "provide A with B：AにBを提供する／provide B for A：AのためにBを用意する。"
-  },
-  {
-    "id": 1025,
-    "level": "B1",
-    "en": "realize",
-    "jp": "〜に気づく",
-    "common": [
-      "〜に気づく・悟る",
-      "〜を実現する",
-      "（計画など）を現実にする"
-    ],
-    "kana": "リアライズ",
-    "note": "realize that …：…だと気づく／realize a dream：夢を実現する。"
-  },
-  {
-    "id": 1026,
-    "level": "B1",
-    "en": "remain",
-    "jp": "〜のままである",
-    "common": [
-      "〜のままである",
-      "残る・とどまる",
-      "遺体・残り物（名詞：remains）"
-    ],
-    "kana": "リメイン",
-    "note": "remain silent：黙ったままでいる／Only a few people remained.：少数の人だけが残った。"
-  },
-  {
-    "id": 1027,
-    "level": "B1",
-    "en": "result",
-    "jp": "結果",
-    "common": [
-      "結果",
-      "成績（テスト・試験）",
-      "（result in 〜）〜という結果になる"
-    ],
-    "kana": "リザルト",
-    "note": "as a result：その結果／result in …：…という結果になる。"
-  },
-  {
-    "id": 1028,
-    "level": "B1",
-    "en": "simple",
-    "jp": "簡単な",
-    "common": [
-      "簡単な・やさしい",
-      "質素な・飾り気のない",
-      "単純な・分かりやすい"
-    ],
-    "kana": "シンプル",
-    "note": "simple question：簡単な質問／live a simple life：質素な生活を送る。"
-  },
-  {
-    "id": 1029,
-    "level": "B1",
-    "en": "suppose",
-    "jp": "〜と思う",
-    "common": [
-      "〜だと思う",
-      "仮定する・もし〜ならと考える",
-      "〜とみなす（ややかたい）"
-    ],
-    "kana": "サポーズ",
-    "note": "I suppose so.：そうだと思う／suppose that …：…だと仮定する。"
-  },
-  {
-    "id": 1030,
-    "level": "B1",
-    "en": "whole",
-    "jp": "全体の",
-    "common": [
-      "全体の・全部の",
-      "まるごとの",
-      "（the whole）全体・全部"
-    ],
-    "kana": "ホウル",
-    "note": "the whole story：一部始終／a whole day：まる一日。"
-  }
+  { "id": 1001, "level": "B1", "en": "avoid", "jp": "〜を避ける", "common": ["〜を避ける","〜しないようにする","（人や場所に）近づかないようにする"], "kana": "アヴォイド", "note": "avoid doing：〜するのを避ける／avoid someone：人を避ける・距離を置く。" },
+  { "id": 1002, "level": "B1", "en": "compare", "jp": "〜を比べる", "common": ["〜を比べる","〜を比較検討する","（AとBを）対比する"], "kana": "コンペア", "note": "compare A with B：AとBを比較する／compare A to B：AをBにたとえる。" },
+  { "id": 1003, "level": "B1", "en": "depend", "jp": "〜次第である", "common": ["〜次第である","〜によって決まる","〜に頼る・依存する"], "kana": "ディペンド", "note": "depend on …：…に依存する／It depends.：場合によるよ。" },
+  { "id": 1004, "level": "B1", "en": "include", "jp": "〜を含む", "common": ["〜を含む","〜を含める","〜を一部として取り入れる"], "kana": "インクルード", "note": "be included in …：…に含まれている／breakfast included：朝食付き。" },
+  { "id": 1005, "level": "B1", "en": "prepare", "jp": "〜を準備する", "common": ["〜を準備する","〜の用意を整える","（心構えなどを）整える"], "kana": "プリペア", "note": "prepare for an exam：試験に備える／prepare a meal：食事を用意する。" },
+  { "id": 1006, "level": "B1", "en": "reduce", "jp": "〜を減らす", "common": ["〜を減らす","〜を小さくする","（価格・量・程度を）引き下げる"], "kana": "リデュース", "note": "reduce the risk：リスクを減らす／be reduced to …：…にまで減らされる。" },
+  { "id": 1007, "level": "B1", "en": "likely", "jp": "〜しそうである", "common": ["〜しそうである","ありそうな・起こりそうな","（人が）〜しそうなタイプで"], "kana": "ライクリー", "note": "be likely to do：〜しそうだ／It is likely that …：…しそうだ。" },
+  { "id": 1008, "level": "B1", "en": "effort", "jp": "努力", "common": ["努力","骨折り・手間","ある目的のための取り組み"], "kana": "エフォート", "note": "make an effort to do：〜しようと努力する／without effort：苦もなく。" },
+  { "id": 1009, "level": "B1", "en": "average", "jp": "平均", "common": ["平均","平均的な水準","ごく普通の・並みの"], "kana": "アヴェリッジ", "note": "on average：平均して／above average：平均以上。" },
+  { "id": 1010, "level": "B1", "en": "situation", "jp": "状況", "common": ["状況・事態","立場・境遇","（やや堅く）位置・場所"], "kana": "シチュエイション", "note": "a difficult situation：困難な状況。" },
+  { "id": 1011, "level": "B1", "en": "advice", "jp": "助言", "common": ["助言","忠告","アドバイス"], "kana": "アドヴァイス", "note": "不可算名詞。give advice／take someone’s advice。" },
+  { "id": 1012, "level": "B1", "en": "agree", "jp": "同意する", "common": ["同意する","賛成する","（意見などが）一致する"], "kana": "アグリー", "note": "agree with 人／agree to 計画。" },
+  { "id": 1013, "level": "B1", "en": "appear", "jp": "現れる", "common": ["現れる","〜のように見える","出演する"], "kana": "アピア", "note": "appear suddenly／appear tired。" },
+  { "id": 1014, "level": "B1", "en": "cause", "jp": "〜の原因となる", "common": ["原因となる","引き起こす","原因・要因","大義"], "kana": "コーズ", "note": "cause a problem／the cause of …。" },
+  { "id": 1015, "level": "B1", "en": "consider", "jp": "〜をよく考える", "common": ["よく考える","みなす","検討する"], "kana": "コンシダー", "note": "consider doing／consider A (to be) B。" },
+  { "id": 1016, "level": "B1", "en": "continue", "jp": "〜を続ける", "common": ["続ける","続く","継続する"], "kana": "コンティニュー", "note": "continue doing。" },
+  { "id": 1017, "level": "B1", "en": "describe", "jp": "〜を描写する", "common": ["説明する","描写する","特徴を述べる"], "kana": "ディスクライブ", "note": "describe A to B／describe how …。" },
+  { "id": 1018, "level": "B1", "en": "expect", "jp": "〜を予期する", "common": ["予期する","期待する","要求する"], "kana": "エクスペクト", "note": "expect to do／expect A from B。" },
+  { "id": 1019, "level": "B1", "en": "improve", "jp": "〜を改善する", "common": ["改善する","よくする","上達する"], "kana": "インプルーヴ", "note": "improve your English。" },
+  { "id": 1020, "level": "B1", "en": "interest", "jp": "興味", "common": ["興味","利子","利害関係"], "kana": "インタレスト", "note": "be interested in …。" },
+  { "id": 1021, "level": "B1", "en": "introduce", "jp": "〜を紹介する", "common": ["紹介する","導入する","話題に出す"], "kana": "イントロデュース", "note": "introduce A to B。" },
+  { "id": 1022, "level": "B1", "en": "material", "jp": "材料", "common": ["材料","資料","物質的な"], "kana": "マテリアル", "note": "building materials／material wealth。" },
+  { "id": 1023, "level": "B1", "en": "possible", "jp": "可能な", "common": ["可能な","起こりうる","〜な限り"], "kana": "ポッシブル", "note": "It is possible that …。" },
+  { "id": 1024, "level": "B1", "en": "provide", "jp": "〜を提供する", "common": ["提供する","供給する","与える"], "kana": "プロヴァイド", "note": "provide A with B。" },
+  { "id": 1025, "level": "B1", "en": "realize", "jp": "〜に気づく", "common": ["気づく","実現する","現実化する"], "kana": "リアライズ", "note": "realize that …／realize a dream。" },
+  { "id": 1026, "level": "B1", "en": "remain", "jp": "〜のままである", "common": ["〜のままである","残る","とどまる"], "kana": "リメイン", "note": "remain silent。" },
+  { "id": 1027, "level": "B1", "en": "result", "jp": "結果", "common": ["結果","成績","（result in）結果となる"], "kana": "リザルト", "note": "as a result／result in …。" },
+  { "id": 1028, "level": "B1", "en": "simple", "jp": "簡単な", "common": ["簡単な","質素な","単純な"], "kana": "シンプル", "note": "simple question。" },
+  { "id": 1029, "level": "B1", "en": "suppose", "jp": "〜と思う", "common": ["思う","仮定する","みなす"], "kana": "サポーズ", "note": "I suppose so.。" },
+  { "id": 1030, "level": "B1", "en": "whole", "jp": "全体の", "common": ["全体の","まるごとの","全部"], "kana": "ホウル", "note": "the whole story。" },
+  { "id": 1031, "level": "B1", "en": "accept", "jp": "〜を受け入れる", "common": ["受け入れる","認める","受諾する"], "kana": "アクセプト", "note": "accept an offer。" },
+  { "id": 1032, "level": "B1", "en": "allow", "jp": "〜を許可する", "common": ["許可する","認める","可能にする"], "kana": "アラウ", "note": "allow A to do。" },
+  { "id": 1033, "level": "B1", "en": "attend", "jp": "〜に出席する", "common": ["出席する","参加する","通う"], "kana": "アテンド", "note": "attend a meeting。" },
+  { "id": 1034, "level": "B1", "en": "available", "jp": "利用できる", "common": ["利用できる","入手可能","都合がつく"], "kana": "アヴェイラブル", "note": "Tickets are available." },
+  { "id": 1035, "level": "B1", "en": "avoidance", "jp": "回避", "common": ["回避","避けること"], "kana": "アヴォイダンス", "note": "conflict avoidance。" },
+  { "id": 1036, "level": "B1", "en": "challenge", "jp": "課題・挑戦", "common": ["課題","挑戦","難題"], "kana": "チャレンジ", "note": "face a challenge。" },
+  { "id": 1037, "level": "B1", "en": "change", "jp": "変化", "common": ["変化","変更","おつり"], "kana": "チェンジ", "note": "social change。" },
+  { "id": 1038, "level": "B1", "en": "concern", "jp": "懸念・関心", "common": ["懸念","心配","関心事"], "kana": "コンサーン", "note": "be concerned about …。" },
+  { "id": 1039, "level": "B1", "en": "control", "jp": "管理・制御", "common": ["管理","制御","支配"], "kana": "コントロール", "note": "control costs。" },
+  { "id": 1040, "level": "B1", "en": "decision", "jp": "決定", "common": ["決定","判断","決心"], "kana": "ディシジョン", "note": "make a decision。" },
+  { "id": 1041, "level": "B1", "en": "develop", "jp": "発展する", "common": ["発展する","発達させる","生じる"], "kana": "デヴェロップ", "note": "develop skills。" },
+  { "id": 1042, "level": "B1", "en": "effect", "jp": "影響", "common": ["影響","効果","結果"], "kana": "エフェクト", "note": "have an effect on …。" },
+  { "id": 1043, "level": "B1", "en": "fail", "jp": "失敗する", "common": ["失敗する","果たせない","落第する"], "kana": "フェイル", "note": "fail to do。" },
+  { "id": 1044, "level": "B1", "en": "focus", "jp": "焦点を当てる", "common": ["焦点を当てる","集中する","焦点"], "kana": "フォーカス", "note": "focus on …。" },
+  { "id": 1045, "level": "B1", "en": "handle", "jp": "対処する", "common": ["対処する","扱う","手に取る"], "kana": "ハンドル", "note": "handle a problem。" },
+  { "id": 1046, "level": "B1", "en": "increase", "jp": "増える・増やす", "common": ["増える","増やす","増加"], "kana": "インクリース", "note": "increase by 10%。" },
+  { "id": 1047, "level": "B1", "en": "manage", "jp": "管理する", "common": ["管理する","運営する","何とかやる"], "kana": "マネージ", "note": "manage to do。" },
+  { "id": 1048, "level": "B1", "en": "offer", "jp": "提供する", "common": ["提供する","申し出る","申し出"], "kana": "オファー", "note": "offer help。" },
+  { "id": 1049, "level": "B1", "en": "support", "jp": "支援する", "common": ["支援する","支持する","支える"], "kana": "サポート", "note": "support a plan。" },
+  { "id": 1050, "level": "B1", "en": "value", "jp": "価値", "common": ["価値","重視する","評価する"], "kana": "ヴァリュー", "note": "value diversity。" }
 ]
