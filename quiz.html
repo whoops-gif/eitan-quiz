@@ -52,6 +52,11 @@
       font-size: 12px;
       text-transform: lowercase;
     }
+    .pos-val {
+      color: #888;
+      font-size: 12px;
+      text-transform: lowercase;
+    }
     .details {
       margin-top: 10px;
     }
@@ -60,7 +65,7 @@
       cursor: pointer;
       color: #555;
       font-size: 13px;
-      font-weight: 600;
+      font-weight: 400;
     }
     .details .box {
       margin-top: 6px;
@@ -163,7 +168,6 @@
         <div class="label">意味</div>
         <div class="meaning" id="answer-meaning">—</div>
         <div class="reading" id="answer-reading"></div>
-        <div class="note" id="answer-note"></div>
         <div class="small" id="answer-stats"></div>
       </div>
 
@@ -259,7 +263,6 @@
     const ansAreaEl    = document.getElementById("answer-area");
     const ansMeaningEl = document.getElementById("answer-meaning");
     const ansReadingEl = document.getElementById("answer-reading");
-    const ansNoteEl    = document.getElementById("answer-note");
     const ansStatsEl   = document.getElementById("answer-stats");
 
     const nextBtn      = document.getElementById("next-btn");
@@ -309,42 +312,64 @@
       wrongBtn.disabled = true;
     }
 
-    function showAnswer() {
-      if (!currentCard) return;
-    const s = getCardStats(currentCard);
-    const rate = s.total > 0 ? Math.round((s.correct / s.total) * 100) + "%" : "—";
+    function escapeHtml(s) {
+  return String(s)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
 
-    const jpText = currentCard.jp ? `【基本】${currentCard.jp}` : "";
-    const posText =currentCard.pos && currentCard.pos.length
-    ? `【品詞】${currentCard.pos.join(" / ")}`
-    : "";
+function showAnswer() {
+  if (!currentCard) return;
 
-    const commonText =
-     Array.isArray(currentCard.common) && currentCard.common.length ? `【用法】${currentCard.common.join(" / ")}`
-     : "";
-    // 折りたたみ用ノート（例・補足）
-    const noteHTML = currentCard.note
-      ? `
-        <details class="details">
-          <summary>例・補足を開く</summary>
-          <div class="box">
-            ${currentCard.note}
-          </div>
-        </details>
-      `
+  const s = getCardStats(currentCard);
+  const rate = s.total > 0 ? Math.round((s.correct / s.total) * 100) + "%" : "—";
+
+  const jpText = currentCard.jp ? `【基本】 ${escapeHtml(currentCard.jp)}` : "";
+
+  // POS：小文字表示（V→v みたいに）
+  const posText =
+    Array.isArray(currentCard.pos) && currentCard.pos.length
+      ? ` <span class="pos">pos</span> <span class="pos-val">${escapeHtml(currentCard.pos.join(" / ").toLowerCase())}</span>`
       : "";
 
+  const commonText =
+    Array.isArray(currentCard.common) && currentCard.common.length
+      ? `【用法】 ${escapeHtml(currentCard.common.join(" / "))}`
+      : "";
 
-     ansMeaningEl.textContent = [jpText, posText, commonText].filter(Boolean).join("\n");
-     ansReadingEl.textContent = currentCard.kana ? `読み：${currentCard.kana}` : "";
-     ansNoteEl.innerHTML = noteHTML;
-     ansStatsEl.textContent = `これまでの成績：正解 ${s.correct} / 挑戦 ${s.total}（正解率 ${rate}）`;
-     ansAreaEl.style.display = "block";
+  // 折りたたみ（補足）
+  const noteHTML = currentCard.note
+    ? `
+      <details class="details">
+        <summary>補足（例・補足を開く）</summary>
+        <div class="box">${escapeHtml(currentCard.note)}</div>
+      </details>
+    `
+    : "";
 
-     showBtn.disabled = true;
-     correctBtn.disabled = false;
-     wrongBtn.disabled = false;
+  // ✅ 意味エリアは HTML で表示する（ここが最重要）
+  const meaningHTML = [jpText ? `<div>${jpText}${posText}</div>` : "", commonText ? `<div>${commonText}</div>` : "", noteHTML]
+    .filter(Boolean)
+    .join("");
+
+  ansMeaningEl.innerHTML = meaningHTML;
+
+  // 読み
+  ansReadingEl.textContent = currentCard.kana ? `読み：${currentCard.kana}` : "";
+
+  // 成績
+  ansStatsEl.textContent = `これまでの成績：正解 ${s.correct} / 挑戦 ${s.total}（正解率 ${rate}）`;
+  ansAreaEl.style.display = "block";
+
+  showBtn.disabled = true;
+  correctBtn.disabled = false;
+  wrongBtn.disabled = false;
 }
+
+
   
 
     function recordAnswer(isCorrect) {
@@ -376,8 +401,8 @@
         const s = getCardStats(card);
         const rate = s.total > 0 ? Math.round((s.correct / s.total) * 100) + "%" : "—";
         html += `<tr>
-          <td>${card.en}</td>
-          <td>${[card.jp, ...(Array.isArray(card.common) ? card.common : [])].filter(Boolean).join(" / ")}</td>
+          <td>${escapeHtml(card.en)}</td>
+          <td>${escapeHtml([card.jp, ...(Array.isArray(card.common) ? card.common : [])].filter(Boolean).join(" / "))}</td>
           <td class="center">${s.correct}</td>
           <td class="center">${s.total}</td>
           <td class="center">${rate}</td>
