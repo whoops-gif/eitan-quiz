@@ -291,13 +291,16 @@
     const rate = s.total > 0 ? Math.round((s.correct / s.total) * 100) + "%" : "—";
 
     const jpText = currentCard.jp ? `【基本】${currentCard.jp}` : "";
+    const posText =currentCard.pos && currentCard.pos.length
+    ? `【品詞】${currentCard.pos.join(" / ")}`
+    : "";
+
     const commonText =
-     Array.isArray(currentCard.common) && currentCard.common.length
-      ? `【用法】${currentCard.common.join(" / ")}`
-      : "";
+     Array.isArray(currentCard.common) && currentCard.common.length ? `【用法】${currentCard.common.join(" / ")}`
+     : "";
     const noteText = currentCard.note ? `【補足】${currentCard.note}` : "";
 
-     ansMeaningEl.textContent = [jpText, commonText].filter(Boolean).join("\n");
+    ansMeaningEl.textContent = [jpText, posText, commonText].filter(Boolean).join("\n");
      ansReadingEl.textContent = currentCard.kana ? `読み：${currentCard.kana}` : "";
      ansNoteEl.textContent = noteText;
      ansStatsEl.textContent = `これまでの成績：正解 ${s.correct} / 挑戦 ${s.total}（正解率 ${rate}）`;
