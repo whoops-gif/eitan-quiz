@@ -1,5 +1,5 @@
 /* =========================================================
-   LEXICON. Global Stylesheet
+   LEXICON. Global Stylesheet (Unified & Fixed)
    ========================================================= */
 
 /* ---------- Design Tokens ---------- */
@@ -11,10 +11,8 @@
   --muted: #8e8e93;
   --border: #e5e5ea;
   --divider: #f2f2f7;
-
   --radius-card: 20px;
   --radius-btn: 14px;
-
   --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.05);
   --shadow-primary: 0 4px 14px rgba(0, 122, 255, 0.3);
 }
@@ -22,7 +20,6 @@
 /* ---------- Global Base ---------- */
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
-
 body {
   background-color: var(--bg);
   color: var(--text);
@@ -31,7 +28,6 @@ body {
   justify-content: center;
   min-height: 100vh;
 }
-
 .main-wrapper {
   width: 100%;
   max-width: 480px;
@@ -48,19 +44,12 @@ body {
   text-align: center;
   text-transform: uppercase;
 }
-
 .hero-subtitle {
   text-align: center;
   font-size: 13px;
   color: var(--muted);
   margin-bottom: 32px;
   letter-spacing: 0.02em;
-}
-
-.small {
-  font-size: 12px;
-  color: var(--muted);
-  line-height: 1.6;
 }
 
 /* ---------- UI Components ---------- */
@@ -72,8 +61,6 @@ body {
   box-shadow: var(--shadow-card);
   border: none;
 }
-
-/* 共通ラベル（英語） */
 .field-label-en {
   font-size: 10px;
   font-weight: 800;
@@ -82,8 +69,6 @@ body {
   text-transform: uppercase;
   display: block;
 }
-
-/* バッジ */
 .level-badge {
   background: var(--primary);
   color: white;
@@ -91,10 +76,7 @@ body {
   font-weight: 900;
   padding: 2px 8px;
   border-radius: 4px;
-  letter-spacing: 0.05em;
 }
-
-/* セレクトボックス */
 select {
   width: 100%;
   padding: 16px;
@@ -103,19 +85,12 @@ select {
   background-color: #f9f9fb;
   border: 1px solid var(--border);
   border-radius: 12px;
-  color: var(--text);
   appearance: none;
   cursor: pointer;
   margin: 8px 0 24px;
 }
 
 /* ---------- Buttons (General) ---------- */
-.button-group {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
 button {
   width: 100%;
   padding: 18px;
@@ -128,129 +103,29 @@ button {
   transition: all 0.2s;
   cursor: pointer;
 }
-
 button.primary {
   background: var(--primary);
   color: #fff;
   box-shadow: var(--shadow-primary);
 }
-
 button.secondary {
   background: #fff;
   color: var(--primary);
   border: 2px solid var(--primary);
 }
-
 button.large { padding: 20px; font-size: 18px; }
 
-button:disabled {
+/* 無効化時の半透明を「正解/不正解ボタン」以外に限定する */
+button:disabled:not(.btn-correct):not(.btn-wrong) {
   cursor: not-allowed;
   opacity: 0.5;
 }
 
 /* =========================================================
-   Top Page Specific (Index)
+   Quiz Page Specific
    ========================================================= */
-
-/* Search System */
-.search-card {
-  padding: 12px !important;
-  margin-bottom: 24px;
-  border: 1px solid var(--divider) !important;
-}
-
-.search-box-container {
-  display: flex;
-  align-items: center;
-  background-color: #f2f2f7;
-  border-radius: 12px;
-  padding: 0 16px;
-  border: 2px solid transparent;
-  position: relative;
-}
-
-.search-box-container:focus-within {
-  background-color: #ffffff;
-  border-color: var(--primary);
-  box-shadow: 0 8px 20px rgba(0, 122, 255, 0.1);
-}
-
-.search-icon { font-size: 16px; margin-right: 12px; opacity: 0.4; }
-
-#word-search {
-  flex: 1;
-  background: transparent !important;
-  border: none !important;
-  padding: 14px 0;
-  font-size: 15px;
-  font-weight: 700;
-  outline: none;
-}
-
-.search-results-dropdown {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 0; right: 0;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  z-index: 100;
-  max-height: 250px;
-  overflow-y: auto;
-  border: 1px solid var(--border);
-}
-
-.search-item {
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--divider);
-  cursor: pointer;
-}
-
-.search-item .word { font-weight: 800; margin-right: 8px; }
-.search-item .meaning { font-size: 13px; color: var(--muted); }
-
-/* Layout Utilities */
-.card-header-flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-.footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  margin-top: 32px;
-  padding-bottom: 40px;
-}
-
-/* POS List */
-.pos-badge-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 0;
-  margin: 12px 0;
-  list-style: none;
-}
-
-.pos-badge-list li {
-  background: var(--divider);
-  padding: 6px 12px;
-  border-radius: 8px;
-  font-size: 13px;
-}
-
-.pos-badge-list b { color: var(--primary); margin-right: 4px; }
-
-/* =========================================================
-   Quiz Page Specific (Quiz)
-   ========================================================= */
-
 body.quiz-page { background: #f8f9fc; }
 
-/* クイズ画面：カテゴリタイトルの完成版 */
 .quiz-header {
   display: flex;
   align-items: center;
@@ -258,26 +133,23 @@ body.quiz-page { background: #f8f9fc; }
   margin-bottom: 24px;
   padding: 12px 0;
 }
-
 .home-link {
   text-decoration: none;
   color: var(--primary);
   font-weight: 700;
   font-size: 13px;
-  width: 60px; /* 左側の幅を固定 */
+  width: 60px;
+  flex-shrink: 0;
 }
-
 .category-title-centered {
-  flex: 1; /* 残りのスペースをすべて使う */
+  flex: 1;
   text-align: center;
-  font-size: 14px; /* 小さめがかわいい */
+  font-size: 14px;
   font-weight: 700;
-  color: var(--muted); /* ちょっと薄いグレー */
-  letter-spacing: 0.05em;
+  color: var(--muted);
   margin: 0;
 }
 
-/* Quiz Card Decoration */
 .quiz-card {
   text-align: center;
   padding: 40px 20px;
@@ -286,16 +158,14 @@ body.quiz-page { background: #f8f9fc; }
   flex-direction: column;
   justify-content: center;
 }
-
 .question-word {
   font-size: 48px;
   font-weight: 850;
   color: var(--text);
   margin: 0;
-  letter-spacing: -0.03em;
 }
 
-/* Judge Buttons */
+/* Judge Buttons (正解・不正解) */
 .judge-controls {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -303,6 +173,7 @@ body.quiz-page { background: #f8f9fc; }
   margin: 10px 0;
 }
 
+/* 正解/不正解ボタンが薄くなるのを防ぐため、明示的に不透明にする */
 .btn-correct, .btn-wrong {
   height: 84px;
   font-size: 18px;
@@ -313,30 +184,35 @@ body.quiz-page { background: #f8f9fc; }
   justify-content: center;
   line-height: 1.0;
   padding: 0 !important;
+  opacity: 1 !important; /* 絶対に薄くさせない */
 }
 
 .btn-correct {
   border: 3px solid #32cd32 !important;
   color: #32cd32 !important;
   background: #fff !important;
-  box-shadow: 0 4px 15px rgba(50, 205, 50, 0.15) !important;
+  box-shadow: 0 4px 15px rgba(50, 205, 50, 0.1) !important;
 }
 
 .btn-wrong {
   border: 3px solid #ff8c00 !important;
   color: #ff8c00 !important;
   background: #fff !important;
-  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.15) !important;
+  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.1) !important;
 }
 
-/* SKIP Button (Capsule Style) */
+/* 答えが出ていない時は少しだけ薄くして「まだ押せない感」を出す */
+.btn-correct:disabled, .btn-wrong:disabled {
+  opacity: 0.3 !important;
+  filter: grayscale(0.5);
+}
+
 .btn-text {
   background-color: #ffffff !important;
   border: 1px solid var(--border) !important;
   color: var(--muted) !important;
   font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.1em;
   border-radius: 30px;
   width: auto;
   min-width: 140px;
@@ -345,30 +221,11 @@ body.quiz-page { background: #f8f9fc; }
   align-items: center;
   justify-content: center;
   margin: 24px auto !important;
-  text-transform: uppercase;
 }
 
 /* =========================================================
-   Feedback & Animations
+   Animations & Others
    ========================================================= */
-
-/* Tap Feedback Global */
-button, .btn-text, .search-item, details summary {
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
-}
-
-button:active:not(:disabled) {
-  transform: translateY(4px) scale(0.97);
-  filter: brightness(0.95);
-}
-
-.btn-text:active {
-  transform: translateX(4px) scale(0.98) !important;
-  background-color: #f2f2f7 !important;
-}
-
-/* Flash Effect */
 .flash-correct { animation: flash-green 0.4s ease-out; }
 .flash-wrong   { animation: flash-red 0.4s ease-out; }
 
@@ -381,9 +238,6 @@ button:active:not(:disabled) {
   100% { background-color: transparent; }
 }
 
-/* =========================================================
-   Stats (Table)
-   ========================================================= */
 .stats-table {
   width: 100%;
   border-collapse: collapse;
