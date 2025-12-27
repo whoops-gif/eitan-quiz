@@ -183,14 +183,37 @@
       if (!currentCard) return;
       const s = getCardStats(currentCard);
       const rate = s.total > 0 ? Math.round((s.correct / s.total) * 100) + "%" : "—";
-      const jpText = currentCard.jp ? `<div class="jp-main">${escapeHtml(currentCard.jp)}</div>` : "";
-      const posText = Array.isArray(currentCard.pos) ? `<div class="pos-container">${formatPos(currentCard.pos)}</div>` : "";
-      const commonText = Array.isArray(currentCard.common) ? `<div class="common-usage">${escapeHtml(currentCard.common.join(" / "))}</div>` : "";
-      const noteHTML = currentCard.note ? `<details class="note-details"><summary>補足メモ</summary><div class="note-box">${escapeHtml(currentCard.note)}</div></details>` : "";
 
-      ansMeaningEl.innerHTML = jpText + posText + commonText + noteHTML;
-      ansReadingEl.textContent = currentCard.kana ? `[ ${currentCard.kana} ]` : "";
+      // 1. 和訳と品詞
+      const posText = Array.isArray(currentCard.pos) ? formatPos(currentCard.pos) : "";
+      ansMeaningEl.innerHTML = `${escapeHtml(currentCard.jp)} ${posText}`;
+
+      // 2. 読み
+      ansReadingEl.textContent = currentCard.kana ? `[ ${currentCard.kana} ]` : "—";
+
+      // 3. 方法 (common)
+      const commonArea = document.getElementById('answer-common');
+      if (Array.isArray(currentCard.common) && currentCard.common.length > 0) {
+        commonArea.innerHTML = currentCard.common.map(c => `・${escapeHtml(c)}`).join("<br>");
+      } else {
+        commonArea.textContent = "—";
+      }
+
+      // 4. 補足メモ (折りたたみ)
+      const noteWrapper = document.getElementById('note-wrapper');
+      if (currentCard.note) {
+        noteWrapper.innerHTML = `
+          <details class="note-details">
+            <summary class="note-summary">補足メモを見る</summary>
+            <div class="note-box">${escapeHtml(currentCard.note).replace(/\n/g, '<br>')}</div>
+          </details>`;
+      } else {
+        noteWrapper.innerHTML = "";
+      }
+
+      // 5. 統計
       ansStatsEl.innerHTML = `正解率: <strong>${rate}</strong> (正解 ${s.correct} / 挑戦 ${s.total})`;
+      
       ansAreaEl.style.display = "block";
       showBtn.disabled = true;
       correctBtn.disabled = false;
