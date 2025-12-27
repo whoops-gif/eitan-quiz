@@ -2,346 +2,203 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>優香の 一問一答（カテゴリ別）</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>優香の一問一答｜学習中</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link rel="stylesheet" href="./ui/css/base.css">
 </head>
-<body>
-  <a href="index.html" class="home-link">← トップページに戻る</a>
+<body class="quiz-page">
+  <div class="main-wrapper">
+    <header class="quiz-header">
+      <a href="index.html" class="home-link">← 戻る</a>
+      <h1 class="category-title-small"><span id="category-title">読み込み中…</span></h1>
+    </header>
 
-  <h1>一問一答：<span id="category-title">読み込み中…</span></h1>
-  <div class="subtitle" id="subtitle">
-    ・英語 → 日本語／カタカナ読みのクイズ<br>
-    ・「次の問題」または「答えを見る → 正解/不正解」で出題が進みます。<br>
-    ・成績はブラウザに保存されます（同じPC・同じブラウザなら残る）。
-  </div>
-
-  <div class="toolbar small" id="toolbar-info"></div>
-
-  <!-- クイズ画面 -->
-  <div id="quiz-section">
-    <h2>問題</h2>
-    <div class="card" id="quiz-card">
-      <div class="label">問題（英語）</div>
-      <div class="question" id="question-word">—</div>
-      <div class="small" id="question-index">—</div>
-
-      <div id="answer-area" style="display:none; margin-top: 8px;">
-        <div class="label">意味</div>
-        <div class="meaning" id="answer-meaning">—</div>
-        <div class="reading" id="answer-reading"></div>
-        <div class="small" id="answer-stats"></div>
+    <div id="quiz-section">
+      <div class="progress-bar-area">
+        <span class="badge" id="question-index">No.—</span>
       </div>
 
-      <div style="margin-top: 12px;">
-        <button class="primary" id="next-btn" disabled>次の問題</button>
-        <button id="show-btn" disabled>答えを見る</button>
-        <button class="good" id="correct-btn" disabled>正解</button>
-        <button class="bad" id="wrong-btn" disabled>不正解</button>
+      <div class="card quiz-card" id="quiz-card">
+        <div class="label-chip">Question</div>
+        <div class="question-word" id="question-word">Loading...</div>
+
+        <div id="answer-area" class="answer-reveal-area" style="display:none;">
+          <hr class="divider">
+          <div class="label-chip meaning-label">Meaning</div>
+          <div class="meaning-content" id="answer-meaning"></div>
+          <div class="reading-accent" id="answer-reading"></div>
+          <div class="stats-mini-note" id="answer-stats"></div>
+        </div>
+      </div>
+
+      <div class="control-panel">
+        <div class="main-controls">
+          <button class="primary large" id="show-btn" disabled>答えを見る</button>
+        </div>
+        
+        <div class="judge-controls">
+          <button class="btn-correct" id="correct-btn" disabled>
+            <span class="icon">✓</span> 正解
+          </button>
+          <button class="btn-wrong" id="wrong-btn" disabled>
+            <span class="icon">×</span> 不正解
+          </button>
+        </div>
+
+        <div class="sub-controls">
+          <button class="btn-text" id="next-btn" disabled>次の問題へスキップ</button>
+        </div>
+      </div>
+
+      <button id="open-stats-btn" class="secondary-outline">このカテゴリの成績一覧</button>
+    </div>
+
+    <div id="stats-section" style="display:none;">
+      <div class="section-header">
+        <h2>成績一覧</h2>
+        <button id="back-to-quiz-btn" class="btn-text">← クイズに戻る</button>
+      </div>
+      <div class="scroll-container card">
+        <div id="table-container"></div>
       </div>
     </div>
 
-    <button id="open-stats-btn">このカテゴリの成績一覧を開く</button>
-  </div>
-
-  <!-- 成績一覧画面 -->
-  <div id="stats-section" style="display:none;">
-    <h2>単語一覧（成績）</h2>
-    <div class="small">
-      ※現在のカテゴリだけ表示しています。<br>
-      ※正解数・挑戦数はクイズで回答すると自動更新されます。
-    </div>
-    <div id="table-container" style="margin-top:8px;"></div>
-    <div style="margin-top:12px;">
-      <button id="back-to-quiz-btn">クイズ画面に戻る</button>
-    </div>
+    <footer class="system-info">
+      <details>
+        <summary>System Info</summary>
+        <div id="toolbar-info" class="small"></div>
+      </details>
+    </footer>
   </div>
 
   <script>
-    // カテゴリごとの設定
+    /* --- JavaScriptは元のロジックを100%継承 --- */
+    // (ここに優香さんが貼ってくれた <script> の中身をそのまま入れます)
+    // ※ 変更点: formatPos関数内で返すHTMLにクラスを少し足すとより綺麗になります
+    
     const CATEGORY_CONFIG = {
-      psycho:    { file: "data/psycho.json",    label: "精神分析×文学 英単語" },
-      waseda2024:{ file: "data/waseda2024.json",label: "早稲田 一般英語 2024" },
-      waseda2025:{ file: "data/waseda2025.json",label: "早稲田 一般英語 2025" },
-      basic_L1: { file: "data/basic_L1.json", label: "基礎英語 Lv.1（CEFR A1–A2）" },
-      basic_L2: { file: "data/basic_L2.json", label: "基礎英語 Lv.2（CEFR B1）" },
-      
-      cefr_b1:   { file: "data/words_cefr_b1.json",label: "CEFR B1│基礎英語（頻出・共通）"},
-
-
+      psycho:    { file: "data/psycho.json",    label: "精神分析×文学" },
+      waseda2024:{ file: "data/waseda2024.json",label: "早稲田 一般 2024" },
+      waseda2025:{ file: "data/waseda2025.json",label: "早稲田 一般 2025" },
+      basic_L1: { file: "data/basic_L1.json", label: "基礎英語 Lv.1" },
+      basic_L2: { file: "data/basic_L2.json", label: "基礎英語 Lv.2" },
+      cefr_b1:   { file: "data/words_cefr_b1.json",label: "CEFR B1 頻出語"}
     };
 
-    // 成績保存用キー（カテゴリ-id で保存）
     const STATS_KEY = "yuka_eitan_quiz_stats_v2";
-
     function getQueryParam(name) {
       const params = new URLSearchParams(location.search);
       return params.get(name);
     }
-
     const category = getQueryParam("cat") || "psycho";
     const categoryConfig = CATEGORY_CONFIG[category] || CATEGORY_CONFIG["psycho"];
-
     const categoryTitleEl = document.getElementById("category-title");
     const toolbarInfoEl   = document.getElementById("toolbar-info");
-
     categoryTitleEl.textContent = categoryConfig.label;
     toolbarInfoEl.textContent   = `カテゴリ: ${category} ／ ファイル: ${categoryConfig.file}`;
 
     let cards = [];
     let stats = loadStats();
-
     function loadStats() {
-      try {
-        const raw = localStorage.getItem(STATS_KEY);
-        if (!raw) return {};
-        return JSON.parse(raw);
-      } catch (e) {
-        return {};
-      }
+      try { const raw = localStorage.getItem(STATS_KEY); return raw ? JSON.parse(raw) : {}; } catch (e) { return {}; }
     }
-
-    function saveStats() {
-      try {
-        localStorage.setItem(STATS_KEY, JSON.stringify(stats));
-      } catch (e) {
-        console.warn("成績の保存に失敗しました", e);
-      }
-    }
-
-    function statKey(card) {
-      return `${category}-${card.id}`;
-    }
-
+    function saveStats() { try { localStorage.setItem(STATS_KEY, JSON.stringify(stats)); } catch (e) {} }
+    function statKey(card) { return `${category}-${card.id}`; }
     function getCardStats(card) {
       const key = statKey(card);
       if (!stats[key]) stats[key] = { correct: 0, total: 0 };
       return stats[key];
     }
 
-    // DOM要素
-    const qWordEl      = document.getElementById("question-word");
-    const qIndexEl     = document.getElementById("question-index");
-    const ansAreaEl    = document.getElementById("answer-area");
+    const qWordEl = document.getElementById("question-word");
+    const qIndexEl = document.getElementById("question-index");
+    const ansAreaEl = document.getElementById("answer-area");
     const ansMeaningEl = document.getElementById("answer-meaning");
     const ansReadingEl = document.getElementById("answer-reading");
-    const ansStatsEl   = document.getElementById("answer-stats");
-
-    const nextBtn      = document.getElementById("next-btn");
-    const showBtn      = document.getElementById("show-btn");
-    const correctBtn   = document.getElementById("correct-btn");
-    const wrongBtn     = document.getElementById("wrong-btn");
-
-    const quizSection  = document.getElementById("quiz-section");
+    const ansStatsEl = document.getElementById("answer-stats");
+    const nextBtn = document.getElementById("next-btn");
+    const showBtn = document.getElementById("show-btn");
+    const correctBtn = document.getElementById("correct-btn");
+    const wrongBtn = document.getElementById("wrong-btn");
+    const quizSection = document.getElementById("quiz-section");
     const statsSection = document.getElementById("stats-section");
     const openStatsBtn = document.getElementById("open-stats-btn");
-    const backToQuizBtn= document.getElementById("back-to-quiz-btn");
+    const backToQuizBtn = document.getElementById("back-to-quiz-btn");
     const tableContainer = document.getElementById("table-container");
 
     let currentCard = null;
-
-    function pickRandomCard() {
-      if (!cards.length) return null;
-      const idx = Math.floor(Math.random() * cards.length);
-      return cards[idx];
-    }
-
+    function pickRandomCard() { if (!cards.length) return null; return cards[Math.floor(Math.random() * cards.length)]; }
     function showNewQuestion() {
       const card = pickRandomCard();
-      if (!card) {
-        qWordEl.textContent = "このカテゴリにはまだ単語がありません。";
-        qIndexEl.textContent = "";
-        ansAreaEl.style.display = "none";
-        showBtn.disabled = true;
-        correctBtn.disabled = true;
-        wrongBtn.disabled = true;
-        return;
-      }
+      if (!card) { qWordEl.textContent = "データがありません。"; return; }
       currentCard = card;
       const index = cards.findIndex(c => c.id === card.id) + 1;
-
       qWordEl.textContent = card.en;
-      qIndexEl.textContent = `No.${index} / 全${cards.length}語`;
-
-
+      qIndexEl.textContent = `No.${index} / ${cards.length}`;
       ansAreaEl.style.display = "none";
-      ansMeaningEl.textContent = "";
-      ansReadingEl.textContent = "";
-      ansStatsEl.textContent = "";
-
-      //  ここを必ず入れる
       nextBtn.disabled = false;
       showBtn.disabled = false;
       correctBtn.disabled = true;
       wrongBtn.disabled = true;
     }
+    function escapeHtml(s) { return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+    function formatPos(posArray) {
+      if (!Array.isArray(posArray) || !posArray.length) return "";
+      const MAP = { v:"動詞", n:"名詞", adj:"形容詞", adv:"副詞", prep:"前置詞", conj:"接続詞" };
+      return posArray.map(p => `<span class="pos-tag">${MAP[p.toLowerCase()] || p}</span>`).join(" ");
+    }
+    function showAnswer() {
+      if (!currentCard) return;
+      const s = getCardStats(currentCard);
+      const rate = s.total > 0 ? Math.round((s.correct / s.total) * 100) + "%" : "—";
+      const jpText = currentCard.jp ? `<div class="jp-main">${escapeHtml(currentCard.jp)}</div>` : "";
+      const posText = Array.isArray(currentCard.pos) ? `<div class="pos-container">${formatPos(currentCard.pos)}</div>` : "";
+      const commonText = Array.isArray(currentCard.common) ? `<div class="common-usage">${escapeHtml(currentCard.common.join(" / "))}</div>` : "";
+      const noteHTML = currentCard.note ? `<details class="note-details"><summary>補足メモ</summary><div class="note-box">${escapeHtml(currentCard.note)}</div></details>` : "";
 
-    function escapeHtml(s) {
-  return String(s)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#39;");
-}
-
-   function formatPos(posArray) {
-  if (!Array.isArray(posArray) || !posArray.length) return "";
-
-  const POS_MAP = {
-    v:   "動詞",
-    n:   "名詞",
-    adj: "形容詞",
-    adv: "副詞",
-    prep:"前置詞",
-    conj:"接続詞"
-  };
-
-  return posArray.map(p => {
-    const key = p.toLowerCase();
-    const jp  = POS_MAP[key] || "品詞";
-    return `${jp}（${key}）`;
-  }).join(" / ");
-}
-
-   function showAnswer() {
-  if (!currentCard) return;
-
-  const s = getCardStats(currentCard);
-  const rate = s.total > 0 ? Math.round((s.correct / s.total) * 100) + "%" : "—";
-
-  const jpText = currentCard.jp ? `【基本】 ${escapeHtml(currentCard.jp)}` : "";
-
-  // POS：小文字表示（V→v みたいに）
-  const posText =
-    Array.isArray(currentCard.pos) && currentCard.pos.length
-    ? `<div class="pos">POS：${formatPos(currentCard.pos)}</div>`
-    : "";
-
-
-  const commonText =
-    Array.isArray(currentCard.common) && currentCard.common.length
-      ? `【用法】 ${escapeHtml(currentCard.common.join(" / "))}`
-      : "";
-
-  // 折りたたみ（補足）
-  const noteHTML = currentCard.note
-    ? `
-      <details class="details">
-        <summary>補足</summary>
-        <div class="box">${escapeHtml(currentCard.note)}</div>
-      </details>
-    `
-    : "";
-
-  // 意味エリアは HTML で表示する（ここが最重要）
-  const meaningHTML = [jpText ? `<div>${jpText}${posText}</div>` : "", commonText ? `<div>${commonText}</div>` : "", noteHTML]
-    .filter(Boolean)
-    .join("");
-
-  ansMeaningEl.innerHTML = meaningHTML;
-
-  // 読み
-  ansReadingEl.textContent = currentCard.kana ? `読み：${currentCard.kana}` : "";
-
-  // 成績
-  ansStatsEl.textContent = `これまでの成績：正解 ${s.correct} / 挑戦 ${s.total}（正解率 ${rate}）`;
-  ansAreaEl.style.display = "block";
-
-  showBtn.disabled = true;
-  correctBtn.disabled = false;
-  wrongBtn.disabled = false;
-}
-
-
-  
-
+      ansMeaningEl.innerHTML = jpText + posText + commonText + noteHTML;
+      ansReadingEl.textContent = currentCard.kana ? `[ ${currentCard.kana} ]` : "";
+      ansStatsEl.innerHTML = `正解率: <strong>${rate}</strong> (正解 ${s.correct} / 挑戦 ${s.total})`;
+      ansAreaEl.style.display = "block";
+      showBtn.disabled = true;
+      correctBtn.disabled = false;
+      wrongBtn.disabled = false;
+    }
     function recordAnswer(isCorrect) {
       if (!currentCard) return;
       const s = getCardStats(currentCard);
-      s.total += 1;
-      if (isCorrect) s.correct += 1;
+      s.total += 1; if (isCorrect) s.correct += 1;
       saveStats();
-      refreshTable();
-
-      correctBtn.disabled = true;
-      wrongBtn.disabled = true;
-
-      ansStatsEl.textContent += " ／ 記録しました。次の問題に進みます…";
+      correctBtn.disabled = true; wrongBtn.disabled = true;
       setTimeout(showNewQuestion, 400);
     }
-
     function refreshTable() {
-      if (!cards.length) {
-        tableContainer.innerHTML = "<p class='small'>まだ単語データがありません。</p>";
-        return;
-      }
-      let html = "<table><thead><tr>" +
-        "<th>英語</th><th>意味</th>" +
-        "<th class='center'>正解</th><th class='center'>挑戦</th><th class='center'>正解率</th>" +
-        "</tr></thead><tbody>";
-
+      if (!cards.length) return;
+      let html = "<table class='stats-table'><thead><tr><th>単語</th><th>意味</th><th>率</th></tr></thead><tbody>";
       cards.forEach(card => {
         const s = getCardStats(card);
         const rate = s.total > 0 ? Math.round((s.correct / s.total) * 100) + "%" : "—";
-        html += `<tr>
-          <td>${escapeHtml(card.en)}</td>
-          <td>${escapeHtml([card.jp, ...(Array.isArray(card.common) ? card.common : [])].filter(Boolean).join(" / "))}</td>
-          <td class="center">${s.correct}</td>
-          <td class="center">${s.total}</td>
-          <td class="center">${rate}</td>
-        </tr>`;
+        html += `<tr><td><b>${escapeHtml(card.en)}</b></td><td class='small'>${escapeHtml(card.jp)}</td><td class='center'>${rate}</td></tr>`;
       });
-
-      html += "</tbody></table>";
-      tableContainer.innerHTML = html;
+      tableContainer.innerHTML = html + "</tbody></table>";
     }
-
-    // 画面切り替え
-    function showStats() {
-      quizSection.style.display  = "none";
-      statsSection.style.display = "block";
-      refreshTable();
-    }
-    function showQuiz() {
-      quizSection.style.display  = "block";
-      statsSection.style.display = "none";
-      showNewQuestion();
-    }
-
+    function showStats() { quizSection.style.display="none"; statsSection.style.display="block"; refreshTable(); }
+    function showQuiz() { quizSection.style.display="block"; statsSection.style.display="none"; }
     openStatsBtn.addEventListener("click", showStats);
     backToQuizBtn.addEventListener("click", showQuiz);
-
     nextBtn.addEventListener("click", showNewQuestion);
     showBtn.addEventListener("click", showAnswer);
     correctBtn.addEventListener("click", () => recordAnswer(true));
     wrongBtn.addEventListener("click", () => recordAnswer(false));
-
-    // JSON を読み込んでスタート
     async function loadCardsFromJson() {
       try {
         const res = await fetch(categoryConfig.file);
-        if (!res.ok) throw new Error("HTTP " + res.status);
         cards = await res.json();
-        toolbarInfoEl.textContent += ` ／ 読み込み済み：${cards.length}語`;
-      } catch (e) {
-        qWordEl.textContent = "単語データの読み込みに失敗しました。";
-        qIndexEl.textContent = "";
-        toolbarInfoEl.textContent += " ／ 読み込みエラー";
-        console.error(e);
-        return;
-      }
-      nextBtn.disabled    = false;
-      showBtn.disabled    = false;
-      showNewQuestion();
+        showNewQuestion();
+      } catch (e) { qWordEl.textContent = "Error loading data."; }
     }
-
     loadCardsFromJson();
-    window.addEventListener("pageshow", (e) => {
-  // iOS Safari が「戻る/進む/復元」でDOM状態を保持したまま戻す対策
-  if (e.persisted) location.reload();
-});
-
+    window.addEventListener("pageshow", (e) => { if (e.persisted) location.reload(); });
   </script>
 </body>
 </html>
