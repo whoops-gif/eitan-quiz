@@ -9,73 +9,76 @@
 <body class="quiz-page">
   <div class="main-wrapper">
     <header class="quiz-header">
-      <a href="index.html" class="home-link">← 戻る</a>
-      <h1 class="category-title-small"><span id="category-title">読み込み中…</span></h1>
-    </header>
+      <a href="index.html" class="home-link">← EXIT</a>
+      <div class="header-title-group">
+        <span class="field-label-en" style="text-align: center;">CURRENT TRAINING</span>
+        <h1 class="category-title-small" id="category-title">LOADING...</h1>
+      </div>
+      <div style="width: 40px;"></div> </header>
 
     <div id="quiz-section">
       <div class="progress-bar-area">
-        <span class="badge" id="question-index">No.—</span>
+        <span class="level-badge" id="question-index">NO.—</span>
       </div>
 
       <div class="card quiz-card" id="quiz-card">
-      <div class="question-container">
-      <div class="label-chip-tiny">QUESTION</div>
-      <div class="question-word" id="question-word">Loading...</div>
-    </div>
+        <div class="question-container">
+          <div class="field-label-en" style="color: var(--muted); margin-bottom: 12px;">QUESTION</div>
+          <div class="question-word" id="question-word">Loading...</div>
+        </div>
 
-    <div id="answer-area" class="answer-reveal-area" style="display:none;">
-      <div class="divider-with-icon">
-        <span>ANSWER</span>
+        <div id="answer-area" class="answer-reveal-area" style="display:none;">
+          <div class="divider-with-icon">
+            <span>ANSWER REVEALED</span>
+          </div>
+          
+          <div class="meaning-content" id="answer-meaning"></div>
+          <div class="reading-accent" id="answer-reading"></div>
+          <div class="stats-mini-note" id="answer-stats"></div>
+        </div>
       </div>
-      
-      <div class="meaning-content" id="answer-meaning"></div>
-      <div class="reading-accent" id="answer-reading"></div>
-      <div class="stats-mini-note" id="answer-stats"></div>
-    </div>
-  </div>
-      　
 
       <div class="control-panel">
         <div class="main-controls">
-          <button class="primary large" id="show-btn" disabled>答えを見る</button>
+          <button class="primary large" id="show-btn" disabled>SHOW ANSWER</button>
         </div>
         
         <div class="judge-controls">
           <button class="btn-correct" id="correct-btn" disabled>
-            <span class="icon">✓</span> 正解
+            <span class="icon">✓</span> CORRECT
           </button>
           <button class="btn-wrong" id="wrong-btn" disabled>
-            <span class="icon">×</span> 不正解
+            <span class="icon">×</span> WRONG
           </button>
         </div>
 
         <div class="sub-controls">
-          <button class="btn-text" id="next-btn" disabled>SKIP→</button>
+          <button class="btn-text" id="next-btn" disabled>SKIP →</button>
         </div>
       </div>
 
-      <button id="open-stats-btn" class="secondary-outline">このカテゴリの成績一覧</button>
+      <button id="open-stats-btn" class="secondary-outline" style="margin-top: 24px; font-size: 12px; font-weight: 800; letter-spacing: 0.1em;">
+        VIEW SESSION STATS
+      </button>
     </div>
 
     <div id="stats-section" style="display:none;">
       <div class="section-header">
-        <h2>成績一覧</h2>
-        <button id="back-to-quiz-btn" class="btn-text">← クイズに戻る</button>
+        <h2 class="field-label-en" style="font-size: 16px;">SESSION PERFORMANCE</h2>
+        <button id="back-to-quiz-btn" class="btn-text">← BACK TO TRAINING</button>
       </div>
       <div class="scroll-container card">
         <div id="table-container"></div>
       </div>
     </div>
 
-    <footer class="system-info">
+    <footer class="system-info" style="margin-top: 40px;">
       <details>
-        <summary>System Info</summary>
-        <div id="toolbar-info" class="small"></div>
+        <summary class="field-label-en" style="cursor: pointer; opacity: 0.5;">SYSTEM DIAGNOSTICS</summary>
+        <div id="toolbar-info" class="small" style="padding-top: 10px;"></div>
       </details>
     </footer>
   </div>
-
   <script>
     /* --- JavaScriptは元のロジックを100%継承 --- */
     // (ここに優香さんが貼ってくれた <script> の中身をそのまま入れます)
