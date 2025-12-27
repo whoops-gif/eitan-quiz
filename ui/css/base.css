@@ -1,137 +1,141 @@
-     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-      max-width: 800px;
-      margin: 24px auto;
-      padding: 0 16px 40px;
-      line-height: 1.6;
-    }
-    h1 {
-      font-size: 22px;
-      margin-bottom: 4px;
-    }
-    h2 {
-      font-size: 18px;
-      margin-top: 24px;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 4px;
-    }
-    .subtitle {
-      color: #555;
-      font-size: 13px;
-      margin-bottom: 16px;
-    }
-    .card {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 16px;
-      margin: 12px 0;
-      background: #fafafa;
-    }
-    .label {
-      font-size: 12px;
-      color: #777;
-    }
-    .question {
-      font-size: 24px;
-      font-weight: 600;
-      margin: 8px 0 4px;
-    }
-    .meaning {
-      font-size: 18px;
-      margin-top: 8px;
-    }
-    .pos {
-      color: #888;
-      font-size: 12px;
-      text-transform: lowercase;
-    }
-    .pos-val {
-      color: #888;
-      font-size: 12px;
-      text-transform: lowercase;
-    }
-    .details {
-      margin-top: 10px;
-    }
-  
-    .details summary {
-      cursor: pointer;
-      color: #555;
-      font-size: 13px;
-      font-weight: 400;
-    }
-    .details .box {
-      margin-top: 6px;
-      padding-top: 8px;
-      border-top: 1px dashed #ddd;
-      white-space: pre-wrap;
-      font-size: 13px;
-      color: #333;
-  }
+/* --- 全体設計 --- */
+:root {
+  --primary: #007AFF; /* iOS風の青 */
+  --bg: #F2F2F7;
+  --card-bg: #FFFFFF;
+  --text: #1C1C1E;
+}
 
-    .reading {
-      font-size: 14px;
-      color: #555;
-    }
-    .note {
-      font-size: 13px;
-      color: #666;
-      margin-top: 4px;
-    }
-    button {
-      border-radius: 999px;
-      border: 1px solid #ccc;
-      padding: 6px 14px;
-      margin: 4px 4px 4px 0;
-      font-size: 13px;
-      cursor: pointer;
-      background: white;
-    }
-    button.primary {
-      background: #222;
-      color: white;
-      border-color: #222;
-    }
-    button.good {
-      background: #1a7f37;
-      color: white;
-      border-color: #1a7f37;
-    }
-    button.bad {
-      background: #b91c1c;
-      color: white;
-      border-color: #b91c1c;
-    }
-    button:disabled {
-      opacity: 0.5;
-      cursor: default;
-    }
-    .small {
-      font-size: 12px;
-      color: #777;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 8px;
-      font-size: 12px;
-    }
-    th, td {
-      border-bottom: 1px solid #eee;
-      padding: 4px 2px;
-      text-align: left;
-    }
-    th {
-      font-weight: 600;
-      font-size: 11px;
-      color: #555;
-    }
-    .center { text-align: center; }
-    .toolbar { font-size: 13px; margin-bottom: 12px; }
-    a.home-link {
-      display: inline-block;
-      margin-bottom: 16px;
-      font-size: 14px;
-      color: #2563eb;
-      text-decoration: none;
-    }
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Hiragino Sans", sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.main-wrapper {
+  width: 100%;
+  max-width: 480px;
+  padding: 32px 20px;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.hero-subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: #8E8E93;
+  margin-bottom: 32px;
+}
+
+/* --- カードスタイル --- */
+.card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: none;
+}
+
+.field-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* --- セレクトボックス --- */
+select {
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
+  background-color: #F9F9FB;
+  border: 1px solid #E5E5EA;
+  border-radius: 12px;
+  color: var(--text);
+  appearance: none;
+  cursor: pointer;
+  margin-bottom: 24px;
+}
+
+/* --- ボタン --- */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+button {
+  width: 100%;
+  padding: 18px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 14px;
+  border: none;
+  transition: transform 0.1s;
+}
+
+button.primary {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 4px 14px rgba(0, 122, 255, 0.3);
+}
+
+button.secondary, button:not(.primary) {
+  background: white;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* --- 折りたたみ（details）の装飾 --- */
+details summary {
+  cursor: pointer;
+  list-style: none;
+  outline: none;
+  color: var(--primary);
+}
+
+.help-details {
+  margin-top: 20px;
+  border-top: 1px solid #F2F2F7;
+  padding-top: 12px;
+}
+
+.info-details[open] summary {
+  margin-bottom: 16px;
+}
+
+/* --- 品詞チップ --- */
+.pos-badge-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.pos-badge-list li {
+  background: #F2F2F7;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.pos-badge-list b { color: var(--primary); margin-right: 4px; }
+
+.small { font-size: 12px; color: #8E8E93; line-height: 1.6; }

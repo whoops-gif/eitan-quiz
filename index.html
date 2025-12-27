@@ -2,81 +2,74 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>単語クイズメニュー</title>
+  <title>優香の一問一答｜メニュー</title>
   <link rel="stylesheet" href="./ui/css/base.css" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 </head>
 <body>
-  <h1>単語クイズメニュー</h1>
+  <div class="main-wrapper">
+    <h1>単語クイズメニュー</h1>
 
-  <div class="subtitle">
-    優香専用の単語クイズアプリ。<br />
-    カテゴリを選んで、クイズか成績一覧のどちらかに進んでください。
-  </div>
-
-  <!-- カテゴリ選択 -->
-  <div class="card">
-    <label for="category">カテゴリを選択</label><br />
-    <select id="category">
-      <optgroup label="基礎英語">
-        <option value="basic_L1">基礎英語 Lv.1（CEFR A1–A2）</option>
-        <option value="basic_L2">基礎英語 Lv.2（CEFR B1）</option>
-        <!-- Lv.3は後で追加 -->
-        <!-- <option value="basic_L3">基礎英語 Lv.3（CEFR B2）</option> -->
-      </optgroup>
-
-      <optgroup label="大学院・過去問">
-        <option value="waseda2024">早稲田　一般英語 2024</option>
-        <option value="waseda2025">早稲田　一般英語 2025</option>
-      </optgroup>
-
-      <optgroup label="専門">
-        <option value="psycho">精神分析×文学（研究用語）</option>
-      </optgroup>
-
-      <optgroup label="旧">
-        <option value="cefr_b1">CEFR B1（基礎英語）</option>
-      </optgroup>
-
-      <option value="all">全部まとめて</option>
-    </select>
-
-    <div style="margin-top: 12px;">
-      <button class="primary" id="start-quiz">クイズを始める</button>
-      <button id="open-stats">成績一覧を見る</button>
+    <div class="hero-subtitle">
+      優香さん、今日も一歩ずつ進みましょう。
     </div>
 
-    <div class="small" style="margin-top: 10px;">
-      ・クイズ画面では英語→日本語＋カタカナ読みの一問一答が出題されます。<br />
-      ・正解／不正解はブラウザに記録され、成績一覧に反映されます。<br />
-      ・同じPC・同じブラウザならデータは消えません。
-    </div>
-  </div>
+    <div class="card main-action-card">
+      <label for="category" class="field-label">学習するカテゴリ</label>
+      <div class="custom-select">
+        <select id="category">
+          <optgroup label="基礎英語">
+            <option value="basic_L1">基礎英語 Lv.1（CEFR A1–A2）</option>
+            <option value="basic_L2">基礎英語 Lv.2（CEFR B1）</option>
+          </optgroup>
+          <optgroup label="大学院・過去問">
+            <option value="waseda2024">早稲田 一般英語 2024</option>
+            <option value="waseda2025">早稲田 一般英語 2025</option>
+          </optgroup>
+          <optgroup label="専門分野">
+            <option value="psycho">精神分析 × 文学（研究用語）</option>
+          </optgroup>
+          <option value="all">すべての単語をまとめて</option>
+        </select>
+      </div>
 
-  <!-- 品詞（POS）一覧 -->
-  <div class="card">
-    <strong style="font-size: 13px;">品詞（POS）一覧</strong>
-    <ul>
-      <li><b>V</b>：動詞（verb｜ヴァーブ）</li>
-      <li><b>N</b>：名詞（noun｜ナウン）</li>
-      <li><b>adj</b>：形容詞（adjective｜アジェクティブ）</li>
-      <li><b>adv</b>：副詞（adverb｜アドヴァーブ）</li>
-      <li><b>prep</b>：前置詞（preposition｜プレポジション）</li>
-      <li><b>conj</b>：接続詞（conjunction｜コンジャンクション）</li>
-    </ul>
-    <div class="small">
-      ※ S / V / O / C は「文型（主語・動詞・目的語・補語）」で、品詞（POS）とは別ものです。
-    </div>
-  </div>
+      <div class="button-group">
+        <button class="primary" id="start-quiz">クイズを始める</button>
+        <button id="open-stats" class="secondary">成績一覧を見る</button>
+      </div>
 
-  <!-- 今後追加 -->
-  <div class="card">
-    <strong style="font-size: 13px;">今後追加する予定のカテゴリ</strong>
-    <ul>
-      <li>精神分析：用語増量（200語くらいまで）</li>
-      <li>早稲田 一般英語：過去問からの重要語</li>
-      <li>（余裕があれば）文学作品別の単語セット</li>
-    </ul>
+      <details class="help-details">
+        <summary>アプリの使い方</summary>
+        <div class="small">
+          ・英語→日本語＋カタカナ読みの一問一答です。<br />
+          ・正解記録はブラウザに保存され、データは消えません。
+        </div>
+      </details>
+    </div>
+
+    <details class="card info-details">
+      <summary><strong style="font-size: 13px;">品詞（POS）の略称ガイド</strong></summary>
+      <ul class="pos-badge-list">
+        <li><b>V</b> 動詞</li>
+        <li><b>N</b> 名詞</li>
+        <li><b>adj</b> 形容詞</li>
+        <li><b>adv</b> 副詞</li>
+        <li><b>prep</b> 前置詞</li>
+        <li><b>conj</b> 接続詞</li>
+      </ul>
+      <div class="small">
+        ※ S/V/O/C（文型）とは別物です。
+      </div>
+    </details>
+
+    <details class="card info-details">
+      <summary><strong style="font-size: 13px;">アップデート予定</strong></summary>
+      <ul class="plan-list">
+        <li>精神分析：用語増量（200語規模へ）</li>
+        <li>早稲田 一般英語：過去問重要語</li>
+        <li>文学作品別の単語セット</li>
+      </ul>
+    </details>
   </div>
 
   <script>
