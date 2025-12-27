@@ -264,18 +264,56 @@ button.large { padding: 20px; font-size: 18px; }
   overflow: hidden;
 }
 
-/* 正解ボタン：鮮やかな緑 */
-.btn-correct {
-  background-color: #34C759 !important;
-  color: white !important;
-  box-shadow: 0 6px 0 #248A3D; /* 立体的なボタン */
+/* --- 判定ボタン：ネオン・アウトラインデザイン --- */
+
+.judge-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 10px 0;
 }
 
-/* 不正解ボタン：鮮やかな赤 */
+.btn-correct, .btn-wrong {
+  height: 70px; /* 少し高さを抑えてスマートに */
+  font-size: 18px;
+  font-weight: 800;
+  border-radius: 14px;
+  background-color: #FFFFFF !important; /* 中は白 */
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 正解：蛍光黄緑（ライム） */
+.btn-correct {
+  border: 3px solid #32CD32 !important; /* 鮮やかなライムグリーン */
+  color: #32CD32 !important;
+  box-shadow: 0 4px 15px rgba(50, 205, 50, 0.2) !important; /* 柔らかい緑の影 */
+}
+
+/* 不正解：蛍光オレンジ（サンセット） */
 .btn-wrong {
-  background-color: #FF3B30 !important;
-  color: white !important;
-  box-shadow: 0 6px 0 #C42B24; /* 立体的なボタン */
+  border: 3px solid #FF8C00 !important; /* 鮮やかなダークオレンジ */
+  color: #FF8C00 !important;
+  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.2) !important; /* 柔らかいオレンジの影 */
+}
+
+/* 押した時のリアクション（少しだけ小さくなる） */
+.btn-correct:active, .btn-wrong:active {
+  transform: scale(0.96) !important;
+  background-color: #F8F9FA !important; /* 押した時だけうっすらグレー */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+}
+
+/* 判定後の無効化状態 */
+.btn-correct:disabled, .btn-wrong:disabled {
+  border-color: #E5E5EA !important;
+  color: #AEAEB2 !important;
+  box-shadow: none !important;
+  transform: none !important;
 }
 
 /* 押した時のリアクション：沈み込む */
