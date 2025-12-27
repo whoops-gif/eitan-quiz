@@ -12,6 +12,14 @@
 
     <div class="hero-subtitle">
       優香さん、今日も一歩ずつ進みましょう。
+    </div> 
+
+    <div class="card search-card">
+     <label class="field-label">単語を検索</label>
+     <div class="search-box-container">
+     <input type="text" id="word-search" placeholder="英単語や日本語で検索..." autocomplete="off">
+     <div id="search-results" class="search-results-dropdown" style="display:none;"></div>
+     </div>
     </div>
 
     <div class="card main-action-card">
@@ -85,6 +93,58 @@
 
     startQuizBtn.addEventListener("click", () => goTo("quiz"));
     openStatsBtn.addEventListener("click", () => goTo("stats"));
+    
+    // 全単語データを統合して検索対象にする
+    let allWords = [];
+
+    // ページ読み込み時にデータをロード（パスは環境に合わせて調整してください）
+    async function loadSearchData() {
+      const categories = ['basic_L1']; // 検索対象にしたいjsonファイル名
+      for (const cat of categories) {
+        try {
+          const res = await fetch(`data/${cat}.json`);
+          const data = await res.json();
+          allWords = allWords.concat(data.words);
+        } catch (e) { console.error(e); }
+      }
+    }
+
+    const searchInput = document.getElementById('word-search');
+    const resultsDiv = document.getElementById('search-results');
+
+    searchInput.addEventListener('input', (e) => {
+      const val = e.target.value.toLowerCase();
+      if (!val) {
+        resultsDiv.style.display = 'none';
+        return;
+      }
+
+      const matches = allWords.filter(w => 
+        w.en.toLowerCase().includes(val) || 
+        w.ja.includes(val)
+      ).slice(0, 10); // 上位10件だけ表示
+
+      if (matches.length > 0) {
+        resultsDiv.innerHTML = matches.map(w => `
+          <div class="search-item" onclick="alert('${w.en}: ${w.ja}')">
+            <span class="word">${w.en}</span>
+            <span class="meaning">${w.ja}</span>
+          </div>
+        `).join('');
+        resultsDiv.style.display = 'block';
+      } else {
+        resultsDiv.style.display = 'none';
+      }
+    });
+
+    // 外側をクリックしたら閉じる
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.search-box-container')) {
+        resultsDiv.style.display = 'none';
+      }
+    });
+
+      loadSearchData();
   </script>
 </body>
 </html>

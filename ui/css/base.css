@@ -416,42 +416,33 @@ details summary {
 
 /* ---------- スキップボタンの調整（枠線あり・控えめ版） ---------- */
 .btn-text {
-  background-color: #ffffff !important; /* 中は白 */
-  border: 1px solid var(--border) !important; /* 控えめなグレーの枠線 */
-  color: var(--muted) !important; /* 文字も控えめなグレー */
+  background-color: #ffffff !important;
+  border: 1px solid var(--border) !important;
+  color: var(--muted) !important;
   
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: var(--radius-btn);
+  font-size: 13px; /* 少し小さくして「洗練された感じ」に */
+  font-weight: 700;
+  letter-spacing: 0.1em; /* 文字の間隔を広げてカッコよく */
+  border-radius: 30px; /* 丸みを強くして「カプセル型」にすると矢印と合います */
   
-  /* サイズと配置の調整 */
-  width: 100%; /* 横幅を他のボタンに合わせるなら100%、文字幅にするならauto */
-  max-width: 200px; /* 広がりすぎないように制限 */
-  height: 50px; /* 正解ボタンよりは低くして、優先度を下げる */
+  width: auto;
+  min-width: 140px; /* 短すぎないように */
+  height: 44px;
   
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 8px; /* 文字と矢印の間の絶妙な隙間 */
   
-  margin: 20px auto !important; /* 上下にしっかり余白をとる */
-  padding: 0 !important;
-  cursor: pointer;
+  margin: 24px auto !important;
+  padding: 0 20px !important;
+  text-transform: uppercase; /* 小文字で打っても大文字（SKIP）になるように */
 }
 
-/* スキップボタンも押した時に少しだけ変化させる */
+/* ホバーやアクティブ時の動きを少し「右」へ */
 .btn-text:active {
-  background-color: #f9f9fb !important;
-  transform: translateY(2px) scale(0.98) !important;
-}
-
-/* 無効化（disabled）のときの設定 */
-.btn-correct:disabled,
-.btn-wrong:disabled {
-  background: #f2f2f7 !important;
-  border-color: #e5e5ea !important;
-  color: #aeaeb2 !important;
-  box-shadow: none !important;
-  cursor: not-allowed;
+  transform: translateX(4px) scale(0.98) !important; /* 右に4px動くことで「進む」感を演出 */
+  background-color: #f2f2f7 !important;
 }
 
 /* reaction (JS用) */
@@ -553,3 +544,64 @@ button:disabled:active,
 
 /* リンクは遷移で見えにくいので、体感用に少し変化 */
 a.home-link:active { opacity: 0.8; }
+
+/* --- 検索機能のスタイル --- */
+.search-card {
+  padding: 16px !important;
+  margin-bottom: 24px;
+}
+
+.search-box-container {
+  position: relative;
+}
+
+#word-search {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 16px;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+#word-search:focus {
+  border-color: var(--primary);
+}
+
+.search-results-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  z-index: 100;
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+}
+
+.search-item {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--divider);
+  cursor: pointer;
+}
+
+.search-item:last-child { border-bottom: none; }
+
+.search-item .word {
+  font-weight: 800;
+  color: var(--text);
+  margin-right: 8px;
+}
+
+.search-item .meaning {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.search-item:hover {
+  background-color: #f8f9fc;
+}
