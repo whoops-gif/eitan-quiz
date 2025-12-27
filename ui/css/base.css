@@ -104,13 +104,14 @@ select {
   gap: 12px;
 }
 
+/* 修正前：border: none; が枠線を消していた */
 button {
   width: 100%;
   padding: 18px;
   font-size: 16px;
   font-weight: 700;
   border-radius: var(--radius-btn);
-  border: none;
+  border: 1px solid transparent; /* none ではなく透明な枠線にしておく */
   background: #fff;
   color: var(--primary);
 }
@@ -546,27 +547,28 @@ button:disabled:active,
 a.home-link:active { opacity: 0.8; }
 
 /* --- 検索機能のスタイル --- */
+/* --- 検索機能のスタイル（アップデート版） --- */
 .search-card {
-  padding: 16px !important;
+  padding: 20px !important;
   margin-bottom: 24px;
-}
-
-.search-box-container {
-  position: relative;
+  border: 1px solid var(--divider) !important; /* カード自体にも薄い枠線 */
 }
 
 #word-search {
   width: 100%;
   padding: 14px 16px;
   font-size: 16px;
-  border: 2px solid var(--border);
+  background-color: #f9f9fb; /* 少しだけグレーにして「入力欄」であることを強調 */
+  border: 2px solid var(--divider);
   border-radius: 12px;
   outline: none;
-  transition: border-color 0.2s;
+  transition: all 0.2s;
 }
 
 #word-search:focus {
   border-color: var(--primary);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.1);
 }
 
 .search-results-dropdown {
