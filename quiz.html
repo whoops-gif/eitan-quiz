@@ -299,7 +299,8 @@
       const index = cards.findIndex(c => c.id === card.id) + 1;
 
       qWordEl.textContent = card.en;
-      qIndexEl.textContent = `No.${index} / 全${cards.length}語`;
+      qIndexEl.textContent = `No.${cards.findIndex(c => c.id === card.id) + 1} / 全${cards.length}語`;
+
 
       ansAreaEl.style.display = "none";
       ansMeaningEl.textContent = "";
@@ -473,6 +474,11 @@
     }
 
     loadCardsFromJson();
+    window.addEventListener("pageshow", (e) => {
+  // iOS Safari が「戻る/進む/復元」でDOM状態を保持したまま戻す対策
+  if (e.persisted) location.reload();
+});
+
   </script>
 </body>
 </html>
