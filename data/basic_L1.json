@@ -113,5 +113,181 @@
   { "id": 200104, "level": "L1", "en": "where", "pos": ["adv","conj"], "jp": "どこで／どこに", "common": ["Where is ...?：どこ？"], "kana": "ウェア", "note": "■場所の疑問詞\n例：Where do you live?", "source": "CEFR A1" },
   { "id": 200105, "level": "L1", "en": "who", "pos": ["pron"], "jp": "誰", "common": ["Who is ...?：誰？"], "kana": "フー", "note": "■人を尋ねる\n例：Who are you?", "source": "CEFR A1" },
   { "id": 200106, "level": "L1", "en": "why", "pos": ["adv"], "jp": "なぜ", "common": ["Why ...?：なぜ？"], "kana": "ワイ", "note": "■理由を問う\n例：Why are you here?", "source": "CEFR A1" },
-  { "id": 200107, "level": "L1", "en": "how", "pos": ["adv"], "jp": "どのように", "common": ["How are you?：元気？", "How much ...?：いくら？"], "kana": "ハウ", "note": "■方法・状態\n例：How did you do it?", "source": "CEFR A1" }
-  ]
+  { "id": 200107, "level": "L1", "en": "how", "pos": ["adv"], "jp": "どのように", "common": ["How are you?：元気？", "How much ...?：いくら？"], "kana": "ハウ", "note": "■方法・状態\n例：How did you do it?", "source": "CEFR A1" },
+  { "id": 200108, "level": "L1", "en": "be", "pos": ["v"], "jp": "〜である", "common": ["be happy：幸せである", "be ready：準備ができている"], "kana": "ビー", "note": "■状態・存在\n主語＋be＋補語。\n例：I am ready.", "source": "CEFR A1" },
+{ "id": 200109, "level": "L1", "en": "am", "pos": ["v"], "jp": "〜です（I用）", "common": ["I am ...：私は〜です"], "kana": "アム", "note": "■be動詞（I）\n例：I am fine.", "source": "CEFR A1" },
+{ "id": 200110, "level": "L1", "en": "is", "pos": ["v"], "jp": "〜です（三人称単数）", "common": ["He is ...：彼は〜"], "kana": "イズ", "note": "■be動詞（三単現）", "source": "CEFR A1" },
+{ "id": 200111, "level": "L1", "en": "are", "pos": ["v"], "jp": "〜です（複数）", "common": ["They are ...：彼らは〜"], "kana": "アー", "note": "■be動詞（複数）", "source": "CEFR A1" },
+{ "id": 200112, "level": "L1", "en": "was", "pos": ["v"], "jp": "〜だった（単数）", "common": ["was tired：疲れていた"], "kana": "ウォズ", "note": "■be動詞 過去", "source": "CEFR A1" },
+{ "id": 200113, "level": "L1", "en": "were", "pos": ["v"], "jp": "〜だった（複数）", "common": ["were ready：準備ができていた"], "kana": "ワー", "note": "■be動詞 過去（複数）", "source": "CEFR A1" },
+
+{ "id": 200114, "level": "L1", "en": "do", "pos": ["v","aux"], "jp": "する／（助動）", "common": ["do homework：宿題をする", "Do you ...?：〜しますか"], "kana": "ドゥ", "note": "■一般動詞／疑問・否定補助", "source": "CEFR A1" },
+{ "id": 200115, "level": "L1", "en": "does", "pos": ["aux"], "jp": "する（三単現）", "common": ["Does he ...?：彼は〜する？"], "kana": "ダズ", "note": "■do 三単現", "source": "CEFR A1" },
+{ "id": 200116, "level": "L1", "en": "did", "pos": ["aux","v"], "jp": "した／（過去）", "common": ["Did you ...?：〜しましたか"], "kana": "ディド", "note": "■do 過去", "source": "CEFR A1" },
+
+{ "id": 200117, "level": "L1", "en": "have", "pos": ["v","aux"], "jp": "持つ／（完了）", "common": ["have time：時間がある", "have done：完了"], "kana": "ハヴ", "note": "■所有／完了補助", "source": "CEFR A1" },
+{ "id": 200118, "level": "L1", "en": "has", "pos": ["aux","v"], "jp": "持つ（三単現）", "common": ["has finished：終えた"], "kana": "ハズ", "note": "■have 三単現", "source": "CEFR A1" },
+{ "id": 200119, "level": "L1", "en": "had", "pos": ["aux","v"], "jp": "持っていた／完了過去", "common": ["had done：完了過去"], "kana": "ハド", "note": "■have 過去", "source": "CEFR A1" },
+
+{ "id": 200120, "level": "L1", "en": "can", "pos": ["aux"], "jp": "できる", "common": ["can do：できる", "can I ...?：〜していい？"], "kana": "キャン", "note": "■能力・許可", "source": "CEFR A1" },
+{ "id": 200121, "level": "L1", "en": "could", "pos": ["aux"], "jp": "できた／できるかも", "common": ["could be：〜かもしれない"], "kana": "クド", "note": "■can 過去／丁寧", "source": "CEFR A2" },
+{ "id": 200122, "level": "L1", "en": "will", "pos": ["aux"], "jp": "〜だろう／するつもり", "common": ["will do：するだろう"], "kana": "ウィル", "note": "■未来・意志", "source": "CEFR A1" },
+{ "id": 200123, "level": "L1", "en": "would", "pos": ["aux"], "jp": "だろう（過去）", "common": ["would like：〜したい"], "kana": "ウッド", "note": "■will 過去／丁寧", "source": "CEFR A2" },
+{ "id": 200124, "level": "L1", "en": "must", "pos": ["aux"], "jp": "〜しなければならない", "common": ["must do：必ずする"], "kana": "マスト", "note": "■義務・強い推量", "source": "CEFR A1" },
+{ "id": 200125, "level": "L1", "en": "should", "pos": ["aux"], "jp": "〜すべきだ", "common": ["should try：試すべき"], "kana": "シュド", "note": "■助言", "source": "CEFR A1" },
+{ "id": 200126, "level": "L1", "en": "may", "pos": ["aux"], "jp": "〜かもしれない／〜してよい", "common": ["may be：〜かも"], "kana": "メイ", "note": "■可能性・許可", "source": "CEFR A1" },
+{ "id": 200127, "level": "L1", "en": "might", "pos": ["aux"], "jp": "〜かもしれない", "common": ["might happen：起こるかも"], "kana": "マイト", "note": "■may の弱い可能性", "source": "CEFR A2" },
+{ "id": 200128, "level": "L1", "en": "at", "pos": ["prep"], "jp": "〜で／〜に（点）", "common": ["at home：家で", "at 7 o'clock：7時に"], "kana": "アット", "note": "■点的な場所・時刻\nin/on と対比で覚える", "source": "CEFR A1" },
+{ "id": 200129, "level": "L1", "en": "in", "pos": ["prep"], "jp": "〜の中で／〜に（広がり）", "common": ["in the room：部屋の中で", "in April：4月に"], "kana": "イン", "note": "■空間・期間\nat/on との使い分けが重要", "source": "CEFR A1" },
+{ "id": 200130, "level": "L1", "en": "on", "pos": ["prep"], "jp": "〜の上に／〜に（接触）", "common": ["on the table：机の上に", "on Monday：月曜に"], "kana": "オン", "note": "■接触・曜日", "source": "CEFR A1" },
+
+{ "id": 200131, "level": "L1", "en": "to", "pos": ["prep"], "jp": "〜へ／〜に", "common": ["go to school：学校へ行く"], "kana": "トゥ", "note": "■方向・到達点", "source": "CEFR A1" },
+{ "id": 200132, "level": "L1", "en": "from", "pos": ["prep"], "jp": "〜から", "common": ["from Japan：日本から"], "kana": "フロム", "note": "■起点", "source": "CEFR A1" },
+{ "id": 200133, "level": "L1", "en": "for", "pos": ["prep"], "jp": "〜のために／〜向けに", "common": ["for you：あなたのために"], "kana": "フォー", "note": "■目的・対象", "source": "CEFR A1" },
+{ "id": 200134, "level": "L1", "en": "with", "pos": ["prep"], "jp": "〜と一緒に／〜を使って", "common": ["with friends：友達と"], "kana": "ウィズ", "note": "■同伴・手段", "source": "CEFR A1" },
+{ "id": 200135, "level": "L1", "en": "without", "pos": ["prep"], "jp": "〜なしで", "common": ["without money：お金なしで"], "kana": "ウィズアウト", "note": "■with の反対", "source": "CEFR A1" },
+
+{ "id": 200136, "level": "L1", "en": "by", "pos": ["prep"], "jp": "〜によって／〜で", "common": ["by bus：バスで", "by myself：一人で"], "kana": "バイ", "note": "■手段・方法", "source": "CEFR A1" },
+{ "id": 200137, "level": "L1", "en": "about", "pos": ["prep"], "jp": "〜について", "common": ["talk about：〜について話す"], "kana": "アバウト", "note": "■話題", "source": "CEFR A1" },
+{ "id": 200138, "level": "L1", "en": "of", "pos": ["prep"], "jp": "〜の", "common": ["part of：〜の一部"], "kana": "オブ", "note": "■所属・関係\n日本語に出ないことが多い", "source": "CEFR A1" },
+
+{ "id": 200139, "level": "L1", "en": "as", "pos": ["prep","conj"], "jp": "〜として", "common": ["as a student：学生として"], "kana": "アズ", "note": "■役割・立場", "source": "CEFR A1" },
+{ "id": 200140, "level": "L1", "en": "like", "pos": ["prep"], "jp": "〜のような", "common": ["like you：あなたのような"], "kana": "ライク", "note": "■類似", "source": "CEFR A1" },
+
+{ "id": 200141, "level": "L1", "en": "before", "pos": ["prep","conj"], "jp": "〜の前に", "common": ["before dinner：夕食の前に"], "kana": "ビフォア", "note": "■時・順序", "source": "CEFR A1" },
+{ "id": 200142, "level": "L1", "en": "after", "pos": ["prep","conj"], "jp": "〜の後で", "common": ["after school：放課後"], "kana": "アフター", "note": "■時・順序", "source": "CEFR A1" },
+
+{ "id": 200143, "level": "L1", "en": "during", "pos": ["prep"], "jp": "〜の間に", "common": ["during class：授業中"], "kana": "デュアリング", "note": "■期間の途中", "source": "CEFR A1" },
+{ "id": 200144, "level": "L1", "en": "until", "pos": ["prep","conj"], "jp": "〜まで", "common": ["until tomorrow：明日まで"], "kana": "アンティル", "note": "■終点", "source": "CEFR A1" },
+
+{ "id": 200145, "level": "L1", "en": "over", "pos": ["prep"], "jp": "〜の上に／〜を越えて", "common": ["over there：あそこに"], "kana": "オーヴァー", "note": "■上方・越える", "source": "CEFR A1" },
+{ "id": 200146, "level": "L1", "en": "under", "pos": ["prep"], "jp": "〜の下に", "common": ["under the desk：机の下に"], "kana": "アンダー", "note": "■位置（下）", "source": "CEFR A1" },
+{ "id": 200147, "level": "L1", "en": "between", "pos": ["prep"], "jp": "〜の間に（2つ）", "common": ["between A and B：AとBの間"], "kana": "ビトウィーン", "note": "■2つ限定", "source": "CEFR A1" },
+{ "id": 200148, "level": "L1", "en": "among", "pos": ["prep"], "jp": "〜の中で（複数）", "common": ["among friends：友達の中で"], "kana": "アマング", "note": "■3つ以上", "source": "CEFR A1" },
+
+{ "id": 200149, "level": "L1", "en": "into", "pos": ["prep"], "jp": "〜の中へ", "common": ["go into：中へ入る"], "kana": "イントゥ", "note": "■動き＋in", "source": "CEFR A1" },
+{ "id": 200150, "level": "L1", "en": "out of", "pos": ["prep"], "jp": "〜の外へ", "common": ["out of the room：部屋の外へ"], "kana": "アウト・オブ", "note": "■動き＋out", "source": "CEFR A1" },
+
+{ "id": 200151, "level": "L1", "en": "around", "pos": ["prep","adv"], "jp": "〜の周りに", "common": ["around the park：公園の周りに"], "kana": "アラウンド", "note": "■周囲", "source": "CEFR A1" },
+{ "id": 200152, "level": "L1", "en": "near", "pos": ["prep"], "jp": "〜の近くに", "common": ["near the station：駅の近く"], "kana": "ニア", "note": "■距離", "source": "CEFR A1" },
+{ "id": 200153, "level": "L1", "en": "far from", "pos": ["prep"], "jp": "〜から遠く", "common": ["far from here：ここから遠い"], "kana": "ファー・フロム", "note": "■距離（遠）", "source": "CEFR A1" },
+
+{ "id": 200154, "level": "L1", "en": "through", "pos": ["prep"], "jp": "〜を通って", "common": ["through the door：ドアを通って"], "kana": "スルー", "note": "■内部通過", "source": "CEFR A1" },
+{ "id": 200155, "level": "L1", "en": "across", "pos": ["prep"], "jp": "〜を横切って", "common": ["across the street：通りを渡って"], "kana": "アクロス", "note": "■横断", "source": "CEFR A1" },
+
+{ "id": 200156, "level": "L1", "en": "per", "pos": ["prep"], "jp": "〜につき", "common": ["per day：1日につき"], "kana": "パー", "note": "■割合", "source": "CEFR A1" },
+{ "id": 200157, "level": "L1", "en": "via", "pos": ["prep"], "jp": "〜経由で", "common": ["via email：メールで"], "kana": "ヴィア", "note": "■経路", "source": "CEFR A1" },
+{ "id": 200158, "level": "L1", "en": "myself", "pos": ["pron"], "jp": "私自身", "common": ["by myself：ひとりで", "I did it myself：自分でやった"], "kana": "マイセルフ", "note": "■再帰代名詞（I→myself）\n(1) 目的語として「自分を」\n(2) 強調として「〜自身が」\n例：I taught myself English.", "source": "CEFR A2" },
+{ "id": 200159, "level": "L1", "en": "yourself", "pos": ["pron"], "jp": "あなた自身", "common": ["Take care of yourself：自分を大事にして", "Do it yourself：自分でやって"], "kana": "ユアセルフ", "note": "■再帰代名詞（you→yourself）\n単数のyouに対応。\n強調・目的語どちらにも使う。", "source": "CEFR A2" },
+{ "id": 200160, "level": "L1", "en": "yourselves", "pos": ["pron"], "jp": "あなたたち自身", "common": ["Help yourselves：ご自由に（取って）", "Do it yourselves：自分たちでやって"], "kana": "ユアセルヴズ", "note": "■再帰代名詞（複数you）\n複数の相手に対して使う。\n例：Please introduce yourselves.", "source": "CEFR A2" },
+{ "id": 200161, "level": "L1", "en": "himself", "pos": ["pron"], "jp": "彼自身", "common": ["by himself：彼ひとりで", "He did it himself：彼自身がやった"], "kana": "ヒムセルフ", "note": "■再帰代名詞（he→himself）\n強調：The president himself said so. のように名詞の直後にも置ける。", "source": "CEFR A2" },
+{ "id": 200162, "level": "L1", "en": "herself", "pos": ["pron"], "jp": "彼女自身", "common": ["by herself：彼女ひとりで", "She did it herself：彼女自身がやった"], "kana": "ハーセルフ", "note": "■再帰代名詞（she→herself）\n目的語：「彼女自身を」／強調：「彼女自身が」", "source": "CEFR A2" },
+{ "id": 200163, "level": "L1", "en": "itself", "pos": ["pron"], "jp": "それ自体", "common": ["The problem itself：問題そのもの", "by itself：それだけで"], "kana": "イットセルフ", "note": "■再帰代名詞（it→itself）\n無生物・概念にも使う。\n例：The idea itself is simple.", "source": "CEFR A2" },
+{ "id": 200164, "level": "L1", "en": "ourselves", "pos": ["pron"], "jp": "私たち自身", "common": ["by ourselves：私たちだけで", "We did it ourselves：自分たちでやった"], "kana": "アワセルヴズ", "note": "■再帰代名詞（we→ourselves）\n例：We prepared ourselves for the test.", "source": "CEFR A2" },
+{ "id": 200165, "level": "L1", "en": "themselves", "pos": ["pron"], "jp": "彼ら／彼女ら自身", "common": ["by themselves：彼らだけで", "They did it themselves：彼ら自身がやった"], "kana": "ゼムセルヴズ", "note": "■再帰代名詞（they→themselves）\n例：They introduced themselves.", "source": "CEFR A2" },
+
+{ "id": 200166, "level": "L1", "en": "this", "pos": ["det","pron"], "jp": "これ／この", "common": ["this book：この本", "This is ...：これは〜です"], "kana": "ディス", "note": "■指示（近い）\ndet：名詞の前（this pen）\npron：単独（This is good）", "source": "CEFR A1" },
+{ "id": 200167, "level": "L1", "en": "that", "pos": ["det","pron"], "jp": "あれ／その", "common": ["that day：その日", "That is ...：あれは〜です"], "kana": "ザット", "note": "■指示（遠い）\n会話で「それ」もthatになる。\n※接続詞that（〜ということ）は別用法だが最重要。", "source": "CEFR A1" },
+{ "id": 200168, "level": "L1", "en": "these", "pos": ["det","pron"], "jp": "これら／これらの", "common": ["these books：これらの本", "These are ...：これらは〜"], "kana": "ジーズ", "note": "■thisの複数（近い複数）\n例：These are mine.", "source": "CEFR A1" },
+{ "id": 200169, "level": "L1", "en": "those", "pos": ["det","pron"], "jp": "あれら／それらの", "common": ["those people：あの人たち", "Those are ...：あれらは〜"], "kana": "ゾウズ", "note": "■thatの複数（遠い複数）\n例：Those are yours.", "source": "CEFR A1" },
+
+{ "id": 200170, "level": "L1", "en": "a", "pos": ["det"], "jp": "1つの（不特定）", "common": ["a book：本を1冊", "a lot：たくさん"], "kana": "ア", "note": "■不定冠詞\n子音で始まる発音の前。\n“どれでもいい1つ”の感覚。", "source": "CEFR A1" },
+{ "id": 200171, "level": "L1", "en": "an", "pos": ["det"], "jp": "1つの（不特定）", "common": ["an apple：りんご1つ", "an hour：1時間（hは発音しない）"], "kana": "アン", "note": "■不定冠詞\n母音で始まる発音の前。\n文字ではなく“発音”で判断。", "source": "CEFR A1" },
+{ "id": 200172, "level": "L1", "en": "the", "pos": ["det"], "jp": "その（特定）", "common": ["the book：その本", "the same：同じ"], "kana": "ザ", "note": "■定冠詞\n話し手・聞き手で「どれか分かっている」もの。\n例：Open the door.", "source": "CEFR A1" },
+
+{ "id": 200173, "level": "L1", "en": "one", "pos": ["pron","n"], "jp": "1つ／（代名詞）〜の方", "common": ["one of ...：〜のうちの1つ", "Which one?：どれ？"], "kana": "ワン", "note": "■数／代名詞\n名詞の言い換えとしても使う。\n例：I want the red one.", "source": "CEFR A1" },
+{ "id": 200174, "level": "L1", "en": "ones", "pos": ["pron","n"], "jp": "複数のもの", "common": ["the big ones：大きい方（複数）", "These ones：こっち（複数）"], "kana": "ワンズ", "note": "■oneの複数\n例：I like these ones better.", "source": "CEFR A2" },
+
+{ "id": 200175, "level": "L1", "en": "another", "pos": ["det","pron"], "jp": "もう1つの／別の", "common": ["another day：別の日", "one another：お互いに"], "kana": "アナザー", "note": "■追加の1つ／別物\none more の感覚。\n例：Can I have another?", "source": "CEFR A2" },
+{ "id": 200176, "level": "L1", "en": "other", "pos": ["det","adj","pron"], "jp": "他の", "common": ["other people：他の人", "the other day：この前"], "kana": "アザー", "note": "■残り・別の\nthe other：残りの片方／もう一方。", "source": "CEFR A2" },
+{ "id": 200177, "level": "L1", "en": "others", "pos": ["pron"], "jp": "他の人たち／他のもの", "common": ["some ... others ...：ある〜、別の〜", "help others：他人を助ける"], "kana": "アザーズ", "note": "■otherの代名詞形（名詞なし）\n例：Some like it; others don’t.", "source": "CEFR A2" },
+{ "id": 200178, "level": "L1", "en": "the other", "pos": ["pron","det"], "jp": "もう一方／残り", "common": ["one ... the other：一方…もう一方", "the other side：反対側"], "kana": "ジ・アザー", "note": "■2つのうち残りの1つ\n例：I have two pens. One is blue; the other is red.", "source": "CEFR A2" },
+
+{ "id": 200179, "level": "L1", "en": "each", "pos": ["det","pron"], "jp": "それぞれ", "common": ["each day：毎日それぞれ", "each of them：彼らそれぞれ"], "kana": "イーチ", "note": "■個別に見る\neach + 単数扱い。\n例：Each student has a book.", "source": "CEFR A2" },
+{ "id": 200180, "level": "L1", "en": "every", "pos": ["det"], "jp": "すべての（1つ残らず）", "common": ["every day：毎日", "every time：毎回"], "kana": "エヴリ", "note": "■全体を網羅\nevery + 単数扱い。\n※each（個別）/ every（全体）でニュアンス差。", "source": "CEFR A2" },
+{ "id": 200181, "level": "L1", "en": "all", "pos": ["det","pron"], "jp": "すべて", "common": ["all people：すべての人", "all of them：彼ら全員"], "kana": "オール", "note": "■総量として全部\nall + 複数/不可算どちらも可。\n例：All of us are here.", "source": "CEFR A1" },
+{ "id": 200182, "level": "L1", "en": "both", "pos": ["det","pron"], "jp": "両方", "common": ["both of them：両方とも", "both A and B：AもBも"], "kana": "ボウス", "note": "■2つに限定\n例：Both answers are correct.", "source": "CEFR A2" },
+{ "id": 200183, "level": "L1", "en": "either", "pos": ["det","pron","adv"], "jp": "どちらか（2つのうち）", "common": ["either A or B：AかBどちらか", "I don't like it either：私も好きじゃない"], "kana": "イーザー", "note": "■2択\n(1) either A or B\n(2) 否定文で副詞：〜もまた（not ... either）", "source": "CEFR A2" },
+{ "id": 200184, "level": "L1", "en": "neither", "pos": ["det","pron"], "jp": "どちらも〜ない（2つのうち）", "common": ["neither A nor B：AでもBでもない", "Neither is ...：どちらも〜ない"], "kana": "ナイザー", "note": "■2つとも否定\n例：Neither answer is correct.", "source": "CEFR A2" },
+
+{ "id": 200185, "level": "L1", "en": "some", "pos": ["det","pron"], "jp": "いくつかの／ある程度の", "common": ["some people：何人か", "some of them：そのうちの何人か"], "kana": "サム", "note": "■肯定文で使いやすい\n“ゼロではない”の感覚。\n例：I have some questions.", "source": "CEFR A1" },
+{ "id": 200186, "level": "L1", "en": "any", "pos": ["det","pron"], "jp": "どれでも／いくつか（疑問・否定）", "common": ["any time：いつでも", "Do you have any ...?：何かある？"], "kana": "エニ", "note": "■疑問・否定で頻出\n肯定文のanyは「どれでも（自由）」\n例：You can choose any.", "source": "CEFR A1" },
+{ "id": 200187, "level": "L1", "en": "no", "pos": ["det"], "jp": "〜ない（1つも）", "common": ["no idea：全くわからない", "no time：時間がない"], "kana": "ノウ", "note": "■no + 名詞 = 否定\nnot ... any と同種。\n例：I have no money.", "source": "CEFR A1" },
+
+{ "id": 200188, "level": "L1", "en": "many", "pos": ["det","adj","pron"], "jp": "多くの（可算）", "common": ["many people：多くの人", "How many ...?：いくつ？"], "kana": "メニー", "note": "■可算名詞\n例：many books（本が多い）", "source": "CEFR A1" },
+{ "id": 200189, "level": "L1", "en": "much", "pos": ["det","adv","pron"], "jp": "多くの（不可算）", "common": ["much time：たくさんの時間", "How much ...?：いくら？"], "kana": "マッチ", "note": "■不可算名詞\n副詞much：とても（否定・疑問で頻出）\n例：I don't eat much.", "source": "CEFR A1" },
+
+{ "id": 200190, "level": "L1", "en": "more", "pos": ["det","adv","adj","pron"], "jp": "もっと／より多く", "common": ["one more：もう1つ", "more than ...：〜より多い"], "kana": "モア", "note": "■比較級・追加\n例：I need more time.", "source": "CEFR A1" },
+{ "id": 200191, "level": "L1", "en": "most", "pos": ["det","adv","adj","pron"], "jp": "ほとんど／最も", "common": ["most people：ほとんどの人", "the most important：最も重要"], "kana": "モウスト", "note": "■最上級／大部分\n例：Most students agree.", "source": "CEFR A2" },
+
+{ "id": 200192, "level": "L1", "en": "few", "pos": ["det","adj","pron"], "jp": "ほとんどない（可算）", "common": ["few people：ほとんど人がいない"], "kana": "フュー", "note": "■可算・少ない（否定寄り）\nfew = 期待より少ない。", "source": "CEFR A2" },
+{ "id": 200193, "level": "L1", "en": "a few", "pos": ["det","pron"], "jp": "少し（可算）", "common": ["a few minutes：数分", "a few people：数人"], "kana": "ア・フュー", "note": "■可算・少し（肯定寄り）\nfew（ほぼゼロ）との対比が重要。", "source": "CEFR A2" },
+{ "id": 200194, "level": "L1", "en": "little", "pos": ["det","adj","pron"], "jp": "ほとんどない（不可算）", "common": ["little time：ほとんど時間がない"], "kana": "リトル", "note": "■不可算・少ない（否定寄り）\n例：There is little water.", "source": "CEFR A2" },
+{ "id": 200195, "level": "L1", "en": "a little", "pos": ["det","pron"], "jp": "少し（不可算）", "common": ["a little water：少しの水", "a little bit：ちょっと"], "kana": "ア・リトル", "note": "■不可算・少し（肯定寄り）\n例：I have a little time.", "source": "CEFR A2" },
+
+{ "id": 200196, "level": "L1", "en": "enough", "pos": ["det","adv","adj"], "jp": "十分な／十分に", "common": ["enough time：十分な時間", "good enough：十分に良い"], "kana": "イナフ", "note": "■語順が独特\nadj：enough + 名詞（enough money）\nadv：形容詞/副詞 + enough（fast enough）", "source": "CEFR A2" },
+{ "id": 200197, "level": "L1", "en": "several", "pos": ["det","adj"], "jp": "いくつか（3以上）", "common": ["several times：数回", "several people：数人"], "kana": "セヴラル", "note": "■someより“もう少し多め”\n例：I waited several minutes.", "source": "CEFR A2" },
+{ "id": 200198, "level": "L1", "en": "a lot of", "pos": ["det"], "jp": "たくさんの", "common": ["a lot of people：たくさんの人", "a lot of time：たくさんの時間"], "kana": "ア・ロット・オブ", "note": "■可算/不可算どちらもOK\nmany/much の代替として万能。", "source": "CEFR A2" },
+{ "id": 200199, "level": "L1", "en": "lots of", "pos": ["det"], "jp": "たくさんの", "common": ["lots of work：たくさんの仕事", "lots of things：たくさんのこと"], "kana": "ロッツ・オブ", "note": "■a lot of とほぼ同じ（ややカジュアル）", "source": "CEFR A2" },
+{ "id": 200200, "level": "L1", "en": "half", "pos": ["n","det","pron"], "jp": "半分", "common": ["half of them：その半分", "half an hour：30分"], "kana": "ハーフ", "note": "■割合\nhalf of + 名詞/代名詞。\n例：Half of the class agreed.", "source": "CEFR A2" },
+
+{ "id": 200201, "level": "L1", "en": "less", "pos": ["adj","adv","det"], "jp": "より少ない", "common": ["less time：より少ない時間", "less than ...：〜より少ない"], "kana": "レス", "note": "■不可算の比較（littleの比較）\n可算は fewer（L2寄り）。", "source": "CEFR A2" },
+{ "id": 200202, "level": "L1", "en": "least", "pos": ["adj","adv","pron"], "jp": "最も少ない／せめて", "common": ["at least：少なくとも", "the least：最も少ない"], "kana": "リースト", "note": "■最上級（littleの最上）\n表現 at least は最重要。", "source": "CEFR A2" },
+
+{ "id": 200203, "level": "L1", "en": "same", "pos": ["adj","det"], "jp": "同じ", "common": ["the same：同じ", "the same as ...：〜と同じ"], "kana": "セイム", "note": "■冠詞とセットで頻出\nthe same（同一）\n例：We have the same idea.", "source": "CEFR A2" },
+{ "id": 200204, "level": "L1", "en": "different", "pos": ["adj"], "jp": "違う", "common": ["be different：違う", "different from ...：〜と違う"], "kana": "ディファレント", "note": "■比較の基本語\n例：This is different from that.", "source": "CEFR A2" },
+
+{ "id": 200205, "level": "L1", "en": "someone", "pos": ["pron"], "jp": "誰か", "common": ["someone else：他の誰か", "Someone is here：誰かいる"], "kana": "サムワン", "note": "■some + one（肯定寄り）\n肯定文で自然。\n例：I saw someone.", "source": "CEFR A2" },
+{ "id": 200206, "level": "L1", "en": "somebody", "pos": ["pron"], "jp": "誰か", "common": ["somebody knows：誰かが知っている"], "kana": "サムバディ", "note": "■someoneとほぼ同義（やや口語）", "source": "CEFR A2" },
+{ "id": 200207, "level": "L1", "en": "anyone", "pos": ["pron"], "jp": "誰か（疑問・否定）／誰でも", "common": ["anyone else：他に誰か", "Anyone can do it：誰でもできる"], "kana": "エニワン", "note": "■疑問・否定で「誰か」\n肯定で「誰でも（一般）」にもなる。", "source": "CEFR A2" },
+{ "id": 200208, "level": "L1", "en": "anybody", "pos": ["pron"], "jp": "誰か／誰でも", "common": ["Does anybody ...?：誰か〜する？"], "kana": "エニバディ", "note": "■anyoneとほぼ同義（口語寄り）", "source": "CEFR A2" },
+{ "id": 200209, "level": "L1", "en": "everyone", "pos": ["pron"], "jp": "みんな", "common": ["Everyone knows：みんな知っている", "Hello, everyone：みなさんこんにちは"], "kana": "エヴリワン", "note": "■全員\n文法は単数扱いが基本。\n例：Everyone is ready.", "source": "CEFR A2" },
+{ "id": 200210, "level": "L1", "en": "everybody", "pos": ["pron"], "jp": "みんな", "common": ["Everybody says：みんな言う"], "kana": "エヴリバディ", "note": "■everyoneと同義（口語寄り）", "source": "CEFR A2" },
+{ "id": 200211, "level": "L1", "en": "no one", "pos": ["pron"], "jp": "誰も〜ない", "common": ["No one knows：誰も知らない"], "kana": "ノウ・ワン", "note": "■否定の主語\nno one = nobody。\n例：No one came.", "source": "CEFR A2" },
+{ "id": 200212, "level": "L1", "en": "nobody", "pos": ["pron"], "jp": "誰も〜ない", "common": ["Nobody understands：誰も理解しない"], "kana": "ノウバディ", "note": "■no one と同義（口語寄り）", "source": "CEFR A2" },
+
+{ "id": 200213, "level": "L1", "en": "something", "pos": ["pron"], "jp": "何か（肯定寄り）", "common": ["something important：何か重要なこと", "Something is wrong：何かおかしい"], "kana": "サムシング", "note": "■肯定文で自然\n形容詞は後ろに置く（something new）。", "source": "CEFR A2" },
+{ "id": 200214, "level": "L1", "en": "anything", "pos": ["pron"], "jp": "何か（疑問・否定）／何でも", "common": ["Do you have anything?：何かある？", "Anything is fine：何でもいい"], "kana": "エニシング", "note": "■疑問・否定で「何か」\n肯定で「何でも」にもなる。", "source": "CEFR A2" },
+{ "id": 200215, "level": "L1", "en": "everything", "pos": ["pron"], "jp": "すべて", "common": ["Everything is ready：全部準備できた", "know everything：何でも知っている"], "kana": "エヴリシング", "note": "■全体\n単数扱いが基本。\n例：Everything was fine.", "source": "CEFR A2" },
+{ "id": 200216, "level": "L1", "en": "nothing", "pos": ["pron"], "jp": "何も〜ない", "common": ["Nothing happened：何も起きなかった", "It's nothing：大したことない"], "kana": "ナッシング", "note": "■否定の主語／補語\nnothing + 形容詞（nothing new）。", "source": "CEFR A2" },
+
+{ "id": 200217, "level": "L1", "en": "somewhere", "pos": ["adv","pron"], "jp": "どこか（肯定寄り）", "common": ["go somewhere：どこかへ行く", "somewhere else：他のどこか"], "kana": "サムウェア", "note": "■場所（肯定寄り）\n例：I left it somewhere.", "source": "CEFR A2" },
+{ "id": 200218, "level": "L1", "en": "anywhere", "pos": ["adv","pron"], "jp": "どこか（疑問・否定）／どこでも", "common": ["Is it anywhere?：どこかにある？", "You can sit anywhere：どこでも座っていい"], "kana": "エニウェア", "note": "■疑問・否定で「どこか」\n肯定で「どこでも」。", "source": "CEFR A2" },
+{ "id": 200219, "level": "L1", "en": "everywhere", "pos": ["adv","pron"], "jp": "どこでも／至る所", "common": ["everywhere in the world：世界中で", "It's everywhere：どこにでもある"], "kana": "エヴリウェア", "note": "■場所の全体\n例：I looked everywhere.", "source": "CEFR A2" },
+{ "id": 200220, "level": "L1", "en": "nowhere", "pos": ["adv","pron"], "jp": "どこにも〜ない", "common": ["nowhere to go：行く所がない", "Nowhere is safe：どこも安全じゃない"], "kana": "ノウウェア", "note": "■場所の否定\n例：I found it nowhere.", "source": "CEFR A2" },
+
+{ "id": 200221, "level": "L1", "en": "which", "pos": ["pron","det"], "jp": "どれ／どちら（選択）", "common": ["Which is ...?：どれが〜？", "Which book?：どの本？"], "kana": "ウィッチ", "note": "■選択の疑問詞\nwhat（内容）/ which（候補から選ぶ）\n例：Which do you prefer?", "source": "CEFR A2" },
+{ "id": 200222, "level": "L1", "en": "whose", "pos": ["det","pron"], "jp": "誰の", "common": ["Whose is this?：これは誰の？", "Whose book?：誰の本？"], "kana": "フーズ", "note": "■所有を問う\nwhose + 名詞（whose bag）\n単独でも可（Whose is it?）。", "source": "CEFR A2" },
+{ "id": 200223, "level": "L1", "en": "whom", "pos": ["pron"], "jp": "誰を／誰に（目的格）", "common": ["To whom ...?：誰に？（硬い）", "Whom did you see?：誰を見た？"], "kana": "フーム", "note": "■whoの目的格（硬め）\n日常会話ではwhoで代用されやすいが、読解で重要。", "source": "CEFR A2" },
+
+{ "id": 200224, "level": "L1", "en": "what time", "pos": ["phrase"], "jp": "何時", "common": ["What time is it?：今何時？", "What time do you ...?：何時に〜する？"], "kana": "ワット・タイム", "note": "■時間を具体的に聞く定番表現\nwhen（いつ）よりピンポイント。", "source": "CEFR A1" },
+{ "id": 200225, "level": "L1", "en": "how many", "pos": ["phrase"], "jp": "いくつ（可算）", "common": ["How many books?：本は何冊？"], "kana": "ハウ・メニー", "note": "■可算名詞\nhow many + 複数名詞。\n例：How many people came?", "source": "CEFR A1" },
+{ "id": 200226, "level": "L1", "en": "how much", "pos": ["phrase"], "jp": "いくら／どれくらい（不可算）", "common": ["How much is it?：いくら？", "How much time?：どれくらい時間？"], "kana": "ハウ・マッチ", "note": "■値段／不可算量\n例：How much water do you need?", "source": "CEFR A1" },
+{ "id": 200227, "level": "L1", "en": "how long", "pos": ["phrase"], "jp": "どのくらい長く（期間・長さ）", "common": ["How long does it take?：どのくらいかかる？"], "kana": "ハウ・ロング", "note": "■期間・所要時間\n例：How long have you lived here?", "source": "CEFR A2" },
+{ "id": 200228, "level": "L1", "en": "how often", "pos": ["phrase"], "jp": "どのくらいの頻度で", "common": ["How often do you ...?：どのくらいの頻度で〜？"], "kana": "ハウ・オフン", "note": "■頻度\n答え：often / sometimes / every day など。", "source": "CEFR A2" },
+{ "id": 200229, "level": "L1", "en": "how far", "pos": ["phrase"], "jp": "どのくらい遠い", "common": ["How far is it?：どれくらい遠い？"], "kana": "ハウ・ファー", "note": "■距離\n答え：It's 2 km. / It's far. など。", "source": "CEFR A2" },
+{ "id": 200230, "level": "L1", "en": "how old", "pos": ["phrase"], "jp": "何歳", "common": ["How old are you?：何歳？"], "kana": "ハウ・オールド", "note": "■年齢\n答え：I'm 25 (years old).", "source": "CEFR A1" },
+{ "id": 200231, "level": "L1", "en": "what kind of", "pos": ["phrase"], "jp": "どんな種類の", "common": ["What kind of music?：どんな音楽？"], "kana": "ワット・カインド・オブ", "note": "■種類・性質を聞く\nwhich（選択）/ what kind of（特徴）で使い分け。", "source": "CEFR A2" },
+
+{ "id": 200232, "level": "L1", "en": "each other", "pos": ["pron"], "jp": "お互いに", "common": ["help each other：助け合う", "talk to each other：話し合う"], "kana": "イーチ・アザー", "note": "■相互\n2人以上で成立。\n例：They understand each other.", "source": "CEFR A2" },
+{ "id": 200233, "level": "L1", "en": "none", "pos": ["pron"], "jp": "どれも〜ない／誰も〜ない", "common": ["none of them：そのうちどれも〜ない", "None left：残りゼロ"], "kana": "ナン", "note": "■ゼロ\nnone of + 複数/不可算。\n例：None of the answers is correct.", "source": "CEFR A2" },
+{ "id": 200234, "level": "L1", "en": "such", "pos": ["det","adj"], "jp": "そのような", "common": ["such a thing：そんなこと", "such as ...：例えば〜"], "kana": "サッチ", "note": "■指示・性質\nsuch a + 単数名詞。\nsuch as は例示で頻出。", "source": "CEFR A2" },
+
+{ "id": 200235, "level": "L1", "en": "here", "pos": ["adv"], "jp": "ここに／ここで", "common": ["come here：ここに来て", "Here it is：ほらこれだ"], "kana": "ヒア", "note": "■場所（話し手側）\n例：I’m here now.", "source": "CEFR A1" },
+{ "id": 200236, "level": "L1", "en": "there", "pos": ["adv"], "jp": "そこに／あそこに", "common": ["go there：そこへ行く", "There is ...：〜がある"], "kana": "ゼア", "note": "■場所（話し手から離れた所）\nthere is/are の導入語としても最重要。", "source": "CEFR A1" },
+
+{ "id": 200237, "level": "L1", "en": "now", "pos": ["adv"], "jp": "今", "common": ["right now：今すぐ", "from now on：これから"], "kana": "ナウ", "note": "■時点\n例：I’m busy now.", "source": "CEFR A1" },
+{ "id": 200238, "level": "L1", "en": "then", "pos": ["adv"], "jp": "そのとき／それなら", "common": ["back then：当時", "Then, let's ...：それなら〜しよう"], "kana": "ゼン", "note": "■時系列／会話のつなぎ\n文脈で「その後」「それなら」。", "source": "CEFR A2" },
+
+{ "id": 200239, "level": "L1", "en": "always", "pos": ["adv"], "jp": "いつも", "common": ["always do：いつもする", "as always：いつものように"], "kana": "オールウェイズ", "note": "■頻度100%\n例：He always helps me.", "source": "CEFR A1" },
+{ "id": 200240, "level": "L1", "en": "often", "pos": ["adv"], "jp": "よく（頻繁に）", "common": ["often do：よくする", "How often?：どのくらい頻繁に？"], "kana": "オフン", "note": "■頻度高\n例：I often read at night.", "source": "CEFR A1" },
+{ "id": 200241, "level": "L1", "en": "sometimes", "pos": ["adv"], "jp": "ときどき", "common": ["sometimes do：ときどきする"], "kana": "サムタイムズ", "note": "■頻度中\n例：Sometimes I walk to work.", "source": "CEFR A1" },
+{ "id": 200242, "level": "L1", "en": "never", "pos": ["adv"], "jp": "決して〜ない", "common": ["never do：決してしない", "Never mind：気にしないで"], "kana": "ネヴァー", "note": "■頻度0%（否定）\n例：I never smoke.", "source": "CEFR A1" },
+{ "id": 200243, "level": "L1", "en": "usually", "pos": ["adv"], "jp": "たいてい", "common": ["usually do：たいていする"], "kana": "ユージュアリ", "note": "■頻度高め（alwaysより弱い）\n例：I usually get up at 7.", "source": "CEFR A2" },
+{ "id": 200244, "level": "L1", "en": "maybe", "pos": ["adv"], "jp": "たぶん", "common": ["Maybe yes：たぶんそう", "Maybe later：たぶん後で"], "kana": "メイビー", "note": "■推量（口語）\n文頭で使われやすい。\n例：Maybe he is right.", "source": "CEFR A2" },
+{ "id": 200245, "level": "L1", "en": "also", "pos": ["adv"], "jp": "〜もまた", "common": ["also do：〜もする", "not only ... but also ...：〜だけでなく…も"], "kana": "オールソウ", "note": "■追加\n位置：beの後／一般動詞の前が基本。\n例：I also like it.", "source": "CEFR A2" },
+
+{ "id": 200246, "level": "L1", "en": "too", "pos": ["adv"], "jp": "〜も／〜すぎる", "common": ["me too：私も", "too much：多すぎる"], "kana": "トゥー", "note": "■(1) 〜も（文末）\n(2) 〜すぎる（too + 形容詞/副詞）\n例：It’s too expensive.", "source": "CEFR A1" },
+{ "id": 200247, "level": "L1", "en": "very", "pos": ["adv"], "jp": "とても", "common": ["very good：とても良い", "not very ...：あまり〜ない"], "kana": "ヴェリ", "note": "■程度\nvery + 形容詞/副詞。\n否定と相性が良い：not very big（あまり大きくない）。", "source": "CEFR A1" }
+
+]
