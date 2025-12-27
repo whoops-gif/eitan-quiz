@@ -1,6 +1,7 @@
      body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
       max-width: 800px;
+      background: pink !important;
       margin: 24px auto;
       padding: 0 16px 40px;
       line-height: 1.6;
