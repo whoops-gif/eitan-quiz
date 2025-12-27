@@ -174,7 +174,7 @@
       const jpText = currentCard.jp ? `<div class="jp-main">${escapeHtml(currentCard.jp)}</div>` : "";
       const posText = Array.isArray(currentCard.pos) ? `<div class="pos-container">${formatPos(currentCard.pos)}</div>` : "";
       const commonText = Array.isArray(currentCard.common) ? `<div class="common-usage">${escapeHtml(currentCard.common.join(" / "))}</div>` : "";
-      const noteHTML = currentCard.note ? `<details class="note-details"><summary>▼補足メモ</summary><div class="note-box">${escapeHtml(currentCard.note)}</div></details>` : "";
+      const noteHTML = currentCard.note ? `<details class="note-details"><summary>補足メモ</summary><div class="note-box">${escapeHtml(currentCard.note)}</div></details>` : "";
 
       ansMeaningEl.innerHTML = jpText + posText + commonText + noteHTML;
       ansReadingEl.textContent = currentCard.kana ? `[ ${currentCard.kana} ]` : "";
