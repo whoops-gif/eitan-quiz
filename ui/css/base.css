@@ -371,47 +371,71 @@ details summary {
 .judge-controls .icon { font-size: 24px; margin-bottom: 2px; }
 
 /* judge buttons */
+/* ---------- Judge Buttons (正解・不正解) ---------- */
 .btn-correct,
 .btn-wrong {
-  height: 80px; /* 少し高さを戻して余裕を持たせます */
+  height: 84px; /* 高さを少しゆとり持たせました */
   font-size: 18px;
   font-weight: 800;
   border-radius: var(--radius-btn);
-  background: #fff !important; /* 背景色を強制 */
+  background: #ffffff !important;
   cursor: pointer;
+  
+  /* 中央配置を厳格に固定 */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 3px solid var(--border);
-  color: #3a3a3c;
-  box-shadow: none;
-  /* buttonタグのデフォルトパディングをリセットして中央寄せを維持 */
+  
+  /* 干渉を防ぐためのリセット */
   padding: 0 !important; 
-  line-height: 1;
+  margin: 0 !important;
+  line-height: 1.2;
 }
 
-/* 正解：ライム */
+/* 正解：蛍光ライム */
 .btn-correct {
-  border-color: #32cd32;
-  color: #32cd32;
-  box-shadow: 0 4px 15px rgba(50, 205, 50, 0.2);
+  border: 3px solid #32cd32 !important; /* !importantで枠線を強制復活 */
+  color: #32cd32 !important;
+  box-shadow: 0 4px 15px rgba(50, 205, 50, 0.15) !important;
 }
 
-/* 不正解：オレンジ */
+/* 不正解：蛍光オレンジ */
 .btn-wrong {
-  border-color: #ff8c00;
-  color: #ff8c00;
-  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.2);
+  border: 3px solid #ff8c00 !important; /* !importantで枠線を強制復活 */
+  color: #ff8c00 !important;
+  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.15) !important;
 }
 
-/* judge disabled */
+/* アイコンと文字の間の微調整 */
+.judge-controls .icon {
+  font-size: 22px;
+  margin-bottom: 4px; /* アイコンの下に少し隙間 */
+  display: block;
+}
+
+/* ---------- スキップボタンの調整 ---------- */
+.btn-text {
+  background: none !important;
+  border: none !important;
+  color: var(--muted) !important;
+  font-size: 14px;
+  font-weight: 600;
+  width: auto;
+  padding: 12px 20px !important; /* 押しやすいサイズに */
+  margin: 15px auto !important; /* 上下にしっかりマージン */
+  display: block;
+  text-align: center;
+}
+
+/* 無効化（disabled）のときの設定 */
 .btn-correct:disabled,
 .btn-wrong:disabled {
-  background: var(--border);
-  border-color: var(--border);
-  color: #aeaeb2;
-  box-shadow: none;
+  background: #f2f2f7 !important;
+  border-color: #e5e5ea !important;
+  color: #aeaeb2 !important;
+  box-shadow: none !important;
+  cursor: not-allowed;
 }
 
 /* reaction (JS用) */
