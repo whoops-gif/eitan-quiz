@@ -137,7 +137,9 @@ button.large { padding: 20px; font-size: 18px; }
   color: var(--muted);
   font-size: 14px;
   width: auto;
-  padding: 0;
+  padding: 10px 0; /* 上下に少し余白を作って押しやすく */
+  margin: 10px auto; /* 中央寄せにしつつ、上下に隙間を作る */
+  display: block; /* 1行を独占させてマージンを効かせる */
 }
 
 .secondary-outline {
@@ -371,11 +373,11 @@ details summary {
 /* judge buttons */
 .btn-correct,
 .btn-wrong {
-  height: 70px;
+  height: 80px; /* 少し高さを戻して余裕を持たせます */
   font-size: 18px;
   font-weight: 800;
   border-radius: var(--radius-btn);
-  background: #fff;
+  background: #fff !important; /* 背景色を強制 */
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -384,6 +386,9 @@ details summary {
   border: 3px solid var(--border);
   color: #3a3a3c;
   box-shadow: none;
+  /* buttonタグのデフォルトパディングをリセットして中央寄せを維持 */
+  padding: 0 !important; 
+  line-height: 1;
 }
 
 /* 正解：ライム */
@@ -486,7 +491,7 @@ a.home-link,
               filter 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* 押した瞬間 */
+/* 押した瞬間（一番末尾のブロックを微修正） */
 button:active,
 a.home-link:active,
 .home-link:active,
@@ -494,7 +499,7 @@ a.home-link:active,
 .btn-correct:active,
 .btn-wrong:active,
 .btn-text:active {
-  transform: translateY(3px) scale(0.98);
+  transform: translateY(4px) scale(0.96) !important; /* 沈む量を少し増やして「小さくなる」を強調 */
   filter: brightness(0.92);
 }
 
