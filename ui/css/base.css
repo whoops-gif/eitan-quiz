@@ -248,3 +248,62 @@ button.large { padding: 20px; font-size: 18px; }
 
 .note-details { margin-top: 16px; text-align: left; font-size: 13px; }
 .note-box { background: #F2F2F7; padding: 12px; border-radius: 8px; margin-top: 4px; }
+
+/* --- クイズカード内のメリハリ調整（追加分） --- */
+
+.question-container {
+  padding: 10px 0 20px 0; /* 上下の余白 */
+  margin-bottom: 5px;
+}
+
+.label-chip-tiny {
+  font-size: 10px;
+  font-weight: 700;
+  color: #AEAEB2;
+  letter-spacing: 0.15em;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.question-word {
+  font-size: 48px !important; /* 強制的に大きく */
+  font-weight: 850 !important;
+  color: #1C1C1E;
+  margin: 0;
+  letter-spacing: -0.03em;
+}
+
+.divider-with-icon {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.divider-with-icon::before,
+.divider-with-icon::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #F2F2F7;
+}
+
+.divider-with-icon span {
+  padding: 0 12px;
+  font-size: 9px;
+  font-weight: 800;
+  color: #D1D1D6;
+}
+
+.answer-reveal-area {
+  background-color: #FAFAFC; 
+  margin: 0 -24px -24px -24px; /* カードのパディングを打ち消して広げる */
+  padding: 30px 24px;
+  border-radius: 0 0 20px 20px;
+  border-top: 1px solid #F2F2F7;
+}
+
+.jp-main {
+  font-size: 24px !important;
+  font-weight: 700;
+  color: #007AFF; /* 意味は青色 */
+}
