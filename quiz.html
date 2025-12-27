@@ -299,15 +299,16 @@
       const index = cards.findIndex(c => c.id === card.id) + 1;
 
       qWordEl.textContent = card.en;
-      qIndexEl.textContent = `No.${cards.findIndex(c => c.id === card.id) + 1} / 全${cards.length}語`;
+      qIndexEl.textContent = `No.${index} / 全${cards.length}語`;
 
 
       ansAreaEl.style.display = "none";
       ansMeaningEl.textContent = "";
       ansReadingEl.textContent = "";
-      ansNoteEl.textContent = "";
       ansStatsEl.textContent = "";
 
+      //  ここを必ず入れる
+      nextBtn.disabled = false;
       showBtn.disabled = false;
       correctBtn.disabled = true;
       wrongBtn.disabled = true;
@@ -371,7 +372,7 @@
     `
     : "";
 
-  // ✅ 意味エリアは HTML で表示する（ここが最重要）
+  // 意味エリアは HTML で表示する（ここが最重要）
   const meaningHTML = [jpText ? `<div>${jpText}${posText}</div>` : "", commonText ? `<div>${commonText}</div>` : "", noteHTML]
     .filter(Boolean)
     .join("");
