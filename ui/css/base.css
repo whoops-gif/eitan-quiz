@@ -1,63 +1,80 @@
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-      max-width: 800px;
-      margin: 24px auto;
-      padding: 0 16px 40px;
-      line-height: 1.6;
-      text-align: left;
-    }
-    h1 {
-      font-size: 24px;
-      margin-bottom: 4px;
-    }
-    .subtitle {
-      color: #555;
-      font-size: 13px;
-      margin-bottom: 20px;
-    }
-    .card {
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      padding: 16px;
-      margin-top: 16px;
-      background: #fafafa;
-    }
-    label {
-      font-size: 13px;
-      color: #555;
-      display: block;
-      margin-bottom: 4px;
-    }
-    select {
-      width: 100%;
-      max-width: 360px;
-      padding: 8px 10px;
-      font-size: 14px;
-      border-radius: 999px;
-      border: 1px solid #ccc;
-      margin-bottom: 16px;
-    }
-    button {
-      border-radius: 999px;
-      border: 1px solid #ccc;
-      padding: 8px 20px;
-      margin: 4px 8px 4px 0;
-      font-size: 14px;
-      cursor: pointer;
-      background: white;
-    }
-    button.primary {
-      background: #111;
-      color: white;
-      border-color: #111;
-    }
-    .small {
-      font-size: 12px;
-      color: #777;
-      margin-top: 8px;
-    }
-    ul {
-      font-size: 13px;
-      color: #555;
-      padding-left: 18px;
-    }
+/* 全体レイアウトの調整 */
+body {
+  background-color: #f8f9fa;
+  font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* カードの装飾 */
+.container, .card, .menu-box { /* 既存の枠組み要素に適用 */
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 24px;
+  margin-bottom: 20px;
+  border: 1px solid #eee;
+}
+
+/* 品詞（POS）の一覧をスッキリ見せる */
+.pos-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+/* 単語カード内の重要単語を目立たせる */
+.word-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #1a73e8; /* 誠実な青系 */
+  margin: 10px 0;
+}
+
+/* POSラベル（品詞）のバッジ化 */
+.pos-label {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background-color: #e8f0fe;
+  color: #1967d2;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+/* スマホでのボタン操作性向上 */
+.button-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.btn-correct, .btn-incorrect {
+  flex: 1;
+  height: 56px; /* スマホで押しやすい高さ */
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: transform 0.1s active;
+}
+
+.btn-correct { background-color: #34a853; box-shadow: 0 4px 0 #2d8a46; }
+.btn-incorrect { background-color: #ea4335; box-shadow: 0 4px 0 #c5221f; }
+
+/* 押した時の沈み込み演出（JS変更なしで可能） */
+.btn-correct:active, .btn-incorrect:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 transparent;
+}
+
+/* スマホ向け：プルダウンを使いやすく */
+select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+  appearance: none; /* デフォルトの矢印をカスタムしやすく */
+  background-color: white;
+  font-size: 1rem;
+}
