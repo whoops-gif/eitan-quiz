@@ -1,75 +1,116 @@
-/* --- 全体設計 --- */
+/* =========================================================
+   base.css (clean)
+   - 共通UI + index/quiz/stats を一本で管理
+   - 重複・競合・!important を整理
+   ========================================================= */
+
+/* ---------- 1) Design Tokens ---------- */
 :root {
-  --primary: #007AFF; /* iOS風の青 */
-  --bg: #F2F2F7;
-  --card-bg: #FFFFFF;
-  --text: #1C1C1E;
+  --primary: #007aff;          /* iOS風の青 */
+  --bg: #f2f2f7;
+  --card-bg: #ffffff;
+  --text: #1c1c1e;
+  --muted: #8e8e93;
+  --border: #e5e5ea;
+  --divider: #f2f2f7;
+
+  --radius-card: 20px;
+  --radius-btn: 14px;
+
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-primary: 0 4px 14px rgba(0, 122, 255, 0.3);
+
+  --tap-scale: 0.97;
 }
+
+/* ---------- 2) Base Reset / Layout ---------- */
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
 
 body {
   background-color: var(--bg);
   color: var(--text);
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Hiragino Sans", sans-serif;
-  margin: 0;
   display: flex;
   justify-content: center;
 }
 
+/* 画面ラッパ（indexで使用） */
 .main-wrapper {
   width: 100%;
   max-width: 480px;
   padding: 32px 20px;
 }
 
+/* もし quiz/stats で別ラッパを使う場合の保険 */
+.container {
+  width: 100%;
+  max-width: 480px;
+  padding: 32px 20px;
+}
+
+/* ---------- 3) Typography ---------- */
 h1 {
   font-size: 24px;
   font-weight: 800;
   text-align: center;
-  margin-bottom: 8px;
+  margin: 0 0 8px;
   letter-spacing: -0.5px;
 }
 
-.hero-subtitle {
+.hero-subtitle,
+.subtitle {
   text-align: center;
   font-size: 14px;
-  color: #8E8E93;
-  margin-bottom: 32px;
+  color: var(--muted);
+  margin: 0 0 32px;
 }
 
-/* --- カードスタイル --- */
+.small {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ---------- 4) Card ---------- */
 .card {
   background: var(--card-bg);
-  border-radius: 20px;
+  border-radius: var(--radius-card);
   padding: 24px;
-  margin-bottom: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin: 0 0 16px;
+  box-shadow: var(--shadow-card);
   border: none;
 }
 
-.field-label {
+/* 追加カードの微調整用（任意） */
+.main-action-card {}
+
+/* ---------- 5) Forms ---------- */
+.field-label,
+label.field-label {
   font-size: 12px;
   font-weight: 700;
   color: var(--primary);
   text-transform: uppercase;
-  margin-bottom: 8px;
+  margin: 0 0 8px;
   display: block;
 }
 
-/* --- セレクトボックス --- */
 select {
   width: 100%;
   padding: 16px;
   font-size: 16px;
-  background-color: #F9F9FB;
-  border: 1px solid #E5E5EA;
+  background-color: #f9f9fb;
+  border: 1px solid var(--border);
   border-radius: 12px;
   color: var(--text);
   appearance: none;
   cursor: pointer;
-  margin-bottom: 24px;
+  margin: 0 0 24px;
 }
 
-/* --- ボタン --- */
+/* ---------- 6) Buttons (base) ---------- */
 .button-group {
   display: flex;
   flex-direction: column;
@@ -81,28 +122,66 @@ button {
   padding: 18px;
   font-size: 16px;
   font-weight: 700;
-  border-radius: 14px;
+  border-radius: var(--radius-btn);
   border: none;
-  transition: transform 0.1s;
+  cursor: pointer;
+  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+              filter 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
 }
 
 button.primary {
   background: var(--primary);
-  color: white;
-  box-shadow: 0 4px 14px rgba(0, 122, 255, 0.3);
+  color: #fff;
+  box-shadow: var(--shadow-primary);
 }
 
-button.secondary, button:not(.primary) {
-  background: white;
+button.secondary {
+  background: #fff;
   color: var(--primary);
   border: 2px solid var(--primary);
 }
 
-button:active {
-  transform: scale(0.97);
+/* primary以外の通常ボタンの既定（必要ならsecondaryを付ける運用でもOK） */
+button:not(.primary):not(.btn-correct):not(.btn-wrong) {
+  background: #fff;
+  color: var(--primary);
+  border: 2px solid var(--primary);
 }
 
-/* --- 折りたたみ（details）の装飾 --- */
+/* 押した時 */
+button:active {
+  transform: scale(var(--tap-scale));
+  filter: brightness(0.92);
+}
+
+/* disabled */
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  filter: none;
+}
+button:disabled:active { transform: none; }
+
+/* テキストっぽいボタン */
+.btn-text {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 14px;
+  padding: 0;
+  width: auto;
+}
+
+/* 枠線薄めのボタン */
+.secondary-outline {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  margin-top: 40px;
+}
+
+/* ---------- 7) details / summary ---------- */
 details summary {
   cursor: pointer;
   list-style: none;
@@ -110,63 +189,65 @@ details summary {
   color: var(--primary);
 }
 
+/* index のヘルプ */
 .help-details {
   margin-top: 20px;
-  border-top: 1px solid #F2F2F7;
+  border-top: 1px solid var(--divider);
   padding-top: 12px;
 }
 
-.info-details[open] summary {
-  margin-bottom: 16px;
-}
+.info-details[open] summary { margin-bottom: 16px; }
 
-/* --- 品詞チップ --- */
+/* ---------- 8) POS list ---------- */
 .pos-badge-list {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   padding: 0;
+  margin: 0;
   list-style: none;
 }
 
 .pos-badge-list li {
-  background: #F2F2F7;
+  background: var(--divider);
   padding: 6px 12px;
   border-radius: 8px;
   font-size: 13px;
 }
 
-.pos-badge-list b { color: var(--primary); margin-right: 4px; }
-
-.small { font-size: 12px; color: #8E8E93; line-height: 1.6; }
-
-/* --- クイズ画面専用スタイル --- */
-.quiz-page {
-  background: #F8F9FC;
+.pos-badge-list b {
+  color: var(--primary);
+  margin-right: 4px;
 }
+
+/* ---------- 9) Generic badges ---------- */
+.badge {
+  background: var(--border);
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #3a3a3c;
+}
+
+/* ---------- 10) Quiz page (optional body class) ---------- */
+.quiz-page { background: #f8f9fc; }
 
 .home-link {
   text-decoration: none;
   color: var(--primary);
   font-weight: 600;
   font-size: 14px;
+  cursor: pointer;
 }
 
 .category-title-small {
   font-size: 16px;
-  color: #8E8E93;
+  color: var(--muted);
   margin: 8px 0 24px;
 }
 
-.badge {
-  background: #E5E5EA;
-  padding: 4px 12px;
-  border-radius: 100px;
-  font-size: 12px;
-  font-weight: 700;
-  color: #3A3A3C;
-}
-
+/* quiz card */
 .quiz-card {
   text-align: center;
   padding: 40px 20px;
@@ -176,32 +257,67 @@ details summary {
   justify-content: center;
 }
 
-.question-word {
-  font-size: 36px;
-  font-weight: 800;
-  margin: 16px 0;
-  color: var(--text);
-  letter-spacing: -1px;
+/* 問題エリア */
+.question-container {
+  padding: 10px 0 20px;
+  margin-bottom: 5px;
 }
 
-.label-chip {
+.label-chip,
+.label-chip-tiny {
   font-size: 10px;
   font-weight: 800;
-  color: #AEAEB2;
+  color: #aeaeb2;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.15em;
+  margin: 0 0 8px;
 }
 
-.divider {
-  border: 0;
-  border-top: 1px solid #F2F2F7;
-  margin: 24px 0;
+/* 英単語（重複してたので一本化） */
+.question-word {
+  font-size: 48px;
+  font-weight: 850;
+  color: var(--text);
+  margin: 0;
+  letter-spacing: -0.03em;
+}
+
+/* 仕切り */
+.divider { border: 0; border-top: 1px solid var(--divider); margin: 24px 0; }
+
+.divider-with-icon {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+.divider-with-icon::before,
+.divider-with-icon::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--divider);
+}
+.divider-with-icon span {
+  padding: 0 12px;
+  font-size: 9px;
+  font-weight: 800;
+  color: #d1d1d6;
+}
+
+/* 解答表示エリア */
+.answer-reveal-area {
+  background-color: #fafafc;
+  margin: 0 -24px -24px -24px;
+  padding: 30px 24px;
+  border-radius: 0 0 var(--radius-card) var(--radius-card);
+  border-top: 1px solid var(--divider);
 }
 
 .jp-main {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 700;
-  margin-bottom: 12px;
+  color: var(--primary);
+  margin: 0 0 12px;
 }
 
 .reading-accent {
@@ -210,221 +326,9 @@ details summary {
   margin-top: 8px;
 }
 
-.pos-tag {
-  background: #EBF5FF;
-  color: var(--primary);
-  font-size: 11px;
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-weight: 600;
-}
-
-/* ボタン群のレイアウト */
-.control-panel {
-  margin-top: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.judge-controls {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-button.large { padding: 20px; font-size: 18px; }
-.btn-text { background: none; color: #8E8E93; font-size: 14px; border: none; }
-.secondary-outline { background: none; border: 1px solid #E5E5EA; color: #8E8E93; margin-top: 40px; }
-
-
-/* --- 判定ボタンの強化版 --- */
-
-.judge-controls {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px; /* ボタン同士の間隔を広げる */
-  margin: 10px 0;
-}
-
-/* 共通設定：大きく、太く */
-.btn-correct, .btn-wrong {
-  height: 80px; /* 高さを出して押しやすく */
-  font-size: 20px;
-  font-weight: 800;
-  border-radius: 16px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.1s ease; /* 反応を速く */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-/* --- 判定ボタン：ネオン・アウトラインデザイン --- */
-
-.judge-controls {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin: 10px 0;
-}
-
-.btn-correct, .btn-wrong {
-  height: 70px; /* 少し高さを抑えてスマートに */
-  font-size: 18px;
-  font-weight: 800;
-  border-radius: 14px;
-  background-color: #FFFFFF !important; /* 中は白 */
-  cursor: pointer;
-  transition: all 0.2s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-/* 正解：蛍光黄緑（ライム） */
-.btn-correct {
-  border: 3px solid #32CD32 !important; /* 鮮やかなライムグリーン */
-  color: #32CD32 !important;
-  box-shadow: 0 4px 15px rgba(50, 205, 50, 0.2) !important; /* 柔らかい緑の影 */
-}
-
-/* 不正解：蛍光オレンジ（サンセット） */
-.btn-wrong {
-  border: 3px solid #FF8C00 !important; /* 鮮やかなダークオレンジ */
-  color: #FF8C00 !important;
-  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.2) !important; /* 柔らかいオレンジの影 */
-}
-
-/* 押した時のリアクション（少しだけ小さくなる） */
-.btn-correct:active, .btn-wrong:active {
-  transform: scale(0.96) !important;
-  background-color: #F8F9FA !important; /* 押した時だけうっすらグレー */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
-}
-
-/* 判定後の無効化状態 */
-.btn-correct:disabled, .btn-wrong:disabled {
-  border-color: #E5E5EA !important;
-  color: #AEAEB2 !important;
-  box-shadow: none !important;
-  transform: none !important;
-}
-
-/* 押した時のリアクション：沈み込む */
-.btn-correct:active, .btn-wrong:active {
-  transform: translateY(4px);
-  box-shadow: 0 2px 0 rgba(0,0,0,0.2);
-}
-
-/* 無効化（disabled）の時は薄くする */
-.btn-correct:disabled, .btn-wrong:disabled {
-  background-color: #E5E5EA !important;
-  color: #AEAEB2 !important;
-  box-shadow: none !important;
-  transform: none !important;
-}
-
-/* アイコンを少し大きく */
-.judge-controls .icon {
-  font-size: 24px;
-  margin-bottom: 2px;
-}
-
-/* --- リアクション演出用のキーワード（JSで使用） --- */
-.flash-correct {
-  animation: flash-green 0.4s ease-out;
-}
-.flash-wrong {
-  animation: flash-red 0.4s ease-out;
-}
-
-@keyframes flash-green {
-  0% { background-color: rgba(52, 199, 89, 0.4); }
-  100% { background-color: transparent; }
-}
-@keyframes flash-red {
-  0% { background-color: rgba(255, 59, 48, 0.4); }
-  100% { background-color: transparent; }
-}
-
-/* 成績テーブル */
-.stats-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-.stats-table th { text-align: left; padding: 12px; border-bottom: 2px solid #F2F2F7; color: #8E8E93; }
-.stats-table td { padding: 12px; border-bottom: 1px solid #F2F2F7; }
-.center { text-align: center; }
-
-.note-details { margin-top: 16px; text-align: left; font-size: 13px; }
-.note-box { background: #F2F2F7; padding: 12px; border-radius: 8px; margin-top: 4px; }
-
-/* --- クイズカード内のメリハリ調整（追加分） --- */
-
-.question-container {
-  padding: 10px 0 20px 0; /* 上下の余白 */
-  margin-bottom: 5px;
-}
-
-.label-chip-tiny {
-  font-size: 10px;
-  font-weight: 700;
-  color: #AEAEB2;
-  letter-spacing: 0.15em;
-  margin-bottom: 8px;
-  text-transform: uppercase;
-}
-
-.question-word {
-  font-size: 48px !important; /* 強制的に大きく */
-  font-weight: 850 !important;
-  color: #1C1C1E;
-  margin: 0;
-  letter-spacing: -0.03em;
-}
-
-.divider-with-icon {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  margin: 20px 0;
-}
-
-.divider-with-icon::before,
-.divider-with-icon::after {
-  content: '';
-  flex: 1;
-  border-bottom: 1px solid #F2F2F7;
-}
-
-.divider-with-icon span {
-  padding: 0 12px;
-  font-size: 9px;
-  font-weight: 800;
-  color: #D1D1D6;
-}
-
-.answer-reveal-area {
-  background-color: #FAFAFC; 
-  margin: 0 -24px -24px -24px; /* カードのパディングを打ち消して広げる */
-  padding: 30px 24px;
-  border-radius: 0 0 20px 20px;
-  border-top: 1px solid #F2F2F7;
-}
-
-.jp-main {
-  font-size: 24px !important;
-  font-weight: 700;
-  color: #007AFF; /* 意味は青色 */
-}
-
-/* 品詞タグのデザインをアップデート */
+/* 品詞タグ（重複を統合） */
 .pos-container {
-  margin-top: 8px;
-  margin-bottom: 12px;
+  margin: 8px 0 12px;
   display: flex;
   justify-content: center;
   gap: 6px;
@@ -432,12 +336,126 @@ button.large { padding: 20px; font-size: 18px; }
 }
 
 .pos-tag {
-  background: #EBF5FF; /* 薄い青 */
-  color: #007AFF;      /* 濃い青 */
+  background: #ebf5ff;
+  color: var(--primary);
   font-size: 12px;
   font-weight: 600;
   padding: 4px 10px;
   border-radius: 6px;
-  border: 1px solid #D0E7FF;
+  border: 1px solid #d0e7ff;
   display: inline-block;
+}
+
+/* 操作ボタン群 */
+.control-panel {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+button.large { padding: 20px; font-size: 18px; }
+
+/* ---------- 11) Judge controls (dedup) ---------- */
+.judge-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 10px 0;
+}
+
+.judge-controls .icon {
+  font-size: 24px;
+  margin-bottom: 2px;
+}
+
+/* 判定ボタン：ネオンアウトライン */
+.btn-correct,
+.btn-wrong {
+  height: 70px;
+  font-size: 18px;
+  font-weight: 800;
+  border-radius: var(--radius-btn);
+  background: #fff;
+  border: 3px solid var(--border);
+  color: #3a3a3c;
+  box-shadow: none;
+  cursor: pointer;
+  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+              filter 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 正解：ライム */
+.btn-correct {
+  border-color: #32cd32;
+  color: #32cd32;
+  box-shadow: 0 4px 15px rgba(50, 205, 50, 0.2);
+}
+
+/* 不正解：オレンジ */
+.btn-wrong {
+  border-color: #ff8c00;
+  color: #ff8c00;
+  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.2);
+}
+
+/* 押下 */
+.btn-correct:active,
+.btn-wrong:active {
+  transform: translateY(4px) scale(0.98);
+  filter: brightness(0.92);
+}
+
+/* 無効化 */
+.btn-correct:disabled,
+.btn-wrong:disabled {
+  background: var(--border);
+  border-color: var(--border);
+  color: #aeaeb2;
+  box-shadow: none;
+  transform: none;
+  filter: none;
+}
+
+/* ---------- 12) Reaction animations (JS用クラス) ---------- */
+.flash-correct { animation: flash-green 0.4s ease-out; }
+.flash-wrong   { animation: flash-red 0.4s ease-out; }
+
+@keyframes flash-green {
+  0%   { background-color: rgba(52, 199, 89, 0.4); }
+  100% { background-color: transparent; }
+}
+@keyframes flash-red {
+  0%   { background-color: rgba(255, 59, 48, 0.4); }
+  100% { background-color: transparent; }
+}
+
+/* ---------- 13) Stats ---------- */
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.stats-table th {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 2px solid var(--divider);
+  color: var(--muted);
+}
+
+.stats-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--divider);
+}
+
+.center { text-align: center; }
+
+.note-details { margin-top: 16px; text-align: left; font-size: 13px; }
+
+.note-box {
+  background: var(--divider);
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 4px;
 }
