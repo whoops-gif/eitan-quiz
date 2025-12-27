@@ -250,6 +250,33 @@ button:disabled {
 
 body.quiz-page { background: #f8f9fc; }
 
+/* クイズ画面：カテゴリタイトルの完成版 */
+.quiz-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding: 12px 0;
+}
+
+.home-link {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 13px;
+  width: 60px; /* 左側の幅を固定 */
+}
+
+.category-title-centered {
+  flex: 1; /* 残りのスペースをすべて使う */
+  text-align: center;
+  font-size: 14px; /* 小さめがかわいい */
+  font-weight: 700;
+  color: var(--muted); /* ちょっと薄いグレー */
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
 /* Quiz Card Decoration */
 .quiz-card {
   text-align: center;

@@ -8,12 +8,10 @@
 </head>
 <body class="quiz-page">
   <div class="main-wrapper">
-    <header class="quiz-header">
-      <a href="index.html" class="home-link">← EXIT</a>
-      <div class="header-title-group">
-        <h1 class="category-title-small" id="category-title">LOADING...</h1>
-      </div>
-      <div style="width: 40px;"></div> </header>
+  <header class="quiz-header">
+      <a href="index.html" class="home-link">← 戻る</a>
+      <h1 id="category-title" class="category-title-centered">読み込み中…</h1>
+      <div style="width: 60px;"></div> </header>
 
     <div id="quiz-section">
       <div class="progress-bar-area">
@@ -83,14 +81,15 @@
     // (ここに優香さんが貼ってくれた <script> の中身をそのまま入れます)
     // ※ 変更点: formatPos関数内で返すHTMLにクラスを少し足すとより綺麗になります
     
-    const CATEGORY_CONFIG = {
-      psycho:    { file: "data/psycho.json",    label: "精神分析×文学" },
-      waseda2024:{ file: "data/waseda2024.json",label: "早稲田 一般 2024" },
-      waseda2025:{ file: "data/waseda2025.json",label: "早稲田 一般 2025" },
-      basic_L1: { file: "data/basic_L1.json", label: "基礎英語 Lv.1" },
-      basic_L2: { file: "data/basic_L2.json", label: "基礎英語 Lv.2" },
-      cefr_b1:   { file: "data/words_cefr_b1.json",label: "CEFR B1 頻出語"}
-    };
+   const CATEGORY_CONFIG = {
+      basic_L1:  { file: "data/basic_L1.json",  label: "基礎英語 Lv.1" },
+      basic_L2:  { file: "data/basic_L2.json",  label: "基礎英語 Lv.2" },
+      waseda2024:{ file: "data/waseda2024.json", label: "早稲田 2024" },
+      waseda2025:{ file: "data/waseda2025.json", label: "早稲田 2025" },
+      psycho:    { file: "data/psycho.json",     label: "精神分析 × 文学" },
+      cefr_b1:   { file: "data/words_cefr_b1.json", label: "CEFR B1 頻出" }
+ };
+
 
     const STATS_KEY = "yuka_eitan_quiz_stats_v2";
     function getQueryParam(name) {
