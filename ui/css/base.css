@@ -139,3 +139,112 @@ details summary {
 .pos-badge-list b { color: var(--primary); margin-right: 4px; }
 
 .small { font-size: 12px; color: #8E8E93; line-height: 1.6; }
+
+/* --- クイズ画面専用スタイル --- */
+.quiz-page {
+  background: #F8F9FC;
+}
+
+.home-link {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.category-title-small {
+  font-size: 16px;
+  color: #8E8E93;
+  margin: 8px 0 24px;
+}
+
+.badge {
+  background: #E5E5EA;
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #3A3A3C;
+}
+
+.quiz-card {
+  text-align: center;
+  padding: 40px 20px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.question-word {
+  font-size: 36px;
+  font-weight: 800;
+  margin: 16px 0;
+  color: var(--text);
+  letter-spacing: -1px;
+}
+
+.label-chip {
+  font-size: 10px;
+  font-weight: 800;
+  color: #AEAEB2;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.divider {
+  border: 0;
+  border-top: 1px solid #F2F2F7;
+  margin: 24px 0;
+}
+
+.jp-main {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.reading-accent {
+  color: var(--primary);
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.pos-tag {
+  background: #EBF5FF;
+  color: var(--primary);
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* ボタン群のレイアウト */
+.control-panel {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.judge-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+button.large { padding: 20px; font-size: 18px; }
+
+.btn-correct { background: #34C759; color: white; box-shadow: 0 4px 12px rgba(52, 199, 89, 0.3); }
+.btn-wrong { background: #FF3B30; color: white; box-shadow: 0 4px 12px rgba(255, 59, 48, 0.3); }
+.btn-text { background: none; color: #8E8E93; font-size: 14px; border: none; }
+.secondary-outline { background: none; border: 1px solid #E5E5EA; color: #8E8E93; margin-top: 40px; }
+
+/* 成績テーブル */
+.stats-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.stats-table th { text-align: left; padding: 12px; border-bottom: 2px solid #F2F2F7; color: #8E8E93; }
+.stats-table td { padding: 12px; border-bottom: 1px solid #F2F2F7; }
+.center { text-align: center; }
+
+.note-details { margin-top: 16px; text-align: left; font-size: 13px; }
+.note-box { background: #F2F2F7; padding: 12px; border-radius: 8px; margin-top: 4px; }
