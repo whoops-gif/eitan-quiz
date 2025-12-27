@@ -1,5 +1,5 @@
 /* =========================================================
-   LEXICON. Global Stylesheet (Unified & Fixed)
+   LEXICON. Global Stylesheet - Final Unified Version
    ========================================================= */
 
 /* ---------- Design Tokens ---------- */
@@ -68,6 +68,7 @@ body {
   letter-spacing: 0.15em;
   text-transform: uppercase;
   display: block;
+  margin-bottom: 4px;
 }
 .level-badge {
   background: var(--primary);
@@ -76,6 +77,7 @@ body {
   font-weight: 900;
   padding: 2px 8px;
   border-radius: 4px;
+  display: inline-block;
 }
 select {
   width: 100%;
@@ -88,6 +90,7 @@ select {
   appearance: none;
   cursor: pointer;
   margin: 8px 0 24px;
+  color: var(--text);
 }
 
 /* ---------- Buttons (General) ---------- */
@@ -108,21 +111,53 @@ button.primary {
   color: #fff;
   box-shadow: var(--shadow-primary);
 }
-button.secondary {
+button.secondary-outline {
   background: #fff;
   color: var(--primary);
-  border: 2px solid var(--primary);
+  border: 1px solid var(--border);
 }
 button.large { padding: 20px; font-size: 18px; }
 
-/* 無効化時の半透明を「正解/不正解ボタン」以外に限定する */
 button:disabled:not(.btn-correct):not(.btn-wrong) {
   cursor: not-allowed;
   opacity: 0.5;
 }
 
 /* =========================================================
-   Quiz Page Specific
+   Top Page Specific (Index)
+   ========================================================= */
+.search-box-container {
+  display: flex;
+  align-items: center;
+  background-color: #f2f2f7;
+  border-radius: 12px;
+  padding: 0 16px;
+  border: 2px solid transparent;
+  position: relative;
+}
+.search-box-container:focus-within {
+  background-color: #ffffff;
+  border-color: var(--primary);
+}
+#word-search {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 14px 0;
+  font-size: 15px;
+  font-weight: 700;
+  outline: none;
+}
+details summary {
+  cursor: pointer;
+  padding: 12px 0;
+  font-weight: 700;
+  font-size: 14px;
+  list-style: none;
+}
+
+/* =========================================================
+   Quiz Page Specific (Quiz)
    ========================================================= */
 body.quiz-page { background: #f8f9fc; }
 
@@ -137,9 +172,8 @@ body.quiz-page { background: #f8f9fc; }
   text-decoration: none;
   color: var(--primary);
   font-weight: 700;
-  font-size: 13px;
+  font-size: 14px;
   width: 60px;
-  flex-shrink: 0;
 }
 .category-title-centered {
   flex: 1;
@@ -149,7 +183,6 @@ body.quiz-page { background: #f8f9fc; }
   color: var(--muted);
   margin: 0;
 }
-
 .quiz-card {
   text-align: center;
   padding: 40px 20px;
@@ -161,19 +194,16 @@ body.quiz-page { background: #f8f9fc; }
 .question-word {
   font-size: 48px;
   font-weight: 850;
-  color: var(--text);
   margin: 0;
 }
 
-/* Judge Buttons (正解・不正解) */
+/* Judge Buttons */
 .judge-controls {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
   margin: 10px 0;
 }
-
-/* 正解/不正解ボタンが薄くなるのを防ぐため、明示的に不透明にする */
 .btn-correct, .btn-wrong {
   height: 84px;
   font-size: 18px;
@@ -182,53 +212,42 @@ body.quiz-page { background: #f8f9fc; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  line-height: 1.0;
   padding: 0 !important;
-  opacity: 1 !important; /* 絶対に薄くさせない */
+  opacity: 1 !important;
 }
-
 .btn-correct {
   border: 3px solid #32cd32 !important;
   color: #32cd32 !important;
   background: #fff !important;
-  box-shadow: 0 4px 15px rgba(50, 205, 50, 0.1) !important;
 }
-
 .btn-wrong {
   border: 3px solid #ff8c00 !important;
   color: #ff8c00 !important;
   background: #fff !important;
-  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.1) !important;
 }
-
-/* 答えが出ていない時は少しだけ薄くして「まだ押せない感」を出す */
 .btn-correct:disabled, .btn-wrong:disabled {
-  opacity: 0.3 !important;
-  filter: grayscale(0.5);
+  opacity: 0.2 !important;
 }
 
 .btn-text {
-  background-color: #ffffff !important;
+  background: #fff !important;
   border: 1px solid var(--border) !important;
   color: var(--muted) !important;
-  font-size: 13px;
-  font-weight: 700;
   border-radius: 30px;
   width: auto;
   min-width: 140px;
   height: 44px;
+  margin: 24px auto !important;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 24px auto !important;
 }
 
 /* =========================================================
-   Animations & Others
+   Animations
    ========================================================= */
 .flash-correct { animation: flash-green 0.4s ease-out; }
 .flash-wrong   { animation: flash-red 0.4s ease-out; }
-
 @keyframes flash-green {
   0% { background-color: rgba(52, 199, 89, 0.3); }
   100% { background-color: transparent; }
@@ -236,20 +255,4 @@ body.quiz-page { background: #f8f9fc; }
 @keyframes flash-red {
   0% { background-color: rgba(255, 59, 48, 0.3); }
   100% { background-color: transparent; }
-}
-
-.stats-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-}
-.stats-table th {
-  text-align: left;
-  padding: 12px;
-  border-bottom: 2px solid var(--divider);
-  color: var(--muted);
-}
-.stats-table td {
-  padding: 12px;
-  border-bottom: 1px solid var(--divider);
 }
