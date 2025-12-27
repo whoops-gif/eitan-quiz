@@ -25,13 +25,25 @@
         </div>
 
         <div id="answer-area" class="answer-reveal-area" style="display:none;">
-          <div class="divider-with-icon">
-            <span>ANSWER REVEALED</span>
+          <div class="answer-group">
+            <div class="answer-label">【和訳】</div>
+            <div class="meaning-content" id="answer-meaning"></div>
           </div>
           
-          <div class="meaning-content" id="answer-meaning"></div>
-          <div class="reading-accent" id="answer-reading"></div>
-          <div class="stats-mini-note" id="answer-stats"></div>
+          <div class="answer-group">
+            <div class="answer-label">【読み】</div>
+            <div class="reading-accent" id="answer-reading"></div>
+          </div>
+          
+          <div class="answer-group">
+            <div class="answer-label">【方法】</div>
+            <div id="answer-common" class="common-usage-list"></div>
+          </div>
+
+          <div id="note-wrapper" style="margin-top: 24px;">
+            </div>
+
+          <div class="stats-mini-note" id="answer-stats" style="margin-top: 20px; border-top: 1px solid var(--divider); padding-top: 10px;"></div>
         </div>
       </div>
 
