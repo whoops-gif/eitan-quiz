@@ -414,18 +414,34 @@ details summary {
   display: block;
 }
 
-/* ---------- スキップボタンの調整 ---------- */
+/* ---------- スキップボタンの調整（枠線あり・控えめ版） ---------- */
 .btn-text {
-  background: none !important;
-  border: none !important;
-  color: var(--muted) !important;
+  background-color: #ffffff !important; /* 中は白 */
+  border: 1px solid var(--border) !important; /* 控えめなグレーの枠線 */
+  color: var(--muted) !important; /* 文字も控えめなグレー */
+  
   font-size: 14px;
   font-weight: 600;
-  width: auto;
-  padding: 12px 20px !important; /* 押しやすいサイズに */
-  margin: 15px auto !important; /* 上下にしっかりマージン */
-  display: block;
-  text-align: center;
+  border-radius: var(--radius-btn);
+  
+  /* サイズと配置の調整 */
+  width: 100%; /* 横幅を他のボタンに合わせるなら100%、文字幅にするならauto */
+  max-width: 200px; /* 広がりすぎないように制限 */
+  height: 50px; /* 正解ボタンよりは低くして、優先度を下げる */
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  margin: 20px auto !important; /* 上下にしっかり余白をとる */
+  padding: 0 !important;
+  cursor: pointer;
+}
+
+/* スキップボタンも押した時に少しだけ変化させる */
+.btn-text:active {
+  background-color: #f9f9fb !important;
+  transform: translateY(2px) scale(0.98) !important;
 }
 
 /* 無効化（disabled）のときの設定 */
