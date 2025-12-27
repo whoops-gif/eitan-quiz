@@ -1,12 +1,12 @@
 /* =========================================================
-   base.css (clean)
-   - 共通UI + index/quiz/stats を一本で管理
-   - 重複・競合・!important を整理
+   base.css (organized)
+   - index / quiz / stats 共通
+   - 重複排除・競合解消・HTML(quiz.html)準拠
    ========================================================= */
 
-/* ---------- 1) Design Tokens ---------- */
+/* ---------- Design Tokens ---------- */
 :root {
-  --primary: #007aff;          /* iOS風の青 */
+  --primary: #007aff;
   --bg: #f2f2f7;
   --card-bg: #ffffff;
   --text: #1c1c1e;
@@ -19,13 +19,10 @@
 
   --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.05);
   --shadow-primary: 0 4px 14px rgba(0, 122, 255, 0.3);
-
-  --tap-scale: 0.97;
 }
 
-/* ---------- 2) Base Reset / Layout ---------- */
+/* ---------- Base ---------- */
 * { box-sizing: border-box; }
-
 html, body { margin: 0; padding: 0; }
 
 body {
@@ -36,21 +33,16 @@ body {
   justify-content: center;
 }
 
-/* 画面ラッパ（indexで使用） */
+/* quiz.html は body.quiz-page に背景を上書き */
+body.quiz-page { background: #f8f9fc; }
+
 .main-wrapper {
   width: 100%;
   max-width: 480px;
   padding: 32px 20px;
 }
 
-/* もし quiz/stats で別ラッパを使う場合の保険 */
-.container {
-  width: 100%;
-  max-width: 480px;
-  padding: 32px 20px;
-}
-
-/* ---------- 3) Typography ---------- */
+/* ---------- Typography ---------- */
 h1 {
   font-size: 24px;
   font-weight: 800;
@@ -59,8 +51,7 @@ h1 {
   letter-spacing: -0.5px;
 }
 
-.hero-subtitle,
-.subtitle {
+.hero-subtitle {
   text-align: center;
   font-size: 14px;
   color: var(--muted);
@@ -73,27 +64,23 @@ h1 {
   line-height: 1.6;
 }
 
-/* ---------- 4) Card ---------- */
+/* ---------- Card ---------- */
 .card {
   background: var(--card-bg);
   border-radius: var(--radius-card);
   padding: 24px;
-  margin: 0 0 16px;
+  margin-bottom: 16px;
   box-shadow: var(--shadow-card);
   border: none;
 }
 
-/* 追加カードの微調整用（任意） */
-.main-action-card {}
-
-/* ---------- 5) Forms ---------- */
-.field-label,
-label.field-label {
+/* ---------- Forms ---------- */
+.field-label {
   font-size: 12px;
   font-weight: 700;
   color: var(--primary);
   text-transform: uppercase;
-  margin: 0 0 8px;
+  margin-bottom: 8px;
   display: block;
 }
 
@@ -107,10 +94,10 @@ select {
   color: var(--text);
   appearance: none;
   cursor: pointer;
-  margin: 0 0 24px;
+  margin-bottom: 24px;
 }
 
-/* ---------- 6) Buttons (base) ---------- */
+/* ---------- Buttons (Base) ---------- */
 .button-group {
   display: flex;
   flex-direction: column;
@@ -124,10 +111,8 @@ button {
   font-weight: 700;
   border-radius: var(--radius-btn);
   border: none;
-  cursor: pointer;
-  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1),
-              filter 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-  outline: none;
+  background: #fff;
+  color: var(--primary);
 }
 
 button.primary {
@@ -136,44 +121,25 @@ button.primary {
   box-shadow: var(--shadow-primary);
 }
 
+/* index.html 用：明示的に secondary を使いたい場合 */
 button.secondary {
   background: #fff;
   color: var(--primary);
   border: 2px solid var(--primary);
 }
 
-/* primary以外の通常ボタンの既定（必要ならsecondaryを付ける運用でもOK） */
-button:not(.primary):not(.btn-correct):not(.btn-wrong) {
-  background: #fff;
-  color: var(--primary);
-  border: 2px solid var(--primary);
-}
+/* quiz.html 用 */
+button.large { padding: 20px; font-size: 18px; }
 
-/* 押した時 */
-button:active {
-  transform: scale(var(--tap-scale));
-  filter: brightness(0.92);
-}
-
-/* disabled */
-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.55;
-  filter: none;
-}
-button:disabled:active { transform: none; }
-
-/* テキストっぽいボタン */
 .btn-text {
   background: none;
   border: none;
   color: var(--muted);
   font-size: 14px;
-  padding: 0;
   width: auto;
+  padding: 0;
 }
 
-/* 枠線薄めのボタン */
 .secondary-outline {
   background: none;
   border: 1px solid var(--border);
@@ -181,7 +147,13 @@ button:disabled:active { transform: none; }
   margin-top: 40px;
 }
 
-/* ---------- 7) details / summary ---------- */
+/* disabled */
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+/* ---------- details / summary ---------- */
 details summary {
   cursor: pointer;
   list-style: none;
@@ -189,7 +161,6 @@ details summary {
   color: var(--primary);
 }
 
-/* index のヘルプ */
 .help-details {
   margin-top: 20px;
   border-top: 1px solid var(--divider);
@@ -198,7 +169,7 @@ details summary {
 
 .info-details[open] summary { margin-bottom: 16px; }
 
-/* ---------- 8) POS list ---------- */
+/* ---------- POS list (index用) ---------- */
 .pos-badge-list {
   display: flex;
   flex-wrap: wrap;
@@ -215,12 +186,41 @@ details summary {
   font-size: 13px;
 }
 
-.pos-badge-list b {
-  color: var(--primary);
-  margin-right: 4px;
+.pos-badge-list b { color: var(--primary); margin-right: 4px; }
+
+/* =========================================================
+   Quiz (quiz.html)
+   ========================================================= */
+
+/* header */
+.quiz-header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
-/* ---------- 9) Generic badges ---------- */
+.home-link {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.category-title-small {
+  font-size: 16px;
+  color: var(--muted);
+  margin: 8px 0 24px;
+  text-align: center;
+}
+
+.progress-bar-area {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
 .badge {
   background: var(--border);
   padding: 4px 12px;
@@ -228,23 +228,6 @@ details summary {
   font-size: 12px;
   font-weight: 700;
   color: #3a3a3c;
-}
-
-/* ---------- 10) Quiz page (optional body class) ---------- */
-.quiz-page { background: #f8f9fc; }
-
-.home-link {
-  text-decoration: none;
-  color: var(--primary);
-  font-weight: 600;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.category-title-small {
-  font-size: 16px;
-  color: var(--muted);
-  margin: 8px 0 24px;
 }
 
 /* quiz card */
@@ -257,23 +240,21 @@ details summary {
   justify-content: center;
 }
 
-/* 問題エリア */
+/* QUESTION area */
 .question-container {
   padding: 10px 0 20px;
   margin-bottom: 5px;
 }
 
-.label-chip,
 .label-chip-tiny {
   font-size: 10px;
-  font-weight: 800;
+  font-weight: 700;
   color: #aeaeb2;
-  text-transform: uppercase;
   letter-spacing: 0.15em;
-  margin: 0 0 8px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
 }
 
-/* 英単語（重複してたので一本化） */
 .question-word {
   font-size: 48px;
   font-weight: 850;
@@ -282,29 +263,7 @@ details summary {
   letter-spacing: -0.03em;
 }
 
-/* 仕切り */
-.divider { border: 0; border-top: 1px solid var(--divider); margin: 24px 0; }
-
-.divider-with-icon {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  margin: 20px 0;
-}
-.divider-with-icon::before,
-.divider-with-icon::after {
-  content: '';
-  flex: 1;
-  border-bottom: 1px solid var(--divider);
-}
-.divider-with-icon span {
-  padding: 0 12px;
-  font-size: 9px;
-  font-weight: 800;
-  color: #d1d1d6;
-}
-
-/* 解答表示エリア */
+/* ANSWER area */
 .answer-reveal-area {
   background-color: #fafafc;
   margin: 0 -24px -24px -24px;
@@ -312,6 +271,29 @@ details summary {
   border-radius: 0 0 var(--radius-card) var(--radius-card);
   border-top: 1px solid var(--divider);
 }
+
+.divider-with-icon {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.divider-with-icon::before,
+.divider-with-icon::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid var(--divider);
+}
+
+.divider-with-icon span {
+  padding: 0 12px;
+  font-size: 9px;
+  font-weight: 800;
+  color: #d1d1d6;
+}
+
+.meaning-content { text-align: center; }
 
 .jp-main {
   font-size: 24px;
@@ -326,9 +308,16 @@ details summary {
   margin-top: 8px;
 }
 
-/* 品詞タグ（重複を統合） */
+.stats-mini-note {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* POS tags (answer内) */
 .pos-container {
-  margin: 8px 0 12px;
+  margin-top: 8px;
+  margin-bottom: 12px;
   display: flex;
   justify-content: center;
   gap: 6px;
@@ -346,7 +335,19 @@ details summary {
   display: inline-block;
 }
 
-/* 操作ボタン群 */
+/* common usage */
+.common-usage {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.5;
+  margin-top: 6px;
+}
+
+/* note */
+.note-details { margin-top: 16px; text-align: left; font-size: 13px; }
+.note-box { background: var(--divider); padding: 12px; border-radius: 8px; margin-top: 4px; }
+
+/* controls */
 .control-panel {
   margin-top: 24px;
   display: flex;
@@ -354,9 +355,10 @@ details summary {
   gap: 16px;
 }
 
-button.large { padding: 20px; font-size: 18px; }
+.main-controls,
+.sub-controls { display: flex; justify-content: center; }
 
-/* ---------- 11) Judge controls (dedup) ---------- */
+/* judge controls (dedup) */
 .judge-controls {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -364,12 +366,9 @@ button.large { padding: 20px; font-size: 18px; }
   margin: 10px 0;
 }
 
-.judge-controls .icon {
-  font-size: 24px;
-  margin-bottom: 2px;
-}
+.judge-controls .icon { font-size: 24px; margin-bottom: 2px; }
 
-/* 判定ボタン：ネオンアウトライン */
+/* judge buttons */
 .btn-correct,
 .btn-wrong {
   height: 70px;
@@ -377,12 +376,14 @@ button.large { padding: 20px; font-size: 18px; }
   font-weight: 800;
   border-radius: var(--radius-btn);
   background: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   border: 3px solid var(--border);
   color: #3a3a3c;
   box-shadow: none;
-  cursor: pointer;
-  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1),
-              filter 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* 正解：ライム */
@@ -399,38 +400,49 @@ button.large { padding: 20px; font-size: 18px; }
   box-shadow: 0 4px 15px rgba(255, 140, 0, 0.2);
 }
 
-/* 押下 */
-.btn-correct:active,
-.btn-wrong:active {
-  transform: translateY(4px) scale(0.98);
-  filter: brightness(0.92);
-}
-
-/* 無効化 */
+/* judge disabled */
 .btn-correct:disabled,
 .btn-wrong:disabled {
   background: var(--border);
   border-color: var(--border);
   color: #aeaeb2;
   box-shadow: none;
-  transform: none;
-  filter: none;
 }
 
-/* ---------- 12) Reaction animations (JS用クラス) ---------- */
+/* reaction (JS用) */
 .flash-correct { animation: flash-green 0.4s ease-out; }
 .flash-wrong   { animation: flash-red 0.4s ease-out; }
 
 @keyframes flash-green {
-  0%   { background-color: rgba(52, 199, 89, 0.4); }
+  0% { background-color: rgba(52, 199, 89, 0.4); }
   100% { background-color: transparent; }
 }
 @keyframes flash-red {
-  0%   { background-color: rgba(255, 59, 48, 0.4); }
+  0% { background-color: rgba(255, 59, 48, 0.4); }
   100% { background-color: transparent; }
 }
 
-/* ---------- 13) Stats ---------- */
+/* =========================================================
+   Stats (quiz内の stats-section)
+   ========================================================= */
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.section-header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.scroll-container { overflow: auto; }
+
+/* stats table */
 .stats-table {
   width: 100%;
   border-collapse: collapse;
@@ -451,11 +463,48 @@ button.large { padding: 20px; font-size: 18px; }
 
 .center { text-align: center; }
 
-.note-details { margin-top: 16px; text-align: left; font-size: 13px; }
+/* footer */
+.system-info { margin-top: 20px; }
 
-.note-box {
-  background: var(--divider);
-  padding: 12px;
-  border-radius: 8px;
-  margin-top: 4px;
+/* =========================================================
+   Tap / Click Feedback (GLOBAL) ※必ず末尾
+   - transform競合を起こさないため、この1箇所だけで管理
+   ========================================================= */
+
+button,
+a.home-link,
+.home-link,
+.secondary-outline,
+.btn-correct,
+.btn-wrong,
+.btn-text {
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+              filter 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* 押した瞬間 */
+button:active,
+a.home-link:active,
+.home-link:active,
+.secondary-outline:active,
+.btn-correct:active,
+.btn-wrong:active,
+.btn-text:active {
+  transform: translateY(3px) scale(0.98);
+  filter: brightness(0.92);
+}
+
+/* 無効化時は動かさない */
+button:disabled:active,
+.btn-correct:disabled:active,
+.btn-wrong:disabled:active {
+  transform: none;
+  filter: none;
+}
+
+/* リンクは遷移で見えにくいので、体感用に少し変化 */
+a.home-link:active { opacity: 0.8; }
