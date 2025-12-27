@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>優香の一問一答｜学習中</title>
+  <title>LEXICON.｜QUIZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link rel="stylesheet" href="./ui/css/base.css">
 </head>
@@ -11,7 +11,6 @@
     <header class="quiz-header">
       <a href="index.html" class="home-link">← EXIT</a>
       <div class="header-title-group">
-        <span class="field-label-en" style="text-align: center;">CURRENT TRAINING</span>
         <h1 class="category-title-small" id="category-title">LOADING...</h1>
       </div>
       <div style="width: 40px;"></div> </header>
@@ -176,7 +175,7 @@
       const jpText = currentCard.jp ? `<div class="jp-main">${escapeHtml(currentCard.jp)}</div>` : "";
       const posText = Array.isArray(currentCard.pos) ? `<div class="pos-container">${formatPos(currentCard.pos)}</div>` : "";
       const commonText = Array.isArray(currentCard.common) ? `<div class="common-usage">${escapeHtml(currentCard.common.join(" / "))}</div>` : "";
-      const noteHTML = currentCard.note ? `<details class="note-details"><summary>補足メモ</summary><div class="note-box">${escapeHtml(currentCard.note)}</div></details>` : "";
+      const noteHTML = currentCard.note ? `<details class="note-details"><summary>▼補足メモ</summary><div class="note-box">${escapeHtml(currentCard.note)}</div></details>` : "";
 
       ansMeaningEl.innerHTML = jpText + posText + commonText + noteHTML;
       ansReadingEl.textContent = currentCard.kana ? `[ ${currentCard.kana} ]` : "";
