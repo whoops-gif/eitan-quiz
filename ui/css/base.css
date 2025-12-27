@@ -234,11 +234,86 @@ details summary {
 }
 
 button.large { padding: 20px; font-size: 18px; }
-
-.btn-correct { background: #34C759; color: white; box-shadow: 0 4px 12px rgba(52, 199, 89, 0.3); }
-.btn-wrong { background: #FF3B30; color: white; box-shadow: 0 4px 12px rgba(255, 59, 48, 0.3); }
 .btn-text { background: none; color: #8E8E93; font-size: 14px; border: none; }
 .secondary-outline { background: none; border: 1px solid #E5E5EA; color: #8E8E93; margin-top: 40px; }
+
+
+/* --- 判定ボタンの強化版 --- */
+
+.judge-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px; /* ボタン同士の間隔を広げる */
+  margin: 10px 0;
+}
+
+/* 共通設定：大きく、太く */
+.btn-correct, .btn-wrong {
+  height: 80px; /* 高さを出して押しやすく */
+  font-size: 20px;
+  font-weight: 800;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.1s ease; /* 反応を速く */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 正解ボタン：鮮やかな緑 */
+.btn-correct {
+  background-color: #34C759 !important;
+  color: white !important;
+  box-shadow: 0 6px 0 #248A3D; /* 立体的なボタン */
+}
+
+/* 不正解ボタン：鮮やかな赤 */
+.btn-wrong {
+  background-color: #FF3B30 !important;
+  color: white !important;
+  box-shadow: 0 6px 0 #C42B24; /* 立体的なボタン */
+}
+
+/* 押した時のリアクション：沈み込む */
+.btn-correct:active, .btn-wrong:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 rgba(0,0,0,0.2);
+}
+
+/* 無効化（disabled）の時は薄くする */
+.btn-correct:disabled, .btn-wrong:disabled {
+  background-color: #E5E5EA !important;
+  color: #AEAEB2 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* アイコンを少し大きく */
+.judge-controls .icon {
+  font-size: 24px;
+  margin-bottom: 2px;
+}
+
+/* --- リアクション演出用のキーワード（JSで使用） --- */
+.flash-correct {
+  animation: flash-green 0.4s ease-out;
+}
+.flash-wrong {
+  animation: flash-red 0.4s ease-out;
+}
+
+@keyframes flash-green {
+  0% { background-color: rgba(52, 199, 89, 0.4); }
+  100% { background-color: transparent; }
+}
+@keyframes flash-red {
+  0% { background-color: rgba(255, 59, 48, 0.4); }
+  100% { background-color: transparent; }
+}
 
 /* 成績テーブル */
 .stats-table { width: 100%; border-collapse: collapse; font-size: 14px; }
@@ -306,4 +381,25 @@ button.large { padding: 20px; font-size: 18px; }
   font-size: 24px !important;
   font-weight: 700;
   color: #007AFF; /* 意味は青色 */
+}
+
+/* 品詞タグのデザインをアップデート */
+.pos-container {
+  margin-top: 8px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.pos-tag {
+  background: #EBF5FF; /* 薄い青 */
+  color: #007AFF;      /* 濃い青 */
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid #D0E7FF;
+  display: inline-block;
 }

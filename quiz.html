@@ -148,10 +148,24 @@
     }
     function escapeHtml(s) { return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
     function formatPos(posArray) {
-      if (!Array.isArray(posArray) || !posArray.length) return "";
-      const MAP = { v:"動詞", n:"名詞", adj:"形容詞", adv:"副詞", prep:"前置詞", conj:"接続詞" };
-      return posArray.map(p => `<span class="pos-tag">${MAP[p.toLowerCase()] || p}</span>`).join(" ");
-    }
+  if (!Array.isArray(posArray) || !posArray.length) return "";
+  
+  const POS_MAP = {
+    v:    "動詞",
+    n:    "名詞",
+    adj:  "形容詞",
+    adv:  "副詞",
+    prep: "前置詞",
+    conj: "接続詞"
+  };
+
+  return posArray.map(p => {
+    const key = p.toLowerCase();
+    const jp  = POS_MAP[key] || "品詞";
+    // ここで「日本語（略称）」の形に組み立てます
+    return `<span class="pos-tag">${jp}（${key}）</span>`;
+  }).join(" ");
+}
     function showAnswer() {
       if (!currentCard) return;
       const s = getCardStats(currentCard);
