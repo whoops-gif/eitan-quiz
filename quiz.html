@@ -29,6 +29,11 @@
             <div class="answer-label">【和訳】</div>
             <div class="meaning-content" id="answer-meaning"></div>
           </div>
+
+          <div class="answer-group">
+            <div class="answer-label">【品詞】</div>
+            <div id="answer-pos" class="pos-container-new"></div>
+          </div>
           
           <div class="answer-group">
             <div class="answer-label">【読み】</div>
@@ -40,10 +45,7 @@
             <div id="answer-common" class="common-usage-list"></div>
           </div>
 
-          <div id="note-wrapper" style="margin-top: 24px;">
-            </div>
-
-          <div class="stats-mini-note" id="answer-stats" style="margin-top: 20px; border-top: 1px solid var(--divider); padding-top: 10px;"></div>
+          <div id="note-wrapper" style="margin-top: 24px;"></div>
         </div>
       </div>
 
@@ -184,9 +186,12 @@
       const s = getCardStats(currentCard);
       const rate = s.total > 0 ? Math.round((s.correct / s.total) * 100) + "%" : "—";
 
-      // 1. 和訳と品詞
+      // 1. 和訳
       const posText = Array.isArray(currentCard.pos) ? formatPos(currentCard.pos) : "";
-      ansMeaningEl.innerHTML = `${escapeHtml(currentCard.jp)} ${posText}`;
+      // 以前：ansMeaningEl.innerHTML = `${escapeHtml(currentCard.jp)} ${posText}`; 
+      // 以下に書き換え：品詞
+      document.getElementById('answer-meaning').textContent = currentCard.jp;
+      document.getElementById('answer-pos').innerHTML = Array.isArray(currentCard.pos) ? formatPos(currentCard.pos) : "—";
 
       // 2. 読み
       ansReadingEl.textContent = currentCard.kana ? `[ ${currentCard.kana} ]` : "—";
