@@ -354,32 +354,45 @@ details[open] .note-summary::before {
 .search-item .word { font-weight: 800; color: var(--primary); }
 .search-item .meaning { font-size: 13px; color: var(--muted); margin-left: 8px; }
 
-/* --- 折りたたみ（details）の矢印と文字調整 --- */
+
+
+/* --- 折りたたみ（details）の統一デザイン --- */
 details {
   width: 100%;
-  margin-bottom: 8px;
+  border-bottom: 1px solid var(--divider); /* 項目間の区切り線（任意） */
+}
+
+/* 最後の項目の線は消す */
+details:last-child {
+  border-bottom: none;
 }
 
 details summary {
   cursor: pointer;
-  padding: 14px 0;
-  font-size: 12px; /* 少し小さく */
-  font-weight: 800;
-  color: var(--muted); /* 少し薄く */
+  padding: 10px 0; /* 14pxから10pxに縮小（縦幅を狭く） */
+  font-size: 11px; /* 12pxからさらに少し小さく */
+  font-weight: 700; /* 800から700へ（少し細くして主張を抑える） */
+  color: var(--muted); /* すべてこの色に統一 */
   list-style: none;
   display: flex;
   align-items: center;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  transition: color 0.2s;
+}
+
+details summary:hover {
+  color: var(--text); /* ホバーした時だけ少し濃く */
 }
 
 details summary::-webkit-details-marker { display: none; }
 
 details summary::before {
-  content: '▶︎';
-  font-size: 8px;
-  margin-right: 10px;
+  content: '▶'; /* ︎少し小さい三角形に */
+  font-size: 7px;
+  margin-right: 12px;
   color: var(--primary);
+  opacity: 0.7; /* 矢印も少しだけ薄く */
   transition: transform 0.2s;
 }
 
@@ -387,19 +400,11 @@ details[open] summary::before {
   transform: rotate(90deg);
 }
 
-/* 折りたたみの中身の文字を小さく薄く */
+/* 内部コンテンツの微調整 */
 .details-content {
-  padding: 0 0 16px 20px;
-  font-size: 13px;
+  padding: 4px 0 16px 20px; /* 上の余白を詰め、横のラインを揃える */
+  font-size: 12px;
   color: var(--muted);
-  line-height: 1.6;
+  line-height: 1.5;
   text-align: left;
-}
-
-/* --- 成績一覧を見るボタンの枠線 --- */
-.btn-outline {
-  background: transparent !important;
-  color: var(--primary) !important;
-  border: 1px solid var(--primary) !important;
-  margin-top: 12px;
 }
