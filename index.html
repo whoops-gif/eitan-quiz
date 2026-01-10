@@ -115,12 +115,16 @@
   const SEARCH_CATEGORIES = ["basic_L1"]; // 例: ["basic_L1","basic_L2","waseda2024","psycho"]
 
   function normalizeWordItem(w) {
-    // 仕様ゆれ対策：jp/jaどっちでも受ける
-    const jp = (w.jp ?? w.ja ?? "").toString();
-    const en = (w.en ?? "").toString();
-    const kana = (w.kana ?? "").toString();
-    return { ...w, en, jp, kana };
-  }
+  // ここが重要：null / undefined / 文字列などを弾く
+  if (!w || typeof w !== "object") return null;
+
+  const en = (w.en ?? w.word ?? "").toString();
+  const jp = (w.jp ?? w.ja ?? w.meaning ?? "").toString();
+  const kana = (w.kana ?? "").toString();
+
+  return { ...w, en, jp, kana };
+}
+
 
   async function loadSearchData() {
     // ロード中は無効化（「効かない」体験を減らす）
@@ -136,11 +140,12 @@
 
           // 配列 or {words:[...]} どっちでもOKにする
           const arr = Array.isArray(data) ? data : (Array.isArray(data.words) ? data.words : []);
-          return arr.map(normalizeWordItem);
+          return arr.map(normalizeWordItem).filter(Boolean);
         })
       );
 
       allWords = datasets.flat();
+      allWords = allWords.filter(w => w && typeof w === "object" && w.en && w.jp);
       // 重複排除（id+enで軽く）
       const seen = new Set();
       allWords = allWords.filter(w => {
