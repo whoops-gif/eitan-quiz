@@ -156,6 +156,21 @@ details summary {
   list-style: none;
 }
 
+/* 画像全体の入れ物 */
+.hero-illustration {
+  text-align: center;
+  margin: 20px 0 30px; /* 上下の余白 */
+}
+
+/* 画像自体のスタイル */
+.illustration-img {
+  width: 180px; /* お好みのサイズに調整してください */
+  height: auto;
+  /* ネオンっぽいシャドウ（指定の3色を混ぜる感じ） */
+  filter: drop-shadow(0 0 10px rgba(0, 122, 255, 0.4)) 
+          drop-shadow(0 0 20px rgba(255, 140, 0, 0.2));
+}
+
 /* =========================================================
    Quiz Page Specific (Quiz)
    ========================================================= */
