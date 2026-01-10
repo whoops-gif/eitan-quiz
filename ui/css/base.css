@@ -18,6 +18,8 @@
 }
 
 /* ---------- Global Base ---------- */
+
+
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 body {
@@ -25,13 +27,19 @@ body {
   color: var(--text);
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Hiragino Sans", sans-serif;
   display: flex;
-  justify-content: center;
+  justify-content: center; /* 左右中央に */
+  align-items: flex-start; /* 上から配置 */
   min-height: 100vh;
 }
+
 .main-wrapper {
   width: 100%;
   max-width: 480px;
   padding: 32px 20px;
+  margin: 0 auto; /* これを追加して中央固定 */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 中の要素を中央に */
 }
 
 /* ---------- Typography ---------- */
@@ -156,21 +164,19 @@ details summary {
   list-style: none;
 }
 
-/* 画像全体の入れ物 */
 .hero-illustration {
-  text-align: center;
-  margin: 20px 0 30px; /* 上下の余白 */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0 20px;
 }
 
-/* 画像自体のスタイル */
 .illustration-img {
-  width: 180px; /* お好みのサイズに調整してください */
+  width: 140px; /* 少し小さくするとバランスが良いです */
   height: auto;
-  /* ネオンっぽいシャドウ（指定の3色を混ぜる感じ） */
-  filter: drop-shadow(0 0 10px rgba(0, 122, 255, 0.4)) 
-          drop-shadow(0 0 20px rgba(255, 140, 0, 0.2));
+  /* 透過画像なら、このシャドウが綺麗に形に沿って光ります */
+  filter: drop-shadow(0 0 8px rgba(0, 122, 255, 0.5));
 }
-
 /* =========================================================
    Quiz Page Specific (Quiz)
    ========================================================= */
