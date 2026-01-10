@@ -89,70 +89,145 @@
   </div>
 
   <script>
-    const categorySelect = document.getElementById("category");
-    const startQuizBtn = document.getElementById("start-quiz");
-    const openStatsBtn = document.getElementById("open-stats");
-
-    function goTo(view) {
-      const cat = categorySelect.value;
-      const url = `quiz.html?view=${view}&cat=${encodeURIComponent(cat)}`;
-      location.href = url;
-    }
-
-    startQuizBtn.addEventListener("click", () => goTo("quiz"));
-    openStatsBtn.addEventListener("click", () => goTo("stats"));
-    
     // 全単語データを統合して検索対象にする
-    let allWords = [];
+  const categorySelect = document.getElementById("category");
+  const startQuizBtn = document.getElementById("start-quiz");
+  const openStatsBtn = document.getElementById("open-stats");
 
-    // ページ読み込み時にデータをロード（パスは環境に合わせて調整してください）
-    async function loadSearchData() {
-      const categories = ['basic_L1']; // 検索対象にしたいjsonファイル名
-      for (const cat of categories) {
-        try {
-          const res = await fetch(`data/${cat}.json`);
+  function goTo(view) {
+    const cat = categorySelect.value;
+    const url = `quiz.html?view=${view}&cat=${encodeURIComponent(cat)}`;
+    location.href = url;
+  }
+
+  startQuizBtn.addEventListener("click", () => goTo("quiz"));
+  openStatsBtn.addEventListener("click", () => goTo("stats"));
+
+  // =========================
+  // Search
+  // =========================
+  const searchInput = document.getElementById("word-search");
+  const resultsDiv = document.getElementById("search-results");
+
+  let allWords = [];
+
+  // 検索対象カテゴリ（必要に応じて増やす）
+  const SEARCH_CATEGORIES = ["basic_L1"]; // 例: ["basic_L1","basic_L2","waseda2024","psycho"]
+
+  function normalizeWordItem(w) {
+    // 仕様ゆれ対策：jp/jaどっちでも受ける
+    const jp = (w.jp ?? w.ja ?? "").toString();
+    const en = (w.en ?? "").toString();
+    const kana = (w.kana ?? "").toString();
+    return { ...w, en, jp, kana };
+  }
+
+  async function loadSearchData() {
+    // ロード中は無効化（「効かない」体験を減らす）
+    searchInput.disabled = true;
+    searchInput.placeholder = "Loading dictionary...";
+
+    try {
+      const datasets = await Promise.all(
+        SEARCH_CATEGORIES.map(async (cat) => {
+          const res = await fetch(`data/${cat}.json`, { cache: "no-store" });
+          if (!res.ok) throw new Error(`Failed to load data/${cat}.json (${res.status})`);
           const data = await res.json();
-          allWords = allWords.concat(data.words);
-        } catch (e) { console.error(e); }
-      }
+
+          // 配列 or {words:[...]} どっちでもOKにする
+          const arr = Array.isArray(data) ? data : (Array.isArray(data.words) ? data.words : []);
+          return arr.map(normalizeWordItem);
+        })
+      );
+
+      allWords = datasets.flat();
+      // 重複排除（id+enで軽く）
+      const seen = new Set();
+      allWords = allWords.filter(w => {
+        const key = `${w.id ?? ""}-${w.en}`;
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+
+      searchInput.placeholder = "SEARCH DICTIONARY (EN/JP)...";
+    } catch (e) {
+      console.error(e);
+      searchInput.placeholder = "Dictionary load failed. Check console.";
+    } finally {
+      searchInput.disabled = false;
+    }
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, m => ({
+      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+    }[m]));
+  }
+
+  function renderResults(matches) {
+    if (!matches.length) {
+      resultsDiv.style.display = "none";
+      resultsDiv.innerHTML = "";
+      return;
     }
 
-    const searchInput = document.getElementById('word-search');
-    const resultsDiv = document.getElementById('search-results');
+    resultsDiv.innerHTML = matches.map((w, i) => `
+      <div class="search-item" data-index="${i}">
+        <span class="word">${escapeHtml(w.en)}</span>
+        <span class="meaning">${escapeHtml(w.jp)}</span>
+      </div>
+    `).join("");
 
-    searchInput.addEventListener('input', (e) => {
-      const val = e.target.value.toLowerCase();
-      if (!val) {
-        resultsDiv.style.display = 'none';
-        return;
-      }
+    // クリックで詳細（kana/note/commonもあるなら出す）
+    resultsDiv.querySelectorAll(".search-item").forEach((el) => {
+      el.addEventListener("click", () => {
+        const w = matches[Number(el.dataset.index)];
+        const extra = [
+          w.kana ? `[${w.kana}]` : "",
+          w.note ? `\n\nNOTE:\n${w.note}` : "",
+          Array.isArray(w.common) && w.common.length ? `\n\nCOMMON:\n- ${w.common.join("\n- ")}` : ""
+        ].filter(Boolean).join("");
 
-      const matches = allWords.filter(w => 
-        w.en.toLowerCase().includes(val) || 
-        w.ja.includes(val)
-      ).slice(0, 10); // 上位10件だけ表示
-
-      if (matches.length > 0) {
-        resultsDiv.innerHTML = matches.map(w => `
-          <div class="search-item" onclick="alert('${w.en}: ${w.ja}')">
-            <span class="word">${w.en}</span>
-            <span class="meaning">${w.ja}</span>
-          </div>
-        `).join('');
-        resultsDiv.style.display = 'block';
-      } else {
-        resultsDiv.style.display = 'none';
-      }
+        alert(`${w.en}: ${w.jp}${extra}`);
+        resultsDiv.style.display = "none";
+      });
     });
 
-    // 外側をクリックしたら閉じる
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.search-box-container')) {
-        resultsDiv.style.display = 'none';
-      }
-    });
+    resultsDiv.style.display = "block";
+  }
 
-      loadSearchData();
-  </script>
+  searchInput.addEventListener("input", (e) => {
+    const q = e.target.value.trim().toLowerCase();
+    if (!q) {
+      resultsDiv.style.display = "none";
+      resultsDiv.innerHTML = "";
+      return;
+    }
+
+    // ロード前の入力対策
+    if (!allWords.length) return;
+
+    const matches = allWords
+      .filter(w =>
+        w.en.toLowerCase().includes(q) ||
+        w.jp.toLowerCase().includes(q) ||
+        (w.kana && w.kana.toLowerCase().includes(q))
+      )
+      .slice(0, 10);
+
+    renderResults(matches);
+  });
+
+  // 外側クリックで閉じる
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".search-box-container")) {
+      resultsDiv.style.display = "none";
+    }
+  });
+
+  loadSearchData();
+</script>
+
 </body>
 </html>
