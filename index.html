@@ -6,15 +6,17 @@
   <link rel="stylesheet" href="./ui/css/base.css">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 </head>
+
 <body>
   <div class="main-wrapper">
     <h1 class="brand-title">LEXICON.</h1>
     <p class="hero-subtitle">Optimize your vocabulary for academic excellence.</p>
 
-   <div class="hero-illustration">
-    <img src="ui/css/images/hero-buffalo.png" class="illustration-img">
-  </div>
+    <div class="hero-illustration">
+      <img src="./ui/css/images/hero-buffalo.png" class="illustration-img" alt="hero">
+    </div>
 
+    <!-- Search -->
     <div class="card search-card">
       <div class="search-box-container">
         <span class="search-icon">🔍</span>
@@ -23,220 +25,223 @@
       </div>
     </div>
 
+    <!-- Main Actions -->
     <div class="card main-action-card">
       <div class="card-header-flex">
         <label for="category" class="field-label-en">SELECT TRAINING SET</label>
         <span class="level-badge">A1-C2</span>
       </div>
-      
+
       <div class="custom-select">
-  <select id="category">
-    <optgroup label="CORE ENGLISH">
-      <option value="basic_L1">基礎英語 Lv.1</option>
-      <option value="basic_L2">基礎英語 Lv.2</option>
-    </optgroup>
-    <optgroup label="ACADEMIC EXAMS">
-      <option value="waseda2024">早稲田 2024</option>
-      <option value="waseda2025">早稲田 2025</option>
-    </optgroup>
-    <optgroup label="SPECIALIZED FIELDS">
-      <option value="psycho">精神分析 × 文学</option>
-      <option value="cefr_b1">CEFR B1 頻出</option>
-    </optgroup>
-    <option value="all">すべての単語をまとめて</option>
-  </select>
-</div>
+        <select id="category">
+          <optgroup label="CORE ENGLISH">
+            <option value="basic_L1">基礎英語 Lv.1</option>
+            <option value="basic_L2">基礎英語 Lv.2</option>
+          </optgroup>
+          <optgroup label="ACADEMIC EXAMS">
+            <option value="waseda2024">早稲田 2024</option>
+            <option value="waseda2025">早稲田 2025</option>
+          </optgroup>
+          <optgroup label="SPECIALIZED FIELDS">
+            <option value="psycho">精神分析 × 文学</option>
+            <option value="cefr_b1">CEFR B1 頻出</option>
+          </optgroup>
+          <option value="all">すべての単語をまとめて</option>
+        </select>
+      </div>
 
-     <div class="button-group">
-  <button class="primary large" id="start-quiz">START TRAINING</button>
-  <button id="open-stats" class="btn-outline">VIEW LEARNING STATS</button>
-</div>
-
-<div class="card guide-section">
-  <details>
-    <summary>User Guide</summary>
-    <div class="details-content"> 
-    ・英語→日本語＋カタカナ読みの一問一答形式です。<br />
-    ・正解記録はブラウザに保存され、データは消えません。</div>
-  </details>
-  
-  <details>
-    <summary>POS Abbreviations</summary>
-    <div class="details-content">
-    <ul class="pos-badge-list">
-      <li><b>V</b> 動詞</li>
-      <li><b>N</b> 名詞</li>
-      <li><b>adj</b> 形容詞</li>
-      <li><b>adv</b> 副詞</li>
-      <li><b>prep</b> 前置詞</li>
-      <li><b>conj</b> 接続詞</li>
-    </ul>
-    <div class="small" style="margin-top: 8px;">
-      ※ S/V/O/C（文型）とは別物です。
+      <div class="button-group">
+        <button class="primary large" id="start-quiz">START TRAINING</button>
+        <button id="open-stats" class="btn-outline">VIEW LEARNING STATS</button>
+      </div>
     </div>
-  </div>
-  </details>
 
-  <details>
-    <summary>Development Roadmap</summary>
-    <div class="details-content">
-    <ul class="plan-list small">
-      <li>精神分析：用語増量（200語規模へ）</li>
-      <li>早稲田 一般英語：過去問重要語の追加</li>
-      <li>文学作品別の単語セット作成</li>
-    </ul>
-  </div>
-  </details>
-</div>
+    <!-- Guide (main-action-cardの外に出すのが重要) -->
+    <div class="card guide-section">
+      <details>
+        <summary>User Guide</summary>
+        <div class="details-content">
+          ・英語→日本語＋カタカナ読みの一問一答形式です。<br />
+          ・正解記録はブラウザに保存され、データは消えません。
+        </div>
+      </details>
 
-</div>
+      <details>
+        <summary>POS Abbreviations</summary>
+        <div class="details-content">
+          <ul class="pos-badge-list">
+            <li><b>V</b> 動詞</li>
+            <li><b>N</b> 名詞</li>
+            <li><b>adj</b> 形容詞</li>
+            <li><b>adv</b> 副詞</li>
+            <li><b>prep</b> 前置詞</li>
+            <li><b>conj</b> 接続詞</li>
+          </ul>
+          <div class="small" style="margin-top: 8px;">
+            ※ S/V/O/C（文型）とは別物です。
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Development Roadmap</summary>
+        <div class="details-content">
+          <ul class="plan-list small">
+            <li>精神分析：用語増量（200語規模へ）</li>
+            <li>早稲田 一般英語：過去問重要語の追加</li>
+            <li>文学作品別の単語セット作成</li>
+          </ul>
+        </div>
+      </details>
+    </div>
   </div>
 
   <script>
-    // 全単語データを統合して検索対象にする
-  const categorySelect = document.getElementById("category");
-  const startQuizBtn = document.getElementById("start-quiz");
-  const openStatsBtn = document.getElementById("open-stats");
+    // =========================
+    // Navigation
+    // =========================
+    const categorySelect = document.getElementById("category");
+    const startQuizBtn = document.getElementById("start-quiz");
+    const openStatsBtn = document.getElementById("open-stats");
 
-  function goTo(view) {
-    const cat = categorySelect.value;
-    const url = `quiz.html?view=${view}&cat=${encodeURIComponent(cat)}`;
-    location.href = url;
-  }
-
-  startQuizBtn.addEventListener("click", () => goTo("quiz"));
-  openStatsBtn.addEventListener("click", () => goTo("stats"));
-
-  // =========================
-  // Search
-  // =========================
-  const searchInput = document.getElementById("word-search");
-  const resultsDiv = document.getElementById("search-results");
-
-  let allWords = [];
-
-  // 検索対象カテゴリ（必要に応じて増やす）
-  const SEARCH_CATEGORIES = ["basic_L1"]; // 例: ["basic_L1","basic_L2","waseda2024","psycho"]
-
-  function normalizeWordItem(w) {
-  // ここが重要：null / undefined / 文字列などを弾く
-  if (!w || typeof w !== "object") return null;
-
-  const en = (w.en ?? w.word ?? "").toString();
-  const jp = (w.jp ?? w.ja ?? w.meaning ?? "").toString();
-  const kana = (w.kana ?? "").toString();
-
-  return { ...w, en, jp, kana };
-}
-
-
-  async function loadSearchData() {
-    // ロード中は無効化（「効かない」体験を減らす）
-    searchInput.disabled = true;
-    searchInput.placeholder = "Loading dictionary...";
-
-    try {
-      const datasets = await Promise.all(
-        SEARCH_CATEGORIES.map(async (cat) => {
-          const res = await fetch(`data/${cat}.json`, { cache: "no-store" });
-          if (!res.ok) throw new Error(`Failed to load data/${cat}.json (${res.status})`);
-          const data = await res.json();
-
-          // 配列 or {words:[...]} どっちでもOKにする
-          const arr = Array.isArray(data) ? data : (Array.isArray(data.words) ? data.words : []);
-          return arr.map(normalizeWordItem).filter(Boolean);
-        })
-      );
-
-      allWords = datasets.flat();
-      allWords = allWords.filter(w => w && typeof w === "object" && w.en && w.jp);
-      // 重複排除（id+enで軽く）
-      const seen = new Set();
-      allWords = allWords.filter(w => {
-        const key = `${w.id ?? ""}-${w.en}`;
-        if (seen.has(key)) return false;
-        seen.add(key);
-        return true;
-      });
-
-      searchInput.placeholder = "SEARCH DICTIONARY (EN/JP)...";
-    } catch (e) {
-      console.error(e);
-      searchInput.placeholder = "Dictionary load failed. Check console.";
-    } finally {
-      searchInput.disabled = false;
-    }
-  }
-
-  function escapeHtml(s) {
-    return String(s).replace(/[&<>"']/g, m => ({
-      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-    }[m]));
-  }
-
-  function renderResults(matches) {
-    if (!matches.length) {
-      resultsDiv.style.display = "none";
-      resultsDiv.innerHTML = "";
-      return;
+    function goTo(view) {
+      const cat = categorySelect.value;
+      const url = `quiz.html?view=${view}&cat=${encodeURIComponent(cat)}`;
+      location.href = url;
     }
 
-    resultsDiv.innerHTML = matches.map((w, i) => `
-      <div class="search-item" data-index="${i}">
-        <span class="word">${escapeHtml(w.en)}</span>
-        <span class="meaning">${escapeHtml(w.jp)}</span>
-      </div>
-    `).join("");
+    startQuizBtn.addEventListener("click", () => goTo("quiz"));
+    openStatsBtn.addEventListener("click", () => goTo("stats"));
 
-    // クリックで詳細（kana/note/commonもあるなら出す）
-    resultsDiv.querySelectorAll(".search-item").forEach((el) => {
-      el.addEventListener("click", () => {
-        const w = matches[Number(el.dataset.index)];
-        const extra = [
-          w.kana ? `[${w.kana}]` : "",
-          w.note ? `\n\nNOTE:\n${w.note}` : "",
-          Array.isArray(w.common) && w.common.length ? `\n\nCOMMON:\n- ${w.common.join("\n- ")}` : ""
-        ].filter(Boolean).join("");
+    // =========================
+    // Search
+    // =========================
+    const searchInput = document.getElementById("word-search");
+    const resultsDiv = document.getElementById("search-results");
+    let allWords = [];
 
-        alert(`${w.en}: ${w.jp}${extra}`);
+    // 検索対象カテゴリ（必要に応じて増やす）
+    const SEARCH_CATEGORIES = ["basic_L1"]; // 例: ["basic_L1","basic_L2","waseda2024","psycho"]
+
+    function normalizeWordItem(w) {
+      // null / undefined / 文字列などを弾く
+      if (!w || typeof w !== "object") return null;
+
+      const en = (w.en ?? w.word ?? "").toString();
+      const jp = (w.jp ?? w.ja ?? w.meaning ?? "").toString();
+      const kana = (w.kana ?? "").toString();
+
+      return { ...w, en, jp, kana };
+    }
+
+    async function loadSearchData() {
+      // ロード中は無効化
+      searchInput.disabled = true;
+      searchInput.placeholder = "Loading dictionary...";
+
+      try {
+        const datasets = await Promise.all(
+          SEARCH_CATEGORIES.map(async (cat) => {
+            const res = await fetch(`data/${cat}.json`, { cache: "no-store" });
+            if (!res.ok) throw new Error(`Failed to load data/${cat}.json (${res.status})`);
+            const data = await res.json();
+
+            // 配列 or {words:[...]} どっちでもOK
+            const arr = Array.isArray(data) ? data : (Array.isArray(data.words) ? data.words : []);
+            return arr.map(normalizeWordItem).filter(Boolean);
+          })
+        );
+
+        allWords = datasets.flat();
+
+        // en/jp が空のものは除外
+        allWords = allWords.filter(w => w && typeof w === "object" && w.en && w.jp);
+
+        // 重複排除（id+en）
+        const seen = new Set();
+        allWords = allWords.filter(w => {
+          const key = `${w.id ?? ""}-${w.en}`;
+          if (seen.has(key)) return false;
+          seen.add(key);
+          return true;
+        });
+
+        searchInput.placeholder = "SEARCH DICTIONARY (EN/JP)...";
+      } catch (e) {
+        console.error(e);
+        searchInput.placeholder = "Dictionary load failed. Check console.";
+      } finally {
+        searchInput.disabled = false;
+      }
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, m => ({
+        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+      }[m]));
+    }
+
+    function renderResults(matches) {
+      if (!matches.length) {
         resultsDiv.style.display = "none";
+        resultsDiv.innerHTML = "";
+        return;
+      }
+
+      resultsDiv.innerHTML = matches.map((w, i) => `
+        <div class="search-item" data-index="${i}">
+          <span class="word">${escapeHtml(w.en)}</span>
+          <span class="meaning">${escapeHtml(w.jp)}</span>
+        </div>
+      `).join("");
+
+      resultsDiv.querySelectorAll(".search-item").forEach((el) => {
+        el.addEventListener("click", () => {
+          const w = matches[Number(el.dataset.index)];
+          const extra = [
+            w.kana ? `[${w.kana}]` : "",
+            w.note ? `\n\nNOTE:\n${w.note}` : "",
+            Array.isArray(w.common) && w.common.length ? `\n\nCOMMON:\n- ${w.common.join("\n- ")}` : ""
+          ].filter(Boolean).join("");
+
+          alert(`${w.en}: ${w.jp}${extra}`);
+          resultsDiv.style.display = "none";
+        });
       });
+
+      resultsDiv.style.display = "block";
+    }
+
+    searchInput.addEventListener("input", (e) => {
+      const q = e.target.value.trim().toLowerCase();
+
+      if (!q) {
+        resultsDiv.style.display = "none";
+        resultsDiv.innerHTML = "";
+        return;
+      }
+
+      // ロード前
+      if (!allWords.length) return;
+
+      const matches = allWords
+        .filter(w =>
+          w.en.toLowerCase().includes(q) ||
+          w.jp.toLowerCase().includes(q) ||
+          (w.kana && w.kana.toLowerCase().includes(q))
+        )
+        .slice(0, 10);
+
+      renderResults(matches);
     });
 
-    resultsDiv.style.display = "block";
-  }
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".search-box-container")) {
+        resultsDiv.style.display = "none";
+      }
+    });
 
-  searchInput.addEventListener("input", (e) => {
-    const q = e.target.value.trim().toLowerCase();
-    if (!q) {
-      resultsDiv.style.display = "none";
-      resultsDiv.innerHTML = "";
-      return;
-    }
-
-    // ロード前の入力対策
-    if (!allWords.length) return;
-
-    const matches = allWords
-      .filter(w =>
-        w.en.toLowerCase().includes(q) ||
-        w.jp.toLowerCase().includes(q) ||
-        (w.kana && w.kana.toLowerCase().includes(q))
-      )
-      .slice(0, 10);
-
-    renderResults(matches);
-  });
-
-  // 外側クリックで閉じる
-  document.addEventListener("click", (e) => {
-    if (!e.target.closest(".search-box-container")) {
-      resultsDiv.style.display = "none";
-    }
-  });
-
-  loadSearchData();
-</script>
-
+    loadSearchData();
+  </script>
 </body>
 </html>
