@@ -357,54 +357,61 @@ details[open] .note-summary::before {
 
 
 /* --- 折りたたみ（details）の統一デザイン --- */
-details {
+
+/* --- ガイドセクション全体の調整 --- */
+.guide-section {
+  padding: 12px 20px; /* 上下を少しタイトに */
+}
+
+/* 個別の枠（カード）設定が当たっている場合は上書きして解除 */
+.guide-section details {
   width: 100%;
-  border-bottom: 1px solid var(--divider); /* 項目間の区切り線（任意） */
+  border: none !important;      /* 枠線を強制的に消す */
+  background: none !important;  /* 背景色を消す */
+  box-shadow: none !important;  /* 影を消す */
+  margin-bottom: 0;             /* 項目間の隙間をリセット */
 }
 
-/* 最後の項目の線は消す */
-details:last-child {
-  border-bottom: none;
+/* 項目間に細い区切り線を入れる（より整理されて見えます） */
+.guide-section details:not(:last-child) {
+  border-bottom: 1px solid var(--divider) !important;
 }
 
-details summary {
+/* --- 項目見出し（Summary）の統一 --- */
+.guide-section summary {
   cursor: pointer;
-  padding: 10px 0; /* 14pxから10pxに縮小（縦幅を狭く） */
-  font-size: 11px; /* 12pxからさらに少し小さく */
-  font-weight: 700; /* 800から700へ（少し細くして主張を抑える） */
-  color: var(--muted); /* すべてこの色に統一 */
+  padding: 12px 0;      /* 縦幅を狭く（16px→12px） */
+  font-size: 11px;      /* 文字を小さく */
+  font-weight: 700;     /* 太すぎないウェイトに */
+  color: var(--muted);  /* 全体的に控えめなグレー */
   list-style: none;
   display: flex;
   align-items: center;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  transition: color 0.2s;
 }
 
-details summary:hover {
-  color: var(--text); /* ホバーした時だけ少し濃く */
-}
+.guide-section summary::-webkit-details-marker { display: none; }
 
-details summary::-webkit-details-marker { display: none; }
-
-details summary::before {
-  content: '▶'; /* ︎少し小さい三角形に */
-  font-size: 7px;
+/* 矢印のデザイン統一 */
+.guide-section summary::before {
+  content: '▶';
+  font-size: 8px;
   margin-right: 12px;
   color: var(--primary);
-  opacity: 0.7; /* 矢印も少しだけ薄く */
+  opacity: 0.6; /* 主張を控えめに */
   transition: transform 0.2s;
 }
 
-details[open] summary::before {
+.guide-section details[open] summary::before {
   transform: rotate(90deg);
 }
 
-/* 内部コンテンツの微調整 */
+/* --- 中身のテキスト --- */
 .details-content {
-  padding: 4px 0 16px 20px; /* 上の余白を詰め、横のラインを揃える */
-  font-size: 12px;
+  padding: 0 0 16px 20px; /* 左側を矢印の分だけインデント */
+  font-size: 13px;
   color: var(--muted);
-  line-height: 1.5;
+  line-height: 1.6;
   text-align: left;
 }
