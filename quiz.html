@@ -181,49 +181,67 @@
     return `<span class="pos-tag">${jp}（${key}）</span>`;
   }).join(" ");
 }
-    function showAnswer() {
+
+function showAnswer() {
       if (!currentCard) return;
+      
+      // 統計データの計算
       const s = getCardStats(currentCard);
       const rate = s.total > 0 ? Math.round((s.correct / s.total) * 100) + "%" : "—";
 
-      // 1. 和訳
-      const posText = Array.isArray(currentCard.pos) ? formatPos(currentCard.pos) : "";
-      // 以前：ansMeaningEl.innerHTML = `${escapeHtml(currentCard.jp)} ${posText}`; 
-      // 以下に書き換え：品詞
-      document.getElementById('answer-meaning').textContent = currentCard.jp;
-      document.getElementById('answer-pos').innerHTML = Array.isArray(currentCard.pos) ? formatPos(currentCard.pos) : "—";
+      // 1. 【和訳】
+      if (ansMeaningEl) {
+        ansMeaningEl.textContent = currentCard.jp || "—";
+      }
 
-      // 2. 読み
-      ansReadingEl.textContent = currentCard.kana ? `[ ${currentCard.kana} ]` : "—";
+      // 2. 【品詞】
+      const posArea = document.getElementById('answer-pos');
+      if (posArea) {
+        posArea.innerHTML = Array.isArray(currentCard.pos) ? formatPos(currentCard.pos) : "—";
+      }
 
-      // 3. 方法 (common)
+      // 3. 【読み】
+      if (ansReadingEl) {
+        ansReadingEl.textContent = currentCard.kana ? `[ ${currentCard.kana} ]` : "—";
+      }
+
+      // 4. 【方法】 (common)
       const commonArea = document.getElementById('answer-common');
-      if (Array.isArray(currentCard.common) && currentCard.common.length > 0) {
-        commonArea.innerHTML = currentCard.common.map(c => `・${escapeHtml(c)}`).join("<br>");
-      } else {
-        commonArea.textContent = "—";
+      if (commonArea) {
+        if (Array.isArray(currentCard.common) && currentCard.common.length > 0) {
+          commonArea.innerHTML = currentCard.common.map(c => `・${escapeHtml(c)}`).join("<br>");
+        } else {
+          commonArea.textContent = "—";
+        }
       }
 
-      // 4. 補足メモ (折りたたみ)
+      // 5. 【補足メモ】 (折りたたみ)
       const noteWrapper = document.getElementById('note-wrapper');
-      if (currentCard.note) {
-        noteWrapper.innerHTML = `
-          <details class="note-details">
-            <summary class="note-summary">補足メモを見る</summary>
-            <div class="note-box">${escapeHtml(currentCard.note).replace(/\n/g, '<br>')}</div>
-          </details>`;
-      } else {
-        noteWrapper.innerHTML = "";
+      if (noteWrapper) {
+        if (currentCard.note) {
+          noteWrapper.innerHTML = `
+            <details class="note-details">
+              <summary class="note-summary">補足メモを見る</summary>
+              <div class="note-box">${escapeHtml(currentCard.note).replace(/\n/g, '<br>')}</div>
+            </details>`;
+        } else {
+          noteWrapper.innerHTML = "";
+        }
       }
 
-      // 5. 統計
-      ansStatsEl.innerHTML = `正解率: <strong>${rate}</strong> (正解 ${s.correct} / 挑戦 ${s.total})`;
+      // 6. 統計情報（ここがエラーの原因でした。存在を確認してから書き込みます）
+      if (ansStatsEl) {
+        ansStatsEl.innerHTML = `正解率: <strong>${rate}</strong> (正解 ${s.correct} / 挑戦 ${s.total})`;
+      }
       
+      // 表示の切り替え
       ansAreaEl.style.display = "block";
       showBtn.disabled = true;
       correctBtn.disabled = false;
       wrongBtn.disabled = false;
     }
+    
+    
     function recordAnswer(isCorrect) {
       if (!currentCard) return;
       const s = getCardStats(currentCard);
