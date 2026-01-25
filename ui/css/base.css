@@ -179,11 +179,8 @@ details summary {
 }
 
 .illustration-img {
-  width: 100%; /* 前より少し小さく設定 */
+  width: 100%; 
   height: auto;
-  /* 透過画像用のネオンシャドウ */
-  filter: drop-shadow(0 0 5px #fff) 
-          drop-shadow(0 0 10px var(--primary));
 }
 
 /* =========================================================
