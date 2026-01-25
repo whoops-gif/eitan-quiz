@@ -179,7 +179,7 @@ details summary {
 }
 
 .illustration-img {
-  width: 120px; /* 前より少し小さく設定 */
+  width: 50%; /* 前より少し小さく設定 */
   height: auto;
   /* 透過画像用のネオンシャドウ */
   filter: drop-shadow(0 0 5px #fff) 
