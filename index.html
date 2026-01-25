@@ -121,7 +121,16 @@
     let allWords = [];
 
     // 検索対象カテゴリ（必要に応じて増やす）
-    const SEARCH_CATEGORIES = ["basic_L1"]; // 例: ["basic_L1","basic_L2","waseda2024","psycho"]
+    // 例: ["basic_L1","basic_L2","waseda2024","psycho"]
+    // 81行目付近：すべてのカテゴリを追加する
+    const SEARCH_CATEGORIES = [
+      "basic_L1", 
+      "basic_L2", 
+      "waseda2024", 
+      "waseda2025", 
+      "psycho", 
+      "cefr_b1"
+    ];
 
     function normalizeWordItem(w) {
       // null / undefined / 文字列などを弾く

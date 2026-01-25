@@ -32,14 +32,16 @@ body {
   min-height: 100vh;
 }
 
+/* --- レイアウトの基盤を修正 --- */
 .main-wrapper {
   width: 100%;
   max-width: 480px;
   padding: 32px 20px;
-  margin: 0 auto; /* これを追加して中央固定 */
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: center; /* 中の要素を中央に */
+  /* center ではなく stretch にすることで、すべてのカードの横幅が揃います */
+  align-items: stretch; 
 }
 
 /* ---------- Typography ---------- */
@@ -61,6 +63,7 @@ body {
 }
 
 /* ---------- UI Components ---------- */
+
 .card {
   background: var(--card-bg);
   border-radius: var(--radius-card);
@@ -68,7 +71,10 @@ body {
   margin-bottom: 16px;
   box-shadow: var(--shadow-card);
   border: none;
+  width: 100%; 
 }
+  /* 全てのカードの横幅を統一 */
+
 .field-label-en {
   font-size: 10px;
   font-weight: 800;
@@ -164,6 +170,7 @@ details summary {
   list-style: none;
 }
 
+/* --- 画像のサイズ調整とネオン効果 --- */
 .hero-illustration {
   width: 100%;
   display: flex;
@@ -171,6 +178,13 @@ details summary {
   margin: 10px 0 20px;
 }
 
+.illustration-img {
+  width: 120px; /* 前より少し小さく設定 */
+  height: auto;
+  /* 透過画像用のネオンシャドウ */
+  filter: drop-shadow(0 0 5px #fff) 
+          drop-shadow(0 0 10px var(--primary));
+}
 
 /* =========================================================
    Quiz Page Specific (Quiz)
